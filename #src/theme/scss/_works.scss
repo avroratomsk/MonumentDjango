@@ -1,0 +1,74 @@
+.works {
+  position: relative;
+
+  &__title {
+
+  }
+
+  &__slide {
+    border: 1px solid $secondaryColor;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__controls {
+    margin-top: 40px;
+  }
+
+  &__controls-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: relative;
+    top: 0 !important;
+    left: 0!important;
+    right: 0!important;
+    bottom: 0!important;
+    margin: 0!important;
+    padding: 0!important;
+    width: 40px;
+    height: 40px;
+    background-color: $primaryColor;
+    border-radius: 10px;
+
+
+    svg {
+      width: 8px;
+
+
+      path {
+        fill: $secondaryColor;
+      }
+
+
+    }
+
+    &::after {
+      font-size: 16px;
+    }
+  }
+
+  .swiper-button-disabled {
+    opacity: 0 !important;
+    border: none !important;
+    background-color: transparent !important;
+
+    svg {
+
+      path {
+        fill: #777777;
+      }
+
+    }
+  }
+
+
+}

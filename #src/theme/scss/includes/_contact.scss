@@ -1,0 +1,100 @@
+.contact-page {
+
+  .breadcrumbs {
+    padding: 0;
+  }
+}
+
+.contact {
+
+
+  &__title {
+    margin-block: 20px 50px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__info {
+    flex: 0 0 361px;
+    max-height: 496px;
+    height: 100%;
+    padding-right: 10px;
+    border-top: 1px solid rgba(40, 101, 168, 0.29);
+    border-bottom: 1px solid rgba(40, 101, 168, 0.29);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(40, 101, 168, 0.1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(1, 112, 184, 1);
+      border-radius: 20px;
+      //border: 1px solid orange;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+    font-weight: 600;
+
+
+    &:not(:first-child) {
+      border-top: 1px solid rgba(40, 101, 168, 0.29);
+    }
+  }
+
+  &__office {
+
+  }
+
+  &__address {
+    font-weight: 500;
+  }
+
+  &__phone {
+    color: rgba(40, 101, 168, 1);
+  }
+
+  &__mail {
+    color: rgba(32, 32, 32, 1);
+  }
+
+  &__btn {
+    margin-top: 30px;
+    padding-block: 8px;
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    background: rgba(1, 112, 184, 1);
+  }
+
+  &__map {
+    flex: 1 1 auto;
+    border-radius: 20px;
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+      border: 0;
+    }
+  }
+
+}

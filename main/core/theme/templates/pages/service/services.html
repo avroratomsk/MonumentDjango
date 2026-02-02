@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if service.meta_title %}{{ service.meta_title }}{% else %}Услуги{% endif %}
+{% endblock %}
+{% block description %}{{ service.meta_description }}{% endblock %}
+{% block keywords %}{{ service.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<section class="banner post-banner"
+         style="background-image: url({% if service.image %}{{service.image.url}}{% else %}{% static 'theme/img/news.jpeg' %}{% endif %});">
+  <div class="container">
+    <div class="banner__inner">
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1">
+        </a>
+        <a href="{% url 'service' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Услуги
+          <meta itemprop="position" content="2">
+        </a>
+        <span itemprop="itemListElement" itemscope=""
+              itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          {{ service.name }}
+          <meta itemprop="position" content="3">
+        </span>
+      </div>
+      <h1 class="banner__title title-h2">
+        {% if service.meta_h1 %}{{ service.meta_h1 }}{% else %} {{ service.name }}{% endif %}
+      </h1>
+    </div>
+  </div>
+</section>
+<div class="post-text page-text section--padded">
+  <div class="container">
+    {% if service.description %}
+    {{ service.description|safe }}
+    {% else %}
+    Пусто
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,124 @@
+.footer {
+  padding: 80px 0 125px;
+  flex: 0 0 auto;
+  border-top: 1px solid $secondaryColor;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__col {
+  }
+
+  &__info {
+    margin-bottom: 20px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__logo {
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #474747;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    li {
+
+      a {
+        font-weight: 400;
+        font-size: 16px;
+        color: #575757;
+      }
+
+    }
+  }
+
+  &__phone {
+    font-weight: 600;
+    font-size: 16px;
+    color: #282828;
+  }
+
+  &__btn {
+    text-align: left;
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #282828;
+  }
+
+  &__city {
+    font-weight: 600;
+    font-size: 16px;
+    color: #282828;
+  }
+
+  &__address {
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #282828;
+  }
+
+  &__time {
+    font-weight: 600;
+    font-size: 16px;
+    color: #282828;
+  }
+
+  &__timework {
+    font-weight: 300;
+    font-size: 16px;
+    color: #282828;
+  }
+
+
+}
+
+.author {
+  padding: 40px 0;
+
+  border-top: 1px solid $secondaryColor;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .copyright {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 154%;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #484848;
+  }
+
+  .policy {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 154%;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #484848;
+  }
+}

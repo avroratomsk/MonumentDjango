@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if about.meta_title %}
+{{ about.meta_title }}
+{% else %}
+О нас
+{% endif %}
+{% endblock %}
+{% block description %}{{ about.meta_description }}{% endblock %}
+{% block keywords %}{{ about.meta_keywords }}{% endblock %}
+
+{% block content %}
+  <div class="top-page">
+    <div class="container">
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1">
+        </a>
+        <span itemprop="name" class="breadcrumbs__item">
+            О нас
+            <meta itemprop="position" content="2">
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="about py">
+    <div class="container">
+      <div class="about__row">
+        <div class="about__info">
+          {% if request.path == "/" %}
+          <h2 class="about__title title">{{ about.title }}</h2>
+          {% else %}
+          <h1 class="about__title title">
+            {% if about.meta_h1 %}
+            {{ about.meta_h1 }}
+            {% else %}
+            {{ about.title }}
+            {% endif %}
+          </h1>
+          {% endif %}
+
+          <div class="about__text text">
+            {{ about.description|safe }}
+          </div>
+        </div>
+        <div class="about__image">
+          {% thumbnail about.image "654x481" format="WEBP" crop="center" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ about.title }}"
+               title="{{ about.title }}" class="about__bg">
+          {% endthumbnail %}
+
+          {% if site_settings.logo_dark %}
+          {% thumbnail site_settings.logo_dark "145x46" format="WEBP" crop="center" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ callback.title }}"
+               title="{{ callback.title }}" class="about__logo">
+          {% endthumbnail %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if about.text %}
+  <section class="py border-t">
+    <div class="container">
+      <div class="section-text text">
+        {{ about.text|safe }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% endblock %}

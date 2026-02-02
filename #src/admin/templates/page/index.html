@@ -1,0 +1,19 @@
+{% extends 'admin_base.html' %} {% block body %}
+
+<div class="page">
+  <div class="page__inner">
+    <div class="page__top">
+      <h1 class="page__title">Статистика</h1>
+      <ul class="admin-breadcrumbs">
+        <li><a href="{% url 'admin' %}">Панель управления</a></li>
+        <li>Статистика</li>
+      </ul>
+    </div>
+    <div class="page__grid grid-page">
+      {% comment %}
+      <div id="no-register">{{ no_register }}</div>
+      {% endcomment %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+<nav aria-label="pagination" class="pagination_area">
+  <div class="row">
+    {% if page_obj.end_index > 0 %}
+    <div class="d-none d-md-block">
+      <p>Показано с {{ page_obj.start_index }} по {{ page_obj.end_index }} из {{ page_obj.paginator.count}} (всего {{ page_obj.paginator.num_pages}} страниц)</p>
+    </div>
+    {% endif %} {% if page_obj.paginator.num_pages > 1 %}
+    <div class="dataTables_pager">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="1"
+            href="?page=1{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path
+                d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"
+              />
+            </svg>
+          </a>
+        </li>
+        {% if page_obj.previous_page_number > 1 %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.previous_page_number}}"
+            href="?page={{ page_obj.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+              <path
+                d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"
+              />
+            </svg>
+          </a>
+        </li>
+        {% endif %} {% endif %} {% if page_obj.previous_page_number > 2 %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.number|add:'-2'}}"
+            href="?page={{page_obj.number|add:'-2'}}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            {{ page_obj.number|add:"-2" }}
+          </a>
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page.number|add:'-1'}}"
+            href="?page={{page_obj.number|add:'-1'}}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            {{ page_obj.number|add:"-1" }}
+          </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active"><span class="page-link">{{ page_obj.number }}</span></li>
+
+        {% if page_obj.paginator.num_pages > page_obj.number|add:"2" %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.number|add:'1'}}"
+            href="?page={{page_obj.number|add:'1'}}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            {{ page_obj.number|add:"1" }}
+          </a>
+        </li>
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.number|add:'2'}}"
+            href="?page={{page_obj.number|add:'2'}}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            {{ page_obj.number|add:"2" }}
+          </a>
+        </li>
+        {% endif %} {% if page_obj.has_next %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.next_page_number}}"
+            href="?page={{ page_obj.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+              />
+            </svg>
+          </a>
+        </li>
+
+        <li class="page-item">
+          <a
+            class="page-link"
+            data-page="{{page_obj.paginator.num_pages}}"
+            href="?page={{ page_obj.paginator.num_pages }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}{% ifnotequal key 'manufact' %}{% ifnotequal key 'color' %}&{{ key }}={{ value }}{% endifnotequal %}{% endifnotequal %}{% endifnotequal %}{% endfor %}{% if manufact %}{% for m in manufact %}&manufact={{ m }}{% endfor %}{% endif %}{% if color %}{% for c in color %}&color={{ c }}{% endfor %}{% endif %}"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path
+                d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"
+              />
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</nav>

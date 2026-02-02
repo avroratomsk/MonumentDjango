@@ -1,0 +1,12 @@
+{% load thumbnail %}
+<a href="{{ category.get_absolute_url }}" class="services__item">
+  <p class="services__title">{{ category.name }}</p>
+  {% if category.image %}
+  <!--<img src="{{ category.image.url }}" loading="lazy"  class="services__image" alt="{{ category.name }}"
+       title="{{ category.name }}">-->
+ {% thumbnail category.image "214x184" format="WEBP" upscale=False as im %}
+  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ category.name }}"
+       title="{{ category.name }}" class="services__image">
+  {% endthumbnail %}
+  {% endif %}
+</a>

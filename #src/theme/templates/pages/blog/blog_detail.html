@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if post.meta_title %}{{ post.meta_title }}{% else %}{{ post.name }}{% endif %}
+{% endblock %}
+{% block description %}{{ post.meta_description }}{% endblock %}
+{% block keywords %}{{ post.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        <span itemprop="name">Главная</span>
+        <meta itemprop="position" content="1">
+      </a>
+      <a href="{% url 'blog' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        <span itemprop="name">Статьи</span>
+        <meta itemprop="position" content="2">
+      </a>
+      {% if post.category.name %}
+      <a href="{{ post.category.get_absolute_url }}" itemprop="itemListElement" itemscope=""
+         itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        <span itemprop="name">{{ post.category.name }}</span>
+        <meta itemprop="position" content="3">
+      </a>
+      {% endif %}
+      <span itemprop="itemListElement" itemscope=""
+            itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+            <span itemprop="name">{{ post.name }}</span>
+            <meta itemprop="position" content="{% if post.category.name %}4{% else %}3{% endif %}">
+            {% if absolute_url %}<meta itemprop="item" content="{{ absolute_url }}">{% endif %}
+        </span>
+    </div>
+  </div>
+</div>
+{% if post.description %}
+<section class="py">
+  <div class="container">
+    <h1>{% if post.meta_h1 %}{{ post.meta_h1 }}{% else %}{{ post.name }}{% endif %}</h1>
+    <div class="section-text text">
+      {{ post.description|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

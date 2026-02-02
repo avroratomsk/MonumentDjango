@@ -1,0 +1,87 @@
+.callback {
+  position: relative;
+  padding: 50px 0;
+  background: linear-gradient(180.00deg, rgba(1, 112, 184, 1), rgba(0.44565218687057495, 49.913047790527344, 82, 1) 100%);
+  overflow: hidden;
+  color: #ffffff;
+
+  &__pattern {
+    position: absolute;
+    top: -80%;
+    left: -20%;
+    z-index: 0;
+
+    @media screen and (max-width: 992px) {
+      top: -30%;
+    }
+    @media screen and (max-width: 768px) {
+      left: -63%;
+    }
+
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+    gap: 134px;
+    z-index: 3;
+
+    @media screen and (max-width: 1300px) {
+      gap: 40px;
+    }
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 1 50%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      font-size: 40px;
+      font-weight: 700;
+
+      @media screen and (max-width: 768px) {
+        font-size: 25px;
+      }
+    }
+
+    p {
+      @media screen and (min-width: 992px) {
+        margin-bottom: 107px;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      display: contents;
+    }
+
+  }
+
+  &__logo {
+    justify-self: flex-end;
+
+    @media screen and (max-width: 992px) {
+      order: 4;
+    }
+  }
+
+  &__form {
+    flex: 1 1 50%;
+    position: relative;
+    z-index: 1;
+
+    @media screen and (min-width: 1200px) {
+      min-width: 622px;
+    }
+  }
+
+
+}

@@ -1,0 +1,242 @@
+.page {
+  padding: 30px 0px 0px 280px;
+
+  // .page__inner
+
+  &__inner {
+    padding: 0 20px;
+  }
+
+  // .page__head
+
+  &__head {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba($color: $white, $alpha: 1.0);
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-top: 30px;
+    box-shadow: 0px 0px 4px rgba(38, 53, 61, 0.1);
+    z-index: 999;
+  }
+
+  //.page__list
+  &__list {
+    background: #fff;
+  }
+
+  //.page__head-btns
+  &__head-btns {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+
+  // .page__head-tab
+
+  &__head-tab {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // .page__head-right
+  &__head-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // .page__head-btn
+
+  &__head-btn {
+    // background-color: rgba($color: $accent, $alpha: 1.0);
+    color: rgba($color: $accent, $alpha: 1.0);
+    font-weight: 600;
+    padding: 10px 0px;
+    border-bottom: 2px solid rgba($color: $accent, $alpha: .0);
+    cursor: pointer;
+
+    &._active {
+      border-bottom-color: rgba($color: $accent, $alpha: 1.0);
+    }
+  }
+
+  // .page__top
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  // .page__title
+
+  &__title {
+    font-weight: 400;
+  }
+}
+
+.content-page {
+  border-radius: 12px;
+  background: rgba($color: $white, $alpha: 1.0);
+  box-shadow: 0 4px 24px 2px rgba(20, 25, 38, .05);
+  padding: 20px;
+
+  // .content-page__action
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  // .content-page__showing
+
+  &__showing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    select {
+      border: 1px solid rgba($color: $accent, $alpha: .5);
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
+}
+
+.action-button {
+  font-family: inherit;
+  padding: 10px 40px;
+  border-radius: 5px;
+  color: rgba($color: $white, $alpha: 1.0);
+  font-size: 16px;
+  letter-spacing: .5px;
+  background-color: rgba($color: $accent, $alpha: 1.0);
+}
+
+.grid-items {
+  display: grid;
+  //grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.grid-item {
+  background: #FFFFFF;
+  display: flex;
+  border: 1px solid rgba($color: $mainColor, $alpha: .1);
+  padding: 10px;
+  gap: 40px;
+  border-radius: 8px;
+  transition: $animation_speed;
+
+  &--subcategory {
+    padding: 5px;
+    margin-left: 20px;
+
+    .grid-item__image {
+      width: 40px;
+      height: 40px;
+    }
+
+    .grid-item__title {
+      font-size: 15px;
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgba($color: $mainColor, $alpha: .01);
+      border-color: rgba($color: $mainColor, $alpha: .2);
+    }
+  }
+
+  // .grid-item__image
+
+  &__image {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid rgba(38, 53, 61, 0.1);
+
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // .grid-item__content
+
+  &__content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    a {
+
+      &:first-child {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  // .grid-item__title
+
+  &__title {
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  // .grid-item__action
+
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-left: 100px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 10px 10px;
+      height: 30px;
+      border-radius: 4px;
+      font-size: 14px;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba($color: $mainColor, $alpha: .1);
+      transition: $animation_speed;
+
+      @media (hover: hover) {
+        &:hover {
+          border-color: rgba($color: $mainColor, $alpha: .5);
+        }
+      }
+
+      &:first-child {
+        color: rgba($color: $accent, $alpha: 1.0);
+      }
+
+      &:last-child {
+        color: rgba($color: #eb1a30, $alpha: 1.0);
+      }
+    }
+  }
+}

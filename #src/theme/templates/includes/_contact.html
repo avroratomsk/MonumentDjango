@@ -1,0 +1,61 @@
+<section class="contact py">
+  <div class="container">
+    {% if request.path != "/" %}
+    <h1 class="contact__title title">
+      {% if contact.meta_h1 %}
+      {{ contact.meta_h1 }}
+      {% else %}
+      Контакты
+      {% endif %}
+    </h1>
+    {% else %}
+    <h2 class="contact__title title">Контакты</h2>
+    {% endif %}
+
+    <div class="contact__row">
+      {% if branch %}
+      <div class="contact__info">
+        {% for branch in branch %}
+        <div class="contact__item">
+          {% if branch.title %}
+          <p class="contact__office">{{ branch.title }}</p>
+          {% endif %}
+
+          {% if branch.address %}
+          <p class="contact__address">{{ branch.address }}</p>
+          {% endif %}
+
+          {% if branch.phone_one %}
+          <a href="#" data-phone="{{ branch.phone_one }}" class="contact__phone"> {{ branch.phone_one }}</a>
+          {% endif %}
+
+          {% if branch.phone_two %}
+          <a href="#" data-phone="{{ branch.phone_two }}" class="contact__phone">{{ branch.phone_two }}</a>
+          {% endif %}
+
+          {% if branch.email %}
+          <a href="mailto:{{ branch.email }}" class="contact__mail">{{ branch.email }}</a>
+          {% endif %}
+
+          {% if branch.address %}
+          <button type="button" class="btn contact__btn" data-popup="leave-request" data-name="{{ branch.address}}">
+            Связаться с филлиалом
+          </button>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="contact__map">
+        <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3A3175d5d567fd195d84a64e5b30c8ff8a933040af6b989477e768edc15f912af9&amp;source=constructor"
+            height="500"
+            title="Карта нашего местоположения"
+            loading="lazy">
+
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>

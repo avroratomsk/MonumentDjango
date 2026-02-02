@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  align-items: flex-start;
+  // gap: 30px;
+
+  // .content__inner
+  &__inner {
+    flex: 1 1 auto;
+  }
+}

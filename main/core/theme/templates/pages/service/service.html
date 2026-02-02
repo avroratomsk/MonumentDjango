@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if service_settings.meta_title %}{{ service_settings.meta_title }}{% else %}Услуги{% endif %}
+{% endblock %}
+{% block description %}{{ service_settings.meta_description }}{% endblock %}
+{% block keywords %}{{ service_settings.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+  <section class="banner post-banner" style="background-image: url({% static 'theme/img/slider-3.jpeg' %});">
+    <div class="container">
+      <div class="banner__inner">
+        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+          <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+             class="breadcrumbs__item">
+            Главная
+            <meta itemprop="position" content="1">
+          </a>
+          <span itemprop="itemListElement" itemscope=""
+                itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          Услуги
+          <meta itemprop="position" content="2">
+        </span>
+        </div>
+        <h1 class="banner__title title-h2">{% if service_settings.meta_h1 %}{{ service_settings.meta_h1 }}{%else%}Услуги{% endif %}</h1>
+      </div>
+    </div>
+  </section>
+  <section class="service">
+    <div class="container">
+      <div class="service__inner">
+        <div class="service__item">
+          <h2 class="service__title">Производство входных дверей</h2>
+          <div class="service__text">
+            <p>
+              Компания <strong>«Максимум Двери»</strong> является производителем качественных металлических входных
+              дверей
+              различного ценового диапазона и предназначения. У нас вы можете заказать дверные блоки для дома и дачи,
+              офиса и
+              коттеджа, квартиры и подъезда. Мы изготавливаем технические, шумоизоляционные и противопожарные двери,
+              отвечающие действующим стандартам качества.
+            </p>
+          </div>
+          <button type="button" data-popup="leave-request" data-name="Производство входных дверей">Оставить заявку</button>
+        </div>
+        <div class="service__item">
+          <h2 class="service__title">Замер дверей</h2>
+          <div class="service__text">
+            <p>
+              Для тех, кто экономит свое свободное время, мы предлагаем бесплатную услугу – выезд квалифицированного
+              технического менеджера. Замер двери – ответственная процедура, поэтому не стоит пытаться производить ее
+              собственными силами.
+            </p>
+            <p>
+              Технический менеджер снимает размеры и на месте производит полный предварительный расчет стоимости изделий
+              и монтажа для Вашего заказа. При измерении дверей используется профессиональное оборудование, что
+              обеспечивает максимальную точность. Технический менеджер, как специалист компании, поможет в выборе
+              оптимальной модели изделия, подберет наиболее подходящий именно для Вас вариант.
+            </p>
+            <p>
+              Мы принимаем Ваши заявки ежедневно с 9:00 до 20:00!
+            </p>
+            <p>
+              Оставить заявку Вы можете через <a href="tel:">обратную связь</a>
+            </p>
+          </div>
+          <button type="button" data-popup="leave-request" data-name="Замер дверей">Оставить заявку</button>
+        </div>
+        <div class="service__item">
+          <h2 class="service__title">Установка дверей</h2>
+          <div class="service__text">
+            <p>
+              В компании «Максимум» стоимость монтажа входных дверей зависит от материала и сложности конструкции.
+              Минимальная цена услуги составляет 500 рублей. Но все же эту работу лучше доверить тем, кто занимается
+              монтажом профессионально. Если вы решите сделать все самостоятельно, есть риск испортить отделку двери,
+              повредить сложные запирающие механизмы, неправильно зафиксировать ее в проеме.
+            </p>
+          </div>
+          <button type="button" data-popup="leave-request" data-name="Установка дверей">Оставить заявку</button>
+        </div>
+        <div class="service__item">
+          <h2 class="service__title">Входные двери на заказ</h2>
+          <div class="service__text">
+            <p>
+              При производстве входных дверей мы используем современное оборудование, которое позволяет нам выполнять
+              даже самые сложные заказы клиентов.
+            </p>
+            <p>
+              Мы гарантируем долгий срок службы нашей продукции за счет качественных материалов, сырья и оборудования.
+              Изготовление конструкций практически полностью автоматизировано, что позволяет максимально минимизировать
+              ошибки, связанные с человеческим фактором.
+            </p>
+            <p>
+              Особое внимание мы уделяем взломостойкости и износостойкости двери — выбираем лучшие комплектующие,
+              фурнитуру и замки.
+            </p>
+          </div>
+          <button type="button" data-popup="leave-request" data-name="Входные двери на заказ">Оставить заявку</button>
+        </div>
+      </div>
+      <div class="news__grid">
+        {% for post in services %}
+        <article class="index-news__slide swiper-slide">
+          <div class="index-news__card card-news">
+            {% if post.image %}
+            <a href="{{ post.get_absolute_url }}" class="card-news__image">
+              <img src="{{ post.image.url }}" alt="{{ post.name }}" title="{{ post.name }}">
+            </a>
+            {% else %}
+            <a href="{{ post.get_absolute_url }}" class="card-news__image">
+              <img src="{% static 'theme/img/news.jpeg' %}" alt="{{ post.name }}" title="{{ post.name }}">
+            </a>
+            {% endif %}
+            <div class="card-news__content">
+              {% if post.name %}
+              <h3 class="card-news__title">
+                <a href="{{ post.get_absolute_url }}" class="">
+                  {{ post.name }}
+                </a>
+              </h3>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+
+  </section>
+  {% include "../../includes/_contact.html" %}
+
+{% endblock %}

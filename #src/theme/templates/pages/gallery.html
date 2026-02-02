@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if gallery.meta_title %}{{ gallery.meta_title }}{% else %}Галерея{% endif %}
+{% endblock %}
+{% block description %}{{ gallery.meta_description }}{% endblock %}
+{% block keywords %}{{ gallery.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <span itemprop="itemListElement" itemscope=""
+            itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+            {{ gallery.title }}
+            <meta itemprop="position" content="2">
+        </span>
+    </div>
+  </div>
+</div>
+
+{% if items %}
+<section class="gallery">
+  <div class="container">
+    <h1 class="gallery__title title">
+      {% if gallery.meta_h1 %}{{ gallery.meta_h1 }}{% else %}{{ gallery.name }}{% endif %}
+    </h1>
+    <div class="gallery__grid">
+      {% for item in items %}
+      <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
+        <i class="fa-solid fa-expand"></i>
+        <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if gallery.description %}
+<section class="py border-t">
+  <div class="container">
+    <div class="section-text text">
+      {{ gallery.description|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

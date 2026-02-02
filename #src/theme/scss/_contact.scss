@@ -1,0 +1,66 @@
+.contact {
+
+
+  &__title {
+    text-align: left;
+  }
+
+  &__row {
+    display: flex;
+    gap: 100px;
+  }
+
+  &__left {
+    flex: 1 1 50%;
+  }
+
+  &__right {
+  }
+
+  &__right-title {
+    margin-bottom: 20px;
+    font-family: Spectral, sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 132%;
+    letter-spacing: -0.03em;
+    color: #000;
+  }
+
+  &__form {
+  }
+
+  .form__checkbox{
+    max-width: 310px;
+  }
+
+  &__grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(252px, 1fr));
+    gap: 40px;
+  }
+
+  &__item{}
+
+  &__item-title{
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000;
+  }
+
+  &__item-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    p,a{
+      font-weight: 500;
+      font-size: 16px;
+      color: #282828;
+    }
+
+  }
+
+
+}

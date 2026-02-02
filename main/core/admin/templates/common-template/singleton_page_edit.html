@@ -1,0 +1,70 @@
+{% extends 'admin_base.html' %}{% load static %}{% load thumbnail %} {% block body %}
+<div class="page">
+  <div class="page__inner">
+    <form action="." method="POST" class="form" enctype="multipart/form-data">
+      <div class="page__head">
+        <div class="page__head-tab">
+          <h1 class="page__title">{{ title }}</h1>
+        </div>
+        <div class="page__head-right">
+          {% if add_url %}<a href="{% url add_url %}" class="form__add-property">Создать</a>{% endif %}
+          <button type="submit" class="form__btn">
+            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+            Сохранить
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="page-content _show" id="basic">
+        <div class="page-content__row">
+          <div class="page-content__col">
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label"> Заголовок h1: </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label"> Мета заголовок: </label>
+              {{ form.meta_title }} {{ form.meta_title.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label">
+                Мета описание:
+                <div class="meta-lenght">0</div>
+              </label>
+              {{ form.meta_description }} {{ form.meta_description.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label"> Мета
+                keywords: </label>
+              {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+
+            {% if form.description %}
+            <div class="form__group">
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
+                {{ form.description.label }}:
+              </label>
+              {{ form.description }} {{ form.description.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image %}
+            <div class="form__group">
+              <label for="{{ form.image.id_for_label }}" class="form__controls-label">
+                {{ form.image.label }}:
+              </label>
+              {{ form.image }} {{ form.image.errors }}
+            </div>
+            {% endif %}
+
+
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

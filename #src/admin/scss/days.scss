@@ -1,0 +1,36 @@
+.day {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+
+  // .day__item
+
+  &__item {
+    padding: 20px;
+    box-shadow: 0px 0px 4px rgba($color: $mainColor, $alpha: .1);
+    border: 1px solid rgba($color: $mainColor, $alpha: .1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // .day__icon
+
+  &__icon {
+    margin-right: 10px;
+    margin-top: 5px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: rgba($color: $accent, $alpha: 1);
+    }
+  }
+
+  // .day__name
+
+  &__name {}
+}

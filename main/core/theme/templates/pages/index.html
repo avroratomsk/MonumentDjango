@@ -1,0 +1,272 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if home_page.meta_title %}{{ home_page.meta_title }}{% else %}Главная страница{% endif %}
+{% endblock %}
+{% block description %}{{ home_page.meta_description }}{% endblock %}
+{% block keywords %}{{ home_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <h1>
+          {{ settings.meta_h1|safe }}
+        </h1>
+        <hr>
+        <p>
+          {{ settings.description|safe }}
+        </p>
+
+        <div class="hero__btns">
+          <button type="button" class="hero__btn btn btn--primary">
+            Оставить заявку
+            <img src="{% static 'theme/img/icon/i-arrow-right-white.svg' %}" alt="">
+          </button>
+          <a href="{% url 'category' %}" type="button" class="hero__btn btn btn--outline">
+            Каталог
+            <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
+          </a>
+        </div>
+      </div>
+      {% if settings.image %}
+      <div class="hero__image">
+        <img src="{{ settings.image.url }}" alt="">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if categories %}
+<div class="cards">
+  <div class="container">
+    <div class="cards__grid">
+      {% for category in categories %}
+      <div class="cards__item">
+        <div class="cards__content">
+          <p class="cards__title">
+            {{ category.name }}
+          </p>
+          <a href="{{ category.get_absolute_url }}" class="cards__link">
+            Узнать подробнее
+            <img src="{% static 'theme/img/icon/i-arrow-link.svg' %}" alt="">
+          </a>
+        </div>
+        <div class="cards__image">
+          <img src="{{ category.image.url }}" alt="{{ category.name }}" title="{{ category.name }}">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% if slides %}
+<div class="works">
+  <h2 class="title works__title">
+    Наши работы
+  </h2>
+  <div class="works-slider swiper-slider">
+    <div class="swiper-wrapper">
+      {% for work in slides  %}
+      <div class="swiper-slide works__slide">
+        <a href="" data-gallery="works">
+          <img src="{{ work.image.url }}" alt="">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="works__controls">
+      <div class="container">
+        <div class="works__controls-inner">
+          <div class="swiper-button-prev works-prev"></div>
+          <div class="swiper-button-next works-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="reviews">
+  <div class="container">
+    <h2 class="title">Ваши отзывы</h2>
+    <div class="reviews__row">
+      <div class="reviews__col">
+        <p class="reviews__title">
+          Мы всегда рады вашим отзывам о нашей работе
+        </p>
+        <a href="" class="reviews__link btn btn--primary">Оставить отзыв</a>
+      </div>
+      <div class="reviews__col">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if contact %}
+<div class="map">
+  <div class="container">
+    <div class="map__inner">
+      {{ contact.map_code|safe }}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!--<div class="faq">
+  <div class="container">
+    <h2 class="faq__title title">
+      Ответы на вопросы наших клиентов
+    </h2>
+
+    <div class="faq__accordion accordion">
+      <div class="accordion__item">
+        <div class="accordion__title active">
+          <p>Можно ли построить дом по своему проекту ?</p>
+          <button type="button" class="accordion__btn">
+            <img src="img/icon/i-arrow-down-white.svg" alt="">
+          </button>
+        </div>
+        <div class="accordion__body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores aspernatur consequuntur
+          cumque
+          delectus distinctio est eum id iure mollitia obcaecati, officiis quas quibusdam quod rem, reprehenderit
+          sequi suscipit, voluptatibus!
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title">
+          <p>Можно ли построить дом по своему проекту ?</p>
+          <button type="button" class="accordion__btn">
+            <img src="img/icon/i-arrow-down-white.svg" alt="">
+          </button>
+        </div>
+        <div class="accordion__body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores aspernatur consequuntur
+          cumque
+          delectus distinctio est eum id iure mollitia obcaecati, officiis quas quibusdam quod rem, reprehenderit
+          sequi suscipit, voluptatibus!
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title">
+          <p>Можно ли построить дом по своему проекту ?</p>
+          <button type="button" class="accordion__btn">
+            <img src="img/icon/i-arrow-down-white.svg" alt="">
+          </button>
+        </div>
+        <div class="accordion__body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores aspernatur consequuntur
+          cumque
+          delectus distinctio est eum id iure mollitia obcaecati, officiis quas quibusdam quod rem, reprehenderit
+          sequi suscipit, voluptatibus!
+        </div>
+      </div>
+      <div class="accordion__item">
+        <div class="accordion__title">
+          <p>Можно ли построить дом по своему проекту ?</p>
+          <button type="button" class="accordion__btn">
+            <img src="img/icon/i-arrow-down-white.svg" alt="">
+          </button>
+        </div>
+        <div class="accordion__body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid asperiores aspernatur consequuntur
+          cumque
+          delectus distinctio est eum id iure mollitia obcaecati, officiis quas quibusdam quod rem, reprehenderit
+          sequi suscipit, voluptatibus!
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>-->
+
+<div class="callback">
+  <div class="container">
+    <!--<img src="{% static 'theme/img/angel.png' %}" alt="" class="callback__angel">
+    <img src="{% static 'theme/img/polygon.png' %}" alt="" class="callback__polygon">-->
+    <div class="callback__row">
+      <div class="callback__col">
+        <p class="callback__title">
+          Мы готовы ответитить на все ваши вопросы
+        </p>
+        <ul class="callback__list">
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Поможем выбрать памятник под ваш бюджет
+            </p>
+          </li>
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Выслушаем все ваши пожаления по оформлению
+            </p>
+          </li>
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Проконсультируем по услугам нашей компании
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="callback__col">
+        <p class="callback__form-title">
+          Оставьте заявку - мы обязательно с вами свяжемся
+        </p>
+        <form action="" class="form">
+          <input type="text" placeholder="Ваше имя" class="form__input" name="name">
+          <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
+          <div class="form__bottom">
+            <div class="socials">
+              <a href=""><img src="img/icon/i-tg-white.svg" alt=""></a>
+              <a href=""><img src="img/icon/i-max-white.svg" alt=""></a>
+            </div>
+            <div class="form__checkbox">
+              <input type="checkbox" id="agree" name="agree">
+              <label for="agree">
+                Я даю свое согласие на обработку персональных данных и подверждаю, что ознакомлен(а) с политикой
+                конфиденциальности и обработки персональных данных
+              </label>
+            </div>
+            <button type="submit" class="form__submit">
+              Оставить заявку
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clients">
+  <div class="container">
+    <h2 class="clients__title title">Наши клиенты со всего мира</h2>
+    <div class="clients__list">
+      <p>Россия:</p>
+      <p>
+        Калининград, Санкт-Петербург, Москва, Коломна, Крым, Сочи, Краснодар, Новосибирск, Барнаул, Кемерово,
+        Анжеро-Судженск, Краснодар, Иркутск, Хабаровск, Петропавловск-Камчатский.
+      </p>
+    </div>
+    <div class="clients__list">
+      <p>Евразия:</p>
+      <p>
+        Испания, Германия, Белорусь, Казахстан, Бангладеш, Тайланд
+      </p>
+    </div>
+    <div class="clients__map">
+      <img src="{% static 'theme/img/maps.png' %}" alt="">
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

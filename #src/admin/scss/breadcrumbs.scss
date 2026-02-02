@@ -1,0 +1,25 @@
+.admin-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgba($color: $mainColor, $alpha: .7);
+
+    &:not(:last-child) {
+      &::after {
+        content: '>';
+        height: 20px;
+        margin-left: 10px;
+      }
+    }
+
+    a {
+      font-size: 14px;
+      color: rgba($color: $mainColor, $alpha: .7);
+    }
+  }
+}

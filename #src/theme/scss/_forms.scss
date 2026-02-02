@@ -1,0 +1,49 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__input {
+    padding: 0 17px;
+    border: 1px solid #f7e76f;
+    border-radius: 5px;
+    width: 613px;
+    height: 60px;
+
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: -0.03em;
+    color: #545454;
+
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__checkbox {
+    max-width: 229px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 121%;
+    color: #c7c7c7;
+  }
+
+  &__submit {
+    border-radius: 10px;
+    padding: 5px 12px;
+    width: 233px;
+    height: 53px;
+    background: $secondaryColor;
+
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.04em;
+    color: #323232;
+
+  }
+
+
+}

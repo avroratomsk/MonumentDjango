@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if service.meta_title %}{{ service.meta_title }}{% else %}Услуга{% endif %}
+{% endblock %}
+{% block description %}{{ service.meta_description }}{% endblock %}
+{% block keywords %}{{ service.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+  <section class="banner post-banner" style="background-image: url({% static 'theme/img/slider-3.jpeg' %});">
+    <div class="container">
+      <div class="banner__inner">
+        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+          <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+             class="breadcrumbs__item">
+            Главная
+            <meta itemprop="position" content="1">
+          </a>
+          <a href="{% url 'service' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+             class="breadcrumbs__item">
+            Услуги
+            <meta itemprop="position" content="2">
+          </a>
+          <span itemprop="itemListElement" itemscope=""
+                itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          {{ service.name }}
+          <meta itemprop="position" content="3">
+        </span>
+        </div>
+        <h1 class="banner__title title-h2">{% if service.meta_h1 %}{{ service.meta_h1}} {% else %} {{ service.name }}{% endif %}</h1>
+      </div>
+    </div>
+  </section>
+  <div class="page-text section--padded">
+    <div class="container">
+
+    </div>
+  </div>
+  <section class="example-price section--padded">
+    <div class="container">
+      <h2 class="example-price__title title-h2">Примеры цен на окна</h2>
+      <div class="example-price__grid">
+        <div class="example-price__item">
+          <div class="example-price__image">
+            <img src="{% static 'theme/img/okna-1.jpg' %}" alt="">
+          </div>
+          <div class="example-price__content">
+            <p class="example-price__item-title">Одностворчатое окно</p>
+            <div class="example-price__item-char">
+              <p><b>Размер:</b> <span>600 х 1400</span></p>
+            </div>
+            <div class="example-price__item-char">
+              <p><b>Цена:</b> <span class="example-price__price">от 9600 ₽</span></p>
+            </div>
+          </div>
+          <button type="button" class="example-price__btn btn">Заказать расчет окна</button>
+        </div>
+        <div class="example-price__item">
+          <div class="example-price__image">
+            <img src="{% static 'theme/img/okna-2.jpg' %}" alt="">
+          </div>
+          <div class="example-price__content">
+            <p class="example-price__item-title">Одностворчатое окно</p>
+            <div class="example-price__item-char">
+              <p><b>Размер:</b> <span>600 х 1400</span></p>
+            </div>
+            <div class="example-price__item-char">
+              <p><b>Цена:</b> <span class="example-price__price">от 9600 ₽</span></p>
+            </div>
+          </div>
+          <button type="button" class="example-price__btn btn">Заказать расчет окна</button>
+        </div>
+        <div class="example-price__item">
+          <div class="example-price__image">
+            <img src="{% static 'theme/img/okna-3.jpg' %}" alt="">
+          </div>
+          <div class="example-price__content">
+            <p class="example-price__item-title">Одностворчатое окно</p>
+            <div class="example-price__item-char">
+              <p><b>Размер:</b> <span>600 х 1400</span></p>
+            </div>
+            <div class="example-price__item-char">
+              <p><b>Цена:</b> <span class="example-price__price">от 9600 ₽</span></p>
+            </div>
+          </div>
+          <button type="button" class="example-price__btn btn">Заказать расчет окна</button>
+        </div>
+        <div class="example-price__item">
+          <div class="example-price__image">
+            <img src="{% static 'theme/img/okna-4.jpg' %}" alt="">
+          </div>
+          <div class="example-price__content">
+            <p class="example-price__item-title">Одностворчатое окно</p>
+            <div class="example-price__item-char">
+              <p><b>Размер:</b> <span>600 х 1400</span></p>
+            </div>
+            <div class="example-price__item-char">
+              <p><b>Цена:</b> <span class="example-price__price">от 9600 ₽</span></p>
+            </div>
+          </div>
+          <button type="button" class="example-price__btn btn">Заказать расчет окна</button>
+        </div>
+  </section>
+  <div class="tabs section--padded">
+    <div class="container">
+      <h2 class="condition__title title-h2">Остекление балконов и лоджий</h2>
+      <div class="tabs__row">
+        <div class="tabs__col">
+          <p>Преимущества:</p>
+          <div class="tabs__item">
+            <p>Защищает от ветра</p>
+          </div>
+          <div class="tabs__item">
+            <p>Защищиает от снега</p>
+          </div>
+          <div class="tabs__item">
+            <p>Экономичное решение</p>
+          </div>
+          <div class="tabs__item">
+            <p>Эстетичный вид</p>
+          </div>
+          <button type="button" class="tabs__btn btn">Заказать расчет</button>
+        </div>
+        <div class="tabs__col">
+          <img src="{% static 'theme/img/lodjii-1.png' %}" alt="" class="tabs__image">
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="condition section--padded">
+    <div class="container">
+      <div class="condition__title title-h2">Выгодные условия</div>
+      <div class="condition__row">
+        <div class="condition__item item-advantages">
+          <div class="item-advantages__icon">
+            <img src="{% static 'theme/img/icon/adv-1.svg' %}" alt="">
+          </div>
+          <h3 class="item-advantages__title">Рассрочка 0%</h3>
+          <p class="item-advantages__text">
+            Заказывайте в рассрочку до 24 месяцев без первоначального взноса и переплаты
+          </p>
+        </div>
+        <div class="condition__item item-advantages">
+          <div class="item-advantages__icon">
+            <img src="{% static 'theme/img/icon/adv-2.svg' %}" alt="">
+          </div>
+          <h3 class="item-advantages__title">Бесплатный замер</h3>
+          <p class="item-advantages__text">
+            Инженер приезжает в удобное время, делает точный замер и помогает с выбором
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="condition__title title-h2">Наши работы</div>
+    <div class="works__grid">
+      <div class="works__item" style="background-image: url({% static 'theme/img/work/1.jpg' %})"></div>
+      <div class="works__item" style="background-image: url({% static 'theme/img/work/2.jpg' %})"></div>
+      <div class="works__item" style="background-image: url({% static 'theme/img/work/3.jpg' %})"></div>
+      <div class="works__item" style="background-image: url({% static 'theme/img/work/4.jpg' %})"></div>
+    </div>
+  </div>
+  {% include "../../includes/_contact.html" %}
+
+{% endblock %}

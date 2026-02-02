@@ -1,0 +1,7 @@
+PassengerEnabled On
+PassengerAppRoot /home/a/avroraweb/tompc-tech/public_html/main/main
+PassengerPython /home/a/avroraweb/tompc-tech/public_html/venv/bin/python
+
+<FilesMatch "\.(css|js|woff|woff2|jpg|png|svg|gif|webp)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>

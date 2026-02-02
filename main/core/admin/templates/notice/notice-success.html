@@ -1,0 +1,16 @@
+{% if messages %}
+{% for message in messages %}
+<div class="
+        notice
+        {% if message.tags == 'success' %}notice--success{% endif %}
+        {% if message.tags == 'error' %}notice--error{% endif %}
+        {% if message.tags == 'warning' %}notice--warning{% endif %}
+        {% if message.tags == 'info' %}notice--info{% endif %}
+">
+  <div class="notice__body">
+    <p>{{ message }}</p>
+    <button class="notice__close">&times;</button>
+  </div>
+</div>
+{% endfor %}
+{% endif %}

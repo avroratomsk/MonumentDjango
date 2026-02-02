@@ -1,0 +1,139 @@
+.filter {
+  margin-top: 40px;
+
+  @media screen and (max-width: 992px){
+    margin-top: 20px;
+  }
+
+  // .filter__inner
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  // .filter__item
+
+  &__item {
+    position: relative;
+
+
+  }
+
+  // .filter__btn
+
+  &__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 36px;
+    color: #0b6caa;
+    border: 0.5px solid #0b6caa;
+    border-radius: 40px;
+    background: rgba(217, 217, 217, 0);
+    transition: $animation_speed;
+
+    @media (hover:hover) {
+      &:hover {
+        background-color: rgba($color: #0170b8, $alpha: .05);
+      }
+    }
+
+    &._active {
+        background: #0b6caa;
+        color: rgba($color: #fff, $alpha: 1.0);
+    }
+
+  }
+
+  // .filter__indicator
+
+  &__indicator {
+    display: block;
+    width: 0px;
+    height: 0px;
+    background-color: rgb(194, 180, 107);
+    border-radius: 50%;
+    transition: $animation_speed;
+  }
+
+  // .filter__content
+
+  &__content {
+    width: 367px;
+    padding: 18px 16px;
+    margin: 10px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba($color: #fff, $alpha: 1.0);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .1), 0 2px 7px rgba(0, 0, 0, .08);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(25px);
+    z-index: 99;
+    transition: $animation_speed;
+
+    &._active {
+      .filter__done {
+        width: 48%;
+      }
+
+      .filter__reset {
+        display: block;
+      }
+
+    }
+  }
+
+  // .filter__checkbox
+
+  &__checkbox {}
+
+  // .filter__checkbox-wrap
+
+  &__checkbox-wrap {}
+
+  // .filter__content-btn
+
+  &__content-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 20px;
+  }
+
+  // .filter__reset
+
+  &__reset {
+    width: 48%;
+    padding: 14px 24px;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    color: #000;
+    border-radius: 50px;
+  }
+
+  // .filter__done
+
+  &__done {
+    width: 100%;
+    padding: 14px 24px;
+    background: rgba($color: #404040, $alpha: 1.0);
+    border: 1px solid rgba($color: #404040, $alpha: 1.0);
+    color: rgba($color: #fff, $alpha: 1.0);
+    border-radius: 50px;
+  }
+
+}

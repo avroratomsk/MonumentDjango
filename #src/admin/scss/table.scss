@@ -1,0 +1,71 @@
+.table {
+  display: grid;
+  gap: 10px;
+}
+
+.table-top {
+  margin-top: 30px;
+}
+
+.table-header,
+.table-body {
+  display: contents;
+}
+
+.table-header {}
+
+.table-header .table-row {
+  background-color: #f6f8fbcc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+}
+
+.table-body .table-row {
+  background-color: rgba($color: $accent, $alpha: 1);
+}
+
+.table-cell {
+  padding: 12px 15px;
+  background-color: #fff;
+  text-align: left;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+}
+
+.table-header .table-cell {
+  background-color: #f4f4f4;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .table-cell {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .table-cell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    padding-right: 10px;
+  }
+}

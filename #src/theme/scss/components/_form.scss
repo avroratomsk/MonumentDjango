@@ -1,0 +1,148 @@
+.form-search {
+  height: 33px;
+  display: flex;
+  border: 1px solid rgba(40, 101, 168, 1);
+  border-radius: 30px;
+  overflow: hidden;
+
+  &.focused {
+    border-color: #357fd1;
+  }
+
+
+  //.form-search__btn
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 100%;
+
+
+    @media(hover: hover) {
+      &:hover {
+        background-color: rgba($color: #357fd1, $alpha: 1);
+      }
+    }
+  }
+
+  //.form-search__input
+  &__input {
+    padding-inline: 10px;
+    background: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(81, 81, 81, 1);
+    border: none;
+
+    &::placeholder {
+      color: rgb(111, 111, 111);
+    }
+
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+
+  }
+
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__input {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 400;
+    outline: none;
+    border: none;
+
+    &::placeholder {
+      color: rgba(128, 128, 128, 1);
+    }
+
+  }
+
+  &__textarea {
+    font-size: 20px;
+    font-weight: 400;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+  }
+
+  &__submit {
+    border-radius: 40px;
+    background: rgba(1, 112, 184, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 70px;
+    white-space: nowrap;
+
+    @media screen and (max-width: 1200px) {
+      order: 1;
+    }
+
+  }
+
+  &__bottom {
+    display: flex;
+    gap: 30px;
+
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__action {
+    @media screen and (max-width: 1200px) {
+      display: contents;
+    }
+  }
+
+  &__action-social {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+
+    @media screen and (max-width: 1200px) {
+      order: 2;
+      justify-content: space-between;
+    }
+  }
+
+  &__action-phone {
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    @media(hover:hover) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__pivacy {
+    label {
+      font-size: 14px;
+    }
+
+    @media screen and (max-width: 1200px) {
+      order: 0;
+    }
+  }
+
+
+}

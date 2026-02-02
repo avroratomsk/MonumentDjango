@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Панель администратора</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&amp;family=Oswald:wght@200..700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'admin/img/favicon.ico' %}" />
+    {% comment %}<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>{% endcomment %}
+  </head>
+  <body>
+    <div class="content">
+      {% include 'components/admin-sidebar.html' %}
+
+      <div class="content__inner">
+        {% include 'components/admin_header.html' %}
+        {% block body %} {% endblock %}
+      </div>
+      {% include 'notice/notice-success.html' %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script async src="{% static 'admin/js/app.min.js' %}"></script>
+  </body>
+</html>

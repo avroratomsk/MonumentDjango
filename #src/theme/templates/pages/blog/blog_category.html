@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if category.meta_title %}{{ category.meta_title }}{% else %}{{ category.name }}{% endif %}
+{% endblock %}
+{% block description %}{{ category.meta_description }}{% endblock %}
+{% block keywords %}{{ category.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <a href="{% url 'blog' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Статьи
+        <meta itemprop="position" content="2">
+      </a>
+      <span itemprop="name" class="breadcrumbs__item">
+            {{ category.name }}
+            <meta itemprop="position" content="3">
+        </span>
+    </div>
+  </div>
+</div>
+<section class="news">
+  <div class="container">
+    <h1 class="news__title title">
+      {% if blog.meta_h1 %}{{ blog.meta_h1 }}{% else %}Новости{% endif %}
+    </h1>
+    <div class="news__inner">
+      {% if categories %}
+      <div class="category__filter filter">
+        <div class="filter__inner">
+          <div class="filter__item">
+            <a href="{% url 'blog' %}" class="filter__btn">
+              <span>Все категории</span>
+            </a>
+          </div>
+          {% for category in categories %}
+          <div class="filter__item">
+            <a href="{{ category.get_absolute_url }}"
+               class="filter__btn {% if category.slug in request.path %}_active{% endif %}">
+              <span>{{ category.name }}</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if posts %}
+      <div class="news__grid">
+        {% for post in posts %}
+        <article class="card-news">
+          {% if post.image %}
+          <a href="{{ post.get_absolute_url }}" class="card-news__image">
+            <img src="{{ post.image.url }}" alt="{{ post.name }}" title="{{ post.name }}">
+          </a>
+          {% else %}
+          <a href="{{ post.get_absolute_url }}" class="card-news__image">
+            <img src="{% static 'theme/img/news.jpg' %}" alt="{{ post.name }}" title="{{ post.name }}">
+          </a>
+          {% endif %}
+          <div class="card-news__content">
+            {% if post.name %}
+            <h3 class="card-news__title">
+              <a href="{{ post.get_absolute_url }}" class="">
+                {{ post.name }}
+              </a>
+            </h3>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if category.description %}
+<section class="py border-t">
+  <div class="container">
+    <div class="section-text text">
+      {{ category.description|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}

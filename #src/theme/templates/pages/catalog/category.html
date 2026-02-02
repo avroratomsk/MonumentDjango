@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load shop_tags %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}{% if settings.meta_title %}{{ settings.meta_title }}{% else %}Каталог{% endif %}{% endblock %}
+{% block description %}{{ settings.meta_description }}{% endblock %}
+{% block keywords %}{{ settings.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <span itemprop="name" class="breadcrumbs__item">
+            Каталог
+            <meta itemprop="position" content="2">
+        </span>
+    </div>
+    <h1 class="top-page__title title">{% if category.meta_h1 %}{{ category.meta_h1 }}{% else %}Каталог{% endif %}</h1>
+  </div>
+</div>
+
+{% if category %}
+{% include "../../section/services.html" with category=category %}
+{% endif %}
+
+{% if settings.description %}
+<section class="py border-t">
+  <div class="container">
+    <div class="section-text text">
+      {{ settings.description|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include "../../includes/_callback.html" %}
+{% include "../../includes/_contact.html" %}
+
+{% endblock content %}

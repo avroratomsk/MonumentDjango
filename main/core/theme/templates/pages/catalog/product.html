@@ -1,0 +1,180 @@
+{% extends "base.html" %} {% load static %} {% load thumbnail %}
+
+{% block title %}
+{% if product.meta_h1 %}{{ product.meta_h1 }}{% else %}{{ product.name }}{% endif %}
+{% endblock %}
+
+{% block description %}
+{% if product.meta_description %}{{ product.meta_description}}{% endif %}
+{% endblock %}
+
+{% block keywords %}
+{% if product.meta_keywords %}{{ product.meta_keywords}}{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Каталог
+        <meta itemprop="position" content="2">
+      </a>
+      <a href="{{ category.get_absolute_url }}" itemprop="itemListElement" itemscope=""
+         itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        {{ category.name }}
+        <meta itemprop="position" content="3">
+      </a>
+      <span itemprop="name" class="breadcrumbs__item">
+            {{ product.name }}
+            <meta itemprop="position" content="4">
+        </span>
+    </div>
+  </div>
+</div>
+
+<div class="info">
+  <div class="container">
+    <div class="info__row">
+      {% if product.image or images %}
+      <div class="info__image" {% if not images %}style="grid-template-columns: 1fr;"{% endif %}>
+        {% if images %}
+        <div class="info__thumb">
+          <div class="swiper info__slider-thumb">
+            <div class="swiper-wrapper">
+              {% for image in images %}
+              <div class="swiper-slide info__slide-thumb">
+                <img src="{{ image.src.url }}" alt="">
+              </div>
+              {% endfor %}
+
+              {% if product.image %}
+              <div class="swiper-slide info__slide-thumb">
+                <img src="{{ product.image.url }}" alt="">
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if product.image %}
+        <div class="swiper info__slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide info__slide">
+              <img src="{{ product.image.url }}" alt="">
+            </div>
+
+            {% for image in images %}
+            <div class="swiper-slide info__slide">
+              <img src="{{ image.src.url }}" alt="">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      <div class="info__text">
+        <h1 class="info__title">
+          {% if product.meta_h1 %}{{ product.meta_h1 }}{% else %}{{ product.name }}{% endif %}
+        </h1>
+        {% if product.description %}
+        <div class="text">
+          {{ product.description|safe }}
+        </div>
+        {% endif %}
+        <div class="info__btns">
+          <button type="button" class="info__btn btn btn--outline" data-popup="leave-request" data-name="{{ product.name }}">
+            Оставить заявку
+          </button>
+          <button type="button" class="info__btn btn btn--primary"  data-popup="callback">Связаться с нами</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if models %}
+<div class="table py">
+  <div class="container">
+   <div class="table__inner">
+     <table>
+       <thead>
+       <tr>
+         <th><p>Модель</p></th>
+         <th><p>Мощность, кВт</p></th>
+         <th><p>Напряжение, В</p></th>
+         <th><p>Подача</p></th>
+         <th><p>Напор</p></th>
+         <th><p>Подключение</p></th>
+         <th><p>Наличие</p></th>
+       </tr>
+       </thead>
+       <tbody>
+       {% for model in models %}
+       <tr>
+         {% if model.model %}
+         <td data-label="{{ model.model }}" class="model-chars">
+           {% if model.slug %}
+           <a href="{{ model.get_absolute_url }}" class="model-name">{{ model.model }}</a>
+           {% else %}
+            <p class="model-name">{{ model.model }}</p>
+           {% endif %}
+         </td>
+          {% for char in model.characteristics.all|slice:":5" %}
+             <td data-label="{{ model.model }}" class="model-chars">
+               <p class="model-name">{{ char.value }}</p>
+             </td>
+          {% endfor %}
+         {% endif %}
+
+         <td data-label="{{ model.in_stock }}">
+           <button type="button" class="table__btn">
+             {% if model.in_stock == "В наличии" %}
+              <span style="color: green;">{{ model.in_stock }}</span>
+             {% endif %}
+
+             {% if model.in_stock == "Нет в наличии" %}
+             <span style="color: red;">{{ model.in_stock }}</span>
+             {% endif %}
+
+             {% if model.in_stock == "В пути" %}
+             <span style="color: orange;">{{ model.in_stock }}</span>
+             {% endif %}
+
+           </button>
+         </td>
+       </tr>
+       {% endfor %}
+       </tbody>
+     </table>
+   </div>
+  </div>
+</div>
+{% endif %}
+
+{% if product.text %}
+<section class="py border-l">
+  <div class="container">
+    <div class="text">
+      {{ product.text|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include "../../includes/_callback.html" %}
+
+{% include "../../includes/_contact.html" %}
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+.services {
+  padding: 30px 0 40px;
+
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+
+  &__item {
+    position: relative;
+    min-height: 208px;
+    padding: 18px;
+    border-radius: 20px;
+    background: linear-gradient(180.00deg, rgba(1, 112, 184, 1), rgba(0, 49, 82, 0.2) 100%);
+    overflow: hidden;
+    transition: $animation-speed;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(-180deg, rgba(1, 112, 184, 1), rgba(0, 49, 82, 0.2) 100%);
+      z-index: 0;
+      opacity: 0;
+      transition: $animation-speed;
+    }
+
+    @media (hover: hover) {
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+  }
+
+  &__title {
+    color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__image {
+    max-width: 100%;
+    //width: 150px;
+    //height: 120px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    //transform: rotate(21deg);
+    z-index: 1;
+    object-fit: cover;
+  }
+
+}

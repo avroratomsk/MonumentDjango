@@ -1,0 +1,12 @@
+.admin-select {
+  width: 150px;
+  height: 30px;
+  border-radius: 2px;
+  border: 1px solid rgba($color: $mainColor, $alpha: .4);
+  // font-size: 16px;
+
+  // admin-select__option
+  &__option {
+    // font-size: 18px;
+  }
+}

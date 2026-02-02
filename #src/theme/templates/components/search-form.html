@@ -1,0 +1,8 @@
+{% load image_path %}
+
+<form action="{% url 'catalog_search' %}" class="form-search">
+  <button type="submit" class="form-search__btn" aria-label="Поиск">
+    <img src="{% image_path 'search.svg' %}" width="18px" height="18px" alt="">
+  </button>
+  <input type="search" aria-label="Поиск по сайту" class="form-search__input" id="search" name="search" placeholder="Поиск">
+</form>

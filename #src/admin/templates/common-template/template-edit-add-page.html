@@ -1,0 +1,561 @@
+{% extends 'admin_base.html' %}{% load static %}{% load thumbnail %} {% block body %}
+<div class="page">
+  <div class="page__inner">
+    <div class="page__top">
+      <h1 class="page__title">{{ title }}</h1>
+      <a href="">Назад</a>
+    </div>
+    <form action="." method="POST" class="form" enctype="multipart/form-data">
+      <div class="page__head">
+        <div class="page__head-tab">
+          <button type="button" data-name="basic" class="page__head-btn _active">Основные</button>
+          <button type="button" data-name="seo" class="page__head-btn">Поля SEO</button>
+          <button type="button" data-name="gallery" class="page__head-btn">Фотографии</button>
+          <button type="button" data-name="list" class="page__head-btn">Список</button>
+          {% if models %}
+          <button type="button" data-name="model" class="page__head-btn">Модели</button>
+          {% endif %}
+        </div>
+        <div class="page__head-right">
+          {% if add_url %}<a href="{% url add_url %}" class="form__add-property">Создать</a>{% endif %}
+          <button type="submit" class="form__btn">
+            <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+            Сохранить
+          </button>
+        </div>
+      </div>
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="page-content _show" id="basic">
+        <div class="page-content__row">
+          <div class="page-content__col">
+            {% if form.name %}
+            <div class="form__group">
+              <label for="{{ form.name.id_for_label }}" class="form__controls-label">Наименование: </label>
+              {{ form.name }} {{ form.name.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.map_code %}
+            <div class="form__group">
+              <label for="{{ form.map_code.id_for_label }}" class="form__controls-label">
+                {{ form.map_code.label }}:
+              </label>
+              {{ form.map_code }} {{ form.map_code.errors }}
+            </div>
+            {% endif %}
+
+
+            {% if form.title %}
+            <div class="form__group">
+              <label for="{{ form.title.id_for_label }}" class="form__controls-label">{{ form.title.label }}: </label>
+              {{ form.title }} {{ form.title.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.pattern_seo %}
+            <div class="form__group">
+              <label for="{{ form.pattern_seo.id_for_label }}" class="form__controls-label">{{ form.pattern_seo.label }}: </label>
+              {{ form.pattern_seo }} {{ form.pattern_seo.errors }}
+            </div>
+            {% endif %}
+
+
+            {% if form.link %}
+            <div class="form__group">
+              <label for="{{ form.link.id_for_label }}" class="form__controls-label">Ссылка: </label>
+              {{ form.link }} {{ form.link.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.description %}
+            <div class="form__group">
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
+                {{ form.description.label }}:
+              </label>
+              {{ form.description }} {{ form.description.errors }}
+            </div>
+            {% endif %}
+
+            <div class="form__grid">
+
+              {% if form.model %}
+              <div class="form__group">
+                <label for="{{ form.model.id_for_label }}" class="form__controls-label">{{ form.model.label }}: </label>
+                {{ form.model }} {{ form.model.errors }}
+              </div>
+              {% endif %}
+              {% if form.power %}
+              <div class="form__group">
+                <label for="{{ form.power.id_for_label }}" class="form__controls-label">{{ form.power.label }}: </label>
+                {{ form.power }} {{ form.power.errors }}
+              </div>
+              {% endif %}
+              {% if form.el_network %}
+              <div class="form__group">
+                <label for="{{ form.el_network.id_for_label }}" class="form__controls-label">
+                  {{ form.el_network.label }}:
+                </label>
+                {{ form.el_network }} {{ form.el_network.errors }}
+              </div>
+              {% endif %}
+              {% if form.nom_capacity %}
+              <div class="form__group">
+                <label for="{{ form.nom_capacity.id_for_label }}" class="form__controls-label">
+                  {{ form.nom_capacity.label }}:
+                </label>
+                {{ form.nom_capacity }} {{ form.nom_capacity.errors }}
+              </div>
+              {% endif %}
+              {% if form.max_capacity %}
+              <div class="form__group">
+                <label for="{{ form.max_capacity.id_for_label }}" class="form__controls-label">
+                  {{ form.max_capacity.label }}:
+                </label>
+                {{ form.max_capacity }} {{ form.max_capacity.errors }}
+              </div>
+              {% endif %}
+              {% if form.max_capacity_min %}
+              <div class="form__group">
+                <label for="{{ form.max_capacity_min.id_for_label }}" class="form__controls-label">
+                  {{ form.max_capacity_min.label }}:
+                </label>
+                {{ form.max_capacity_min }} {{ form.max_capacity_min.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.nom_head %}
+              <div class="form__group">
+                <label for="{{ form.nom_head.id_for_label }}" class="form__controls-label">
+                  {{ form.nom_head.label }}:
+                </label>
+                {{ form.nom_head }} {{ form.nom_head.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.max_head %}
+              <div class="form__group">
+                <label for="{{ form.max_head.id_for_label }}" class="form__controls-label">
+                  {{ form.max_head.label }}:
+                </label>
+                {{ form.max_head }} {{ form.max_head.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.suction_depth %}
+              <div class="form__group">
+                <label for="{{ form.suction_depth.id_for_label }}" class="form__controls-label">
+                  {{ form.suction_depth.label }}:
+                </label>
+                {{ form.suction_depth }} {{ form.suction_depth.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.con_size %}
+              <div class="form__group">
+                <label for="{{ form.con_size.id_for_label }}" class="form__controls-label">
+                  {{ form.con_size.label }}: </label>
+                {{ form.con_size }} {{ form.con_size.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.article %}
+              <div class="form__group">
+                <label for="{{ form.article.id_for_label }}" class="form__controls-label">Артикул: </label>
+                {{ form.article }} {{ form.article.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.price %}
+              <div class="form__group">
+                <label for="{{ form.price.id_for_label }}" class="form__controls-label">
+                  <span>*</span>
+                  Цена :
+                </label>
+                {{ form.price }} {{ form.price.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.sale %}
+              <div class="form__group">
+                <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
+                  <span>*</span>
+                  Скидка :
+                </label>
+                {{ form.sale }} {{ form.sale.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.manufacturer %}
+              <div class="form__group">
+                <label for="{{ form.manufacturer.id_for_label }}" class="form__controls-label">
+                  Производитель:
+                </label>
+                {{ form.manufacturer }} {{ form.manufacturer.errors }}
+              </div>
+              {% endif %}
+
+
+              {% if form.installment %}
+              <div class="form__group">
+                <label for="{{ form.installment.id_for_label }}" class="form__controls-label">
+                  Рассрочка:
+                </label>
+                {{ form.installment }} {{ form.installment.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.colors %}
+              <div class="form__group">
+                <label for="{{ form.colors.id_for_label }}" class="form__controls-label">
+                  Цветовая схема:
+                </label>
+                {{ form.colors }} {{ form.colors.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.quantity_purchase %}
+              <div class="form__group">
+                <label for="{{ form.quantity_purchase.id_for_label }}" class="form__controls-label">
+                  Количество купленных :
+                </label>
+                {{ form.quantity_purchase }} {{ form.quantity_purchase.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.sale %}
+              <div class="form__group">
+                <label for="{{ form.sale.id_for_label }}" class="form__controls-label">
+                  <span>*</span>
+                  Цена со скидкой :
+                </label>
+                {{ form.sale }} {{ form.sale.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.quantity %}
+              <div class="form__group">
+                <label for="{{ form.quantity.id_for_label }}" class="form__controls-label">
+                  Количество товара в наличии :
+                </label>
+                {{ form.quantity }} {{ form.quantity.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.address %}
+              <div class="form__group">
+                <label for="{{ form.address.id_for_label }}" class="form__controls-label">
+                  Адрес :
+                </label>
+                {{ form.address }} {{ form.address.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.phone_one %}
+              <div class="form__group">
+                <label for="{{ form.phone_one.id_for_label }}" class="form__controls-label">
+                  Номер телефона:
+                </label>
+                {{ form.phone_one }} {{ form.phone_one.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.phone_two %}
+              <div class="form__group">
+                <label for="{{ form.phone_two.id_for_label }}" class="form__controls-label">
+                  Номер телефона:
+                </label>
+                {{ form.phone_two }} {{ form.phone_two.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.email %}
+              <div class="form__group">
+                <label for="{{ form.email.id_for_label }}" class="form__controls-label">
+                  Email:
+                </label>
+                {{ form.email }} {{ form.email.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.phone %}
+              <div class="form__group">
+                <label for="{{ form.phone.id_for_label }}" class="form__controls-label">
+                  {{ form.phone.label }}:
+                </label>
+                {{ form.phone }} {{ form.phone.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.time_work %}
+              <div class="form__group">
+                <label for="{{ form.time_work.id_for_label }}" class="form__controls-label">
+                  Режим работы :
+                </label>
+                {{ form.time_work }} {{ form.time_work.errors }}
+              </div>
+              {% endif %}
+
+            </div>
+            {% if image %}
+            <div class="form__group form__group-image">
+              <label for="{{ image_form.src.id_for_label }}" class="form__controls-label">
+                Дополнительные изображения:
+              </label>
+              {{ image_form.src }} {{ image_form.src.errors }}
+            </div>
+            <div class="product-field"></div>
+            <div class="product-block__plus form__btn">Добавить изображение</div>
+            <div class="product-block__paste">
+              {% for image in images %}
+              <div class="product-block__image">
+                <img src="{{ image.src.url }}" alt="" id="{{image.id}}">
+                <a href="" class="product-block__minus">Удалить</a>
+              </div>
+
+              {% endfor %}
+            </div>
+            {% endif %}
+            {% if form.text %}
+            <div class="form__group">
+              <label for="{{ form.text.id_for_label }}" class="form__controls-label">Текст на странице: </label>
+              {{ form.text }} {{ form.text.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+          {% if form.image or form.slug or form.category or form.parent or form.logo or form.logo_dark or form.logo_width or form.logo_height or form.icon_white or form.icon_dark or form.instance.image or form.latest or form.type_image or form.status %}
+          <div class="page-content__col">
+            {% if form.slug %}
+            <div class="form__group">
+              <label for="{{ form.slug.id_for_label }}" class="form__controls-label">
+                <span>*</span>
+                URL :
+              </label>
+              {{ form.slug }} {{ form.slug.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.category %}
+            <div class="form__group">
+              <label for="{{ form.category.id_for_label }}" class="form__controls-label">Выбор категории:</label>
+              {{ form.category }} {{ form.category.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.parent %}
+            <div class="form__group">
+              <label for="{{ form.parent.id_for_label }}" class="form__controls-label">Родительская категория:</label>
+              {{ form.parent }} {{ form.parent.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.image.id_for_label }}" class="form__controls-label">{{ form.image.label }}:</label>
+              {{ form.image }} {{ form.image.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.logo %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.logo.id_for_label }}" class="form__controls-label">{{ form.logo.label }}:</label>
+              {{ form.logo }} {{ form.logo.errors }}
+            </div>
+            {% endif %}
+
+
+            {% if form.logo_dark %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.logo_dark.id_for_label }}" class="form__controls-label">
+                {{ form.logo_dark.label }}:
+              </label>
+              {{ form.logo_dark }} {{ form.logo_dark.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.favicon %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.favicon.id_for_label }}" class="form__controls-label">
+                {{ form.favicon.label}}:
+              </label>
+              {{ form.favicon }} {{ form.favicon.errors }}
+            </div>
+            {% endif %}
+
+            <div class="" style="display: flex; align-items: center; gap: 10px;">
+              {% if form.logo_width %}
+              <div class="form__group form__group-image">
+                <label for="{{ form.logo_width.id_for_label }}" class="form__controls-label">
+                  {{ form.logo_width.label }}:
+                </label>
+                {{ form.logo_width }} {{ form.logo_width.errors }}
+              </div>
+              {% endif %}
+
+              {% if form.logo_height %}
+              <div class="form__group form__group-image">
+                <label for="{{ form.logo_height.id_for_label }}" class="form__controls-label">
+                  {{ form.logo_height.label }}:
+                </label>
+                {{ form.logo_height }} {{ form.logo_height.errors }}
+              </div>
+              {% endif %}
+            </div>
+
+            {% if form.icon_white %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.icon_white.id_for_label }}" class="form__controls-label">Иконка светлая :</label>
+              {{ form.icon_white }} {{ form.icon_white.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.icon_dark %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.icon_dark.id_for_label }}" class="form__controls-label">Иконка темная :</label>
+              {{ form.icon_dark }} {{ form.icon_dark.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.instance.image %}
+            <a href="{{ form.instance.image.url }}" target="_blank">
+              <img src="{{ form.instance.image.url }}" alt="Миниатюра изображения"
+                   style="max-width: 100px; max-height: 100px"/>
+            </a>
+            {% endif %}
+
+            {% if form.latest %}
+            <div class="form__group-checkbox">
+              {{ form.latest }} {{ form.latest.errors }}
+              <label for="{{ form.latest.id_for_label }}" class="form__controls-label"> Новинка ? :</label>
+            </div>
+            {% endif %}
+
+            {% if form.type_image %}
+            <div class="form__group-checkbox">
+              {{ form.type_image }} {{ form.type_image.errors }}
+              <label for="{{ form.type_image.id_for_label }}" class="form__controls-label">Отображение картинки ?
+                : </label>
+            </div>
+            {% endif %}
+
+            {% if form.status %}
+            <div class="form__group">
+              <label for="{{ form.status.id_for_label }}" class="form__controls-label">{{ form.status.label }}:</label>
+              {{ form.status }} {{ form.status.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.add_slider %}
+            <div class="form__group">
+              <label for="{{ form.add_slider.id_for_label }}" class="form__controls-label">{{ form.add_slider.label }}:</label>
+              {{ form.add_slider }} {{ form.add_slider.errors }}
+            </div>
+            {% endif %}
+
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="page-content" id="seo">
+        <!-- SEO страницы -->
+        <div class="page-content__row">
+          <div class="page-content__onecol">
+            <div class="form__group">
+              <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label"> Заголовок h1: </label>
+              {{ form.meta_h1 }} {{ form.meta_h1.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label"> Мета заголовок: </label>
+              {{ form.meta_title }} {{ form.meta_title.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label">
+                Мета описание:
+                <div class="meta-lenght">0</div>
+              </label>
+              {{ form.meta_description }} {{ form.meta_description.errors }}
+            </div>
+            <div class="form__group">
+              <label for="{{ form.meta_description.id_for_label }}" class="form__controls-label"> Мета
+                keywords: </label>
+              {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-content" id="char">
+        <!-- Характеристики товара страницы -->
+        <div class="page-content__row">
+          <div class="page-content__onecol">
+            <div class="page-content__char" id="paste-char">
+              {% for char in all_chars %}
+              <div class="form__group-char">
+                <input type="text" name="old_id" value="{{ char.id }}" hidden/>
+                <label for="id_old_name" class="form__controls-label">Название характеристики :</label>
+                <input name="old_name" class="form__controls" id="id_old_name" value="{{ char.name }}">
+
+                <label for="id_old_value" class="form__controls-label">Значение :</label>
+                <input type="text" name="old_value" class="form__controls" required
+                       id="id_old_value" value="{{ char.value }}"/>
+                <a href="{% url 'delete_properties' char.id %}" class="form__remove"> Удалить </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <button type="button" id="add-property" class="form__add-property">Добавить характеристику</button>
+      </div>
+      <div class="page-content" id="list">
+          <div class="page-content__onecol">
+            <div class="grid-items">
+              {% for item in items %}
+              <div class="grid-item">
+                {% if item.image %}
+                <div class="grid-item__image">
+                  {% thumbnail item.image "250x250" format="WEBP" crop="center" as im %}
+                  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"/>
+                  {% endthumbnail %}
+                </div>
+                {% endif %}
+                <div class="grid-item__content">
+                  <p class="grid-item__title">
+                    {% if item.title %}{{ item.title }} {% endif %}
+                    {{ item.name }}
+                  </p>
+                  {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+      </div>
+      <div class="page-content" id="gallery">
+        <div class="page-content__onecol">
+          <div class="grid-items">
+            {% for item in items %}
+            <div class="grid-item">
+              {% if item.image %}
+              <div class="grid-item__image">
+                {% thumbnail item.image "250x250" format="WEBP" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"/>
+                {% endthumbnail %}
+              </div>
+              {% endif %}
+              <div class="grid-item__content">
+                <p class="grid-item__title">
+                  {% if item.title %}{{ item.title }} {% endif %}
+                  {{ item.name }}
+                </p>
+                {% include 'common/_edit-block.html' with edit_url=edit_url delete_url=delete_url %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}{% load image_path %}
+<!DOCTYPE html>
+<html lang="ru" class="">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <meta name="keywords" content="{% block keywords %}{% endblock %}">
+  <link rel="canonical" href="https://{{ request.get_host }}{{ request.path }}">
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="{% if site_settings.favicon %} {{ site_settings.favicon.url }}{% else %}/favivon.ico{% endif%}">
+  <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}" sizes="120x120">
+  <meta name="robots" content="all">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--<link rel="preload" href="{% static 'theme/css/style.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{% static 'theme/css/style.css' %}"></noscript>-->
+  <link rel="preload" href="{% static 'theme/css/style.min.css' %}" as="style">
+  <link rel="stylesheet" href="{% static 'theme/css/style.min.css' %}">
+  <style>
+      .breadcrumbs__item:not(:last-child)::after{
+          background-image: url("{% image_path 'arrow-right-bred.svg' %}");
+      }
+  </style>
+
+</head>
+
+<body>
+  {% include "./includes/_header.html" %}
+  <main>
+    {% block content %} {% endblock %}
+  </main>
+  {% include "./includes/_footer.html" %}
+  {% include "./includes/_popup.html" %}
+
+  <script type="module" src="{% static 'theme/js/app.min.js' %}" defer></script>
+</body>
+
+</html>

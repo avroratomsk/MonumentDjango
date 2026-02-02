@@ -1,0 +1,117 @@
+{% load static %}
+
+<div class="sidebar">
+  <div class="sidebar__top top-sidebar">
+    <a href="/admin" class="top-sidebar__logo">
+      <img src="{% static 'admin/img/admin-logo.svg' %}" alt="svg logo" title="svg logo" />
+      Панель управления
+    </a>
+  </div>
+  <div class="sidebar__menu menu-sidebar">
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Основные страницы</p>
+      <a href="{% url 'admin' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-signal"></i>
+        <span>Статистика</span>
+      </a>
+      <a class="menu-sidebar__link-general">
+        <i class="fas fa-users-cog"></i>
+        <span>Пользователи</span>
+      </a>
+    </div>
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Каталог</p>
+      <a href="{% url 'admin_shop' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-gear"></i>
+        <span>Настройки</span>
+      </a>
+      <a href="{% url 'admin_category' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Категории</span>
+      </a>
+      <a href="{% url 'admin_product' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-shop"></i>
+        <span>Товары</span>
+      </a>
+      <a href="{% url 'admin_model' %}" class="menu-sidebar__link-general">
+        <i class="fa-brands fa-hashnode"></i>
+        <span>Модели</span>
+      </a>
+      <a href="{% url 'upload_goods' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-file-excel"></i>
+        <span>Загрузка csv/Excel</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Блог</p>
+      <a href="{% url 'blog_settings' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-gear"></i>
+        <span>Настройки</span>
+      </a>
+      <a href="{% url 'category_blog' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Категории</span>
+      </a>
+      <a href="{% url 'admin_post' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Статьи</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Страницы с настройками</p>
+      <a href="{% url 'admin_settings' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-cogs"></i>
+        <span>Общие настройки</span>
+      </a>
+      <a href="{% url 'robots' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-assistive-listening-systems"></i>
+        <span>Системные настройки</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Шаблоны страниц</p>
+      <a href="{% url 'admin_home_page' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-home"></i>
+        <span>Главная</span>
+      </a>
+      <a href="{% url 'admin_about_page' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-address-card"></i>
+        <span>О нас</span>
+      </a>
+      <a href="{% url 'admin_contact_page' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-address-book"></i>
+        <span>Контакты</span>
+      </a>
+      <a href="{% url 'gallery_settings' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-image"></i>
+        <span>Галерея</span>
+      </a>
+    </div>
+    <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Редактируемые блоки</p>
+      <a href="{% url 'sliders' %}" class="menu-sidebar__link-general">
+        <i class="fas fa-photo-video"></i>
+        <span>Слайдеры</span>
+      </a>
+      <a href="{% url 'socials' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-square-share-nodes"></i>
+        <span>Соц. сети</span>
+      </a>
+      <a href="{% url 'admin_branch' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>Филиалы</span>
+      </a>
+      <a href="{% url 'admin_callback_block' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-right-left"></i>
+        <span>Блок обратной связи</span>
+      </a>
+      <a href="{% url 'admin_clients' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-clipboard-user"></i>
+        <span>Наши клиенты</span>
+      </a>
+    </div>
+  </div>
+</div>

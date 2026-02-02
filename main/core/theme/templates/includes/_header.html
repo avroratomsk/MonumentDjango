@@ -1,0 +1,91 @@
+{% load static %}{% load thumbnail %}
+<div class="header">
+  <div class="container">
+    <div class="header__inner">
+      {% if site_settings.logo %}
+      <a href="/" class="logo header__logo">
+        <img src="{{ site_settings.logo.url }}" alt="">
+      </a>
+      {% endif %}
+      {% if branch %}
+      <div class="header__info">
+        {% for br in branch %}
+        <div>
+          <p class="header__address">{{ br.address }}</p>
+          <a href="tel:{{ br.phone_one }}" class="header__phone">
+            {{ br.phone_one }}
+            <img src="{% static 'theme/img/icon/i-phone.svg' %}" alt="">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <div class="header__action">
+        <button type="button" class="header__search" aria-label="открыть поиск">
+          <img src="{% static 'theme/img/icon/i-search.svg' %}" alt="">
+        </button>
+        <button type="button" class="header__cart" aria-label="открыть корзину">
+          <img src="{% static 'theme/img/icon/i-cart.svg' %}" alt="">
+        </button>
+      </div>
+      <button type="button" class="header__btn btn btn--primary">Заказать звонок</button>
+      <button type="button" class="burger" id="burger"><span></span></button>
+    </div>
+  </div>
+</div>
+<nav class="nav">
+  <div class="container">
+    <div class="nav__inner">
+      <div class="nav__list">
+        <div class="nav__item">
+          <div>
+            <a href="">Каталог</a>
+            <button type="button" class="nav__arrow">
+              <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
+            </button>
+          </div>
+          <ul class="nav__submenu">
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Гравировка</a></li>
+            <li><a href="">Установка</a></li>
+          </ul>
+        </div>
+        <div class="nav__item">
+          <div>
+            <a href="">Услуги</a>
+            <button type="button" class="nav__arrow">
+              <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
+            </button>
+          </div>
+          <ul class="nav__submenu">
+            <li><a href="">Каталог</a></li>
+            <li><a href="">Гравировка</a></li>
+            <li><a href="">Установка</a></li>
+          </ul>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Гравировка</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Установка</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Наши работы</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">О нас</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Контакты</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Документы</a></div>
+        </div>
+        <div class="nav__item">
+          <div><a href="">Новости</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+

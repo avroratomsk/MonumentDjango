@@ -1,0 +1,94 @@
+.page-content {
+  padding: 10px 20px;
+  background: #fff;
+  margin-top: 20px;
+  display: none;
+
+  &._show {
+    display: block;
+  }
+
+  // .page-content__row
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  // .page-content__col
+
+  &__col {
+    background-color: rgba($color: $white, $alpha: 1.0);
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px rgba($color: $mainColor, $alpha: .1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &:first-child {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    &:last-child {
+      position: sticky;
+      top: 20px;
+    }
+  }
+
+  // .page_content__char
+
+  &__char {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+  }
+
+  // .page-content__seo
+
+  &__seo {
+  }
+
+  .product-field {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
+
+  // .page-content__onecol
+
+  &__onecol {
+    width: 100%;
+    background-color: rgba($color: $white, $alpha: 1.0);
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px rgba($color: $mainColor, $alpha: .1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.tab-content {
+  display: none;
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 30px;
+
+  .action-button {
+    align-self: flex-end;
+  }
+}
+
+form._show {
+  display: flex !important;
+}
+
+div._show {
+  display: flex !important;
+  flex-direction: column;
+  gap: 20px;
+}

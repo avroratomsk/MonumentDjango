@@ -1,0 +1,33 @@
+{% extends 'admin_base.html' %}{% load static %} {% block body %}
+<div class="page">
+  <div class="page__inner">
+    <div class="page__top">
+      <h1 class="page__title">Загрузка файла EXCEL</h1>
+      <ul class="admin-breadcrumbs">
+        <li><a href="{% url 'admin' %}">Панель управления</a></li>
+        <li>Загрузка файла</li>
+      </ul>
+    </div>
+    <form action="." method="POST" class="form" enctype="multipart/form-data">
+      <div class="page__head">
+        <button type="submit" class="form__btn">
+          <img src="{% static 'admin/img/save.svg' %}" alt=""/>
+          Загрузить
+        </button>
+      </div>
+      {% csrf_token %}
+      <div class="page-content _show" id="basic">
+        <div class="page-content__row">
+          <div class="page-content__onecol">
+            <div class="form__group">
+              <label for="{{ form.file.id_for_label }}" class="form__controls-label">Прикрепите файл: </label>
+              {{ form.file }} {{ form.file.errors }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

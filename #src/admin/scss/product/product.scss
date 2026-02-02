@@ -1,0 +1,21 @@
+.admin-category {
+  // .admin-category__list
+
+  &__list {
+    margin: 0px 0px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  // .admin-category__item
+
+  &__item {
+    padding: 15px 20px;
+    background: $accent;
+    color: $white;
+    border-radius: 5px;
+
+  }
+}

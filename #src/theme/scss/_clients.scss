@@ -1,0 +1,36 @@
+.clients {
+  padding: 80px 0;
+
+  &__title {}
+
+  &__list {
+    max-width: 570px;
+    margin: 0 auto 10px;
+    text-align: center;
+
+
+    p {
+      font-weight: 600;
+      font-size: 16px;
+      color: #000;
+      font-family: Spectral, sans-serif;
+    }
+
+  }
+
+  &__map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+
+    img {
+      max-width: 100%;
+    }
+
+  }
+
+
+
+}

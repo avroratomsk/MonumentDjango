@@ -1,0 +1,38 @@
+.notice {
+  position: fixed;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 999;
+  border-radius: 10px;
+  cursor: pointer;
+
+  //.notice--success
+  &--success {
+    background-color: green;
+    color: #fff;
+  }
+
+  //.notice--error
+  &--error {
+    background-color: red;
+    color: #fff;
+  }
+
+  //.notice__body
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 30px;
+  }
+
+  //.notice__close
+  &__close{
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+}
+

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if delivery_page.meta_title %}{{ delivery_page.meta_title }}{% else %}Доставка{% endif %}
+{% endblock %}
+{% block description %}{{ delivery_page.meta_description }}{% endblock %}
+{% block keywords %}{{ delivery_page.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+<section class="delivery section--padded">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <a href="{% url 'delivery' %}" itemprop="itemListElement" itemscope=""
+         itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+        Доставка и оплата
+        <meta itemprop="position" content="2">
+      </a>
+    </div>
+    <div class="page-top">
+      <div class="page-text">
+        {% if delivery_page.meta_h1 %}<h1>{{ delivery_page.meta_h1 }}</h1>{% endif %}
+        {{ delivery_page.description|safe }}
+
+      </div>
+      <div class="page-nav">
+        <ul>
+          <li><a href="{% url 'about' %}">О компании</a></li>
+          <li class="active"><a href="{% url 'delivery' %}">Доставка и оплата</a></li>
+          <li><a href="{% url 'blog' %}">Новости</a></li>
+          <li><a href="{% url 'works' %}">Наши работы</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="container">
+    <div class="page-text">
+      {{ delivery_page.description_two|safe }}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

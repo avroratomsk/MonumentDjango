@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+{% if contact.meta_title %}{{ contact.meta_title }}{% else %}Контакты{% endif %}
+{% endblock %}
+{% block description %}{{ contact.meta_description }}{% endblock %}
+{% block keywords %}{{ contact.meta_keywords }}{% endblock %}
+
+{% block content %}
+
+  <div class="top-page">
+    <div class="container">
+      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+           class="breadcrumbs__item">
+          Главная
+          <meta itemprop="position" content="1">
+        </a>
+        <span itemprop="name" class="breadcrumbs__item">
+            Контакты
+            <meta itemprop="position" content="2">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {% include "../includes/_contact.html" %}
+
+  {% if contact.description %}
+  <section class="py border-t">
+    <div class="container">
+      <div class="section-text text">
+        {{ contact.description|safe }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{% endblock %}

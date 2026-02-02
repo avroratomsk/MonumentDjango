@@ -1,0 +1,53 @@
+{% load static %}
+<div id="leave-request" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__top">
+        <button data-close type="button" class="popup__close close"></button>
+      </div>
+      <h2 class="popup__title">Оставить заявку</h2>
+      <form action="." class="popup__form form" method="POST" id="order-form">
+        {% csrf_token %}
+        <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
+        <input type="text" name="product" id="order-product" class="form__input form__input--hidden">
+        <div class="form__pivacy">
+          <label>
+            <input type="checkbox" class="form__checkbox">
+            Я даю свое согласие на обработку персональных данных и подтверждаю, что ознакомлен(а)
+            с <a href="{% url 'privacy' %}">политикой конфиденциальности и обработки персональных данных</a>
+          </label>
+        </div>
+        <button type="submit" class="form__submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="callback" class="popup ">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__top">
+        <button data-close type="button" class="popup__close close"></button>
+      </div>
+      <h2 class="popup__title">Обратный звонок</h2>
+      <form action="." class="popup__form form" method="POST" id="callback-form">
+        {% csrf_token %}
+        <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
+        <div class="form__agreement">
+
+          <label>
+            <input type="checkbox" name="agreement" required>
+            Я согласен(а) с
+            <a href="{% url 'privacy' %}">политикой конфиденциальности</a>
+          </label>
+        </div>
+        <button type="submit" class="form__button">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+

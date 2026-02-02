@@ -1,0 +1,7 @@
+<div class="grid-item__action">
+  {% if show_link %}
+  <a href="{{ item.get_absolute_url }}" target="_blank">Перейти на сайт</a>
+  {% endif %}
+  <a href="{% url edit_url item.pk %}">Изменить</a>
+  <a href="{% url delete_url item.pk %}">Удалить</a>
+</div>

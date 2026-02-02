@@ -1,0 +1,28 @@
+{% load thumbnail %}
+{% if clients %}
+<div class="clients py">
+  <div class="container">
+    <h2 class="clients__title">Наши клиенты</h2>
+    <div class="clients__lines">
+      <div class="clients__logos marquee">
+        {% for client in clients %}
+        <div>
+          {% thumbnail client.image "138x67" format="WEBP" crop="center" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ client.name }}" title="{{ client.name }}">
+          {% endthumbnail %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="clients__logos marquee">
+        {% for client in clients %}
+        <div>
+          {% thumbnail client.image "138x67" format="WEBP" crop="center" as im %}
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ client.name }}" title="{{ client.name }}">
+          {% endthumbnail %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
