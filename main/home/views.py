@@ -16,7 +16,7 @@ def index(request):
   about = AboutPage.objects.first()
 
   slides = GalleryItem.objects.filter(status='published')
-  category = Category.objects.filter(parent=None, status='published')
+  category = Category.objects.filter(parent=None, status='published')[:4]
   slider_category = Category.objects.filter(parent=None, add_slider='published', status='published')
   contact = ContactPage.objects.get()
 

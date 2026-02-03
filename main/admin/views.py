@@ -129,11 +129,12 @@ def import_products_from_excel(file_path):
     for _, row in df.iterrows():
 
         category_name = str(row.iloc[0]).strip()
+
+
         if not category_name:
             continue
 
-        description = "" if pd.isna(row.iloc[2]) else row.iloc[2]
-        image = rename_image(row.iloc[3])
+#         image = rename_image(row.iloc[3])
 
         category_slug = slugify(category_name)
         category, created = Category.objects.get_or_create(
@@ -141,22 +142,15 @@ def import_products_from_excel(file_path):
             defaults={
                 'name': category_name,
                 'status': 'published',
-                'description': description,
-                'image': image
             }
         )
 
-        if not created:
-            category.description = description
-            if image:
-                category.image = image
-            category.save(update_fields=['description', 'image'])
 
         product_name = str(row.iloc[1]).strip()
         if not product_name:
             continue
 
-        product_image = rename_image(row.iloc[4])
+        product_image = row.iloc[3]
 
         product_slug = slugify(product_name)
         product, pr_created = Product.objects.get_or_create(
@@ -168,50 +162,14 @@ def import_products_from_excel(file_path):
             }
         )
 
+        print(f'{category_name} -- {category_slug} -- {product_name}  -- {product_slug} -- {product_image}')
+
         if not pr_created:
           if product_image:
-            product.image = image
+            product.image = product_image
           product.save(update_fields=['image'])
 
         product.category.add(category)
-
-        # -------- Модель --------
-        model_name = str(row.iloc[2]).strip()
-        if not model_name:
-            continue
-
-        model_slug = slugify(model_name)
-        model_stock = row.iloc[6]
-
-
-        model, created = Models.objects.get_or_create(
-            slug=model_slug,
-            parent=product,
-            defaults={'model': model_name, 'status': 'published', 'in_stock': model_stock}
-        )
-
-        if not created:
-          model.model = model_name
-          model.in_stock = model_stock
-          model.status = 'published'
-          model.save(update_fields=['model', 'in_stock', 'status'])
-
-
-        for column in df.columns[FIXED_COLUMNS_COUNT:]:
-            value = row[column]
-
-            if pd.isna(value):
-                continue
-
-            char, _ = Characteristic.objects.get_or_create(
-                name=str(column).strip()
-            )
-
-            ModelCharacteristic.objects.update_or_create(
-                model=model,
-                characteristic=char,
-                defaults={'value': str(value)}
-            )
 
 
 
@@ -268,18 +226,18 @@ def upload_goods(request):
         file = request.FILES['file']
         import_products_from_excel(file)
 
-        destination = open(os.path.join('upload/', file.name), 'wb+')
-
-        for chunk in file.chunks():
-          destination.write(chunk)
-        destination.close()
-
-        # Распаковка архива
-        with zipfile.ZipFile(f'upload/{file}', 'r') as zip_ref:
-            zip_ref.extractall('media/')
-
-        # Удаление загруженного архива
-        os.remove(f'upload/{file}')
+#         destination = open(os.path.join('upload/', file.name), 'wb+')
+#
+#         for chunk in file.chunks():
+#           destination.write(chunk)
+#         destination.close()
+#
+#         # Распаковка архива
+#         with zipfile.ZipFile(f'upload/{file}', 'r') as zip_ref:
+#             zip_ref.extractall('media/')
+#
+#         # Удаление загруженного архива
+#         os.remove(f'upload/{file}')
 #
 #         # Сжатие фотографий
 #         for filename in os.listdir('media/upload'):
