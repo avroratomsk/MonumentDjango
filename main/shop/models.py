@@ -71,6 +71,7 @@ class Product(models.Model):
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
   slug = models.SlugField(max_length=255, unique=True, default="", verbose_name="URL")
   model = models.CharField(max_length=250, null=True, blank=True, verbose_name="Модель")
+  price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Цена")
   category = models.ManyToManyField(Category, default="", verbose_name="Категории")
   image = models.ImageField(upload_to="product-image/", blank=True, null=True, verbose_name="Изображение товара")
   description = models.TextField(null=True, blank=True,  verbose_name="Описание")

@@ -22,17 +22,7 @@
           <div class="single__wrapper swiper-wrapper">
             <div class="single__slide swiper-slide">
               <div class="single__image">
-                <picture><source srcset="img/card.webp" type="image/webp"><img src="img/card.png" alt=""></picture>
-              </div>
-            </div>
-            <div class="single__slide swiper-slide">
-              <div class="single__image">
-                <picture><source srcset="img/card.webp" type="image/webp"><img src="img/card.png" alt=""></picture>
-              </div>
-            </div>
-            <div class="single__slide swiper-slide">
-              <div class="single__image">
-                <picture><source srcset="img/card.webp" type="image/webp"><img src="img/card.png" alt=""></picture>
+                <img src="{{ product.image.url }}" alt="">
               </div>
             </div>
           </div>
@@ -102,7 +92,7 @@
         </ul>
 
         <div class="single__price">
-          <p>Стоимость: <span>18 000 ₽</span></p>
+          <p>Стоимость: <span>{{ product.price }} ₽</span></p>
         </div>
 
         <div class="single__btns">

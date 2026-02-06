@@ -155,11 +155,13 @@ def import_products_from_excel(file_path):
 
         product_slug = slugify(product_name)
         product_unique_slug = get_unique_slug(Product, product_slug)
+        price = row.iloc[4]
 
         product, pr_created = Product.objects.get_or_create(
             slug=product_unique_slug,
             defaults={
               'name': product_name,
+              'price': price,
               'status': 'published',
               'image': product_image
             }

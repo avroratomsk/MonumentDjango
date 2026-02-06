@@ -3078,6 +3078,141 @@ body._lock::after {
   -ms-overflow-style: auto;
 }
 
+.single__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 464px 1fr;
+  grid-template-columns: 464px 1fr;
+  gap: 60px;
+}
+
+.single__slider {
+  width: 464px;
+}
+
+.single__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.single__thumb {
+  margin-top: 20px;
+}
+
+.single__title {
+  font-weight: 500;
+  font-size: 40px;
+  color: #000;
+  font-family: Spectral, sans-serif;
+}
+
+.single__article {
+  font-weight: 300;
+  font-size: 16px;
+  color: #9c9c9c;
+  font-family: Spectral, sans-serif;
+}
+
+.single__filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px 10px;
+}
+
+.single__filter-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 5px;
+}
+
+.single__filter-item label {
+  font-family: Spectral, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  color: #000;
+}
+
+.single__select {
+  border: 1px solid #f7e76f;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.single__list-chars li {
+  font-family: Spectral, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #5b5b5b;
+}
+
+.single__price {
+  margin-top: 20px;
+}
+
+.single__price p {
+  font-family: Spectral, sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  color: #000;
+}
+
+.single__price p span {
+  font-weight: 600;
+}
+
+.single__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.single__btn {
+  padding: 15px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.single__text {
+  margin-top: 40px;
+  border-top: 1px solid #F7E76F;
+  padding: 30px 0;
+}
+
+.single__text h2 {
+  margin-bottom: 15px;
+}
+
+.single__text p {
+  margin-bottom: 15px;
+}
+
 html {
   height: 100%;
   font-size: 62.5%;
