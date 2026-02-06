@@ -37,46 +37,105 @@
   </div>
 </div>
 
-{% if products %}
-<section class="services">
-  <div class="container">
-    <div class="services__grid">
-      {% for item in products %}
-      <a href="{{ item.get_absolute_url }}" class="services__item">
-        <p class="services__title">{{ item.name }}</p>
-        {% if item.image %}
-        {% thumbnail item.image "214x184" format="WEBP" crop="center" as im %}
-        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ item.name }}"
-             title="{{ item.name }}" class="services__image">
-        {% endthumbnail %}
-        {% endif %}
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
+<div class="container">
+  <div class="category-details__row-col">
 
-{% if subcategories %}
-<section class="services">
-  <div class="container">
-    <h2 class="title">Подкатегории</h2>
-    <div class="services__grid">
-      {% for item in subcategories %}
-      <a href="{{ item.get_absolute_url }}" class="services__item">
-        <p class="services__title">{{ item.name }}</p>
-        {% if item.image %}
-        {% thumbnail item.image "214x184" format="WEBP" crop="center" as im %}
-        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ item.name }}"
-             title="{{ item.name }}" class="services__image">
-        {% endthumbnail %}
+    <div class="category-details__col">
+      <div class="category-details__col" id="filter-category">
+        <button type="button" class="close popup__close" id="close-filter"><span></span></button>
+        <form method="GET" class="filter-form">
+          {% if categories %}
+          <div class="filter__body">
+            <label class="filter__label">Категория</label>
+            <div class="filter__inner">
+              {% for category in categories %}
+              <div class="form__group-boolean">
+                <input type="checkbox" name="" id="">
+                <label class="checkbox-label" for="">{{ category.name }}</label>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          <div class="filter__body">
+            <label class="filter__label">Цвет камян</label>
+            <div class="filter__inner">
+              <div class="form__group-boolean">
+                <input type="checkbox" name="" id="">
+                <label class="checkbox-label" for="">Черный</label>
+              </div>
+              <div class="form__group-boolean">
+                <input type="checkbox" name="" id="">
+                <label class="checkbox-label" for="">Коричневый</label>
+              </div>
+              <div class="form__group-boolean">
+                <input type="checkbox" name="" id="">
+                <label class="checkbox-label" for="">Красный</label>
+              </div>
+              <div class="form__group-boolean">
+                <input type="checkbox" name="" id="">
+                <label class="checkbox-label" for="">Белый</label>
+              </div>
+            </div>
+          </div>
+          <button type=" submit" class="filter__submit btn btn--primary">Фильтровать</button>
+        </form>
+      </div>
+    </div>
+    <div class="category-details__col">
+      <button type="button" class="category-details__filter"><i class="fa-solid fa-arrow-up-wide-short"></i></button>
+
+      <div class="index-catalog__cards">
+        {% if products %}
+        {% for product in products %}
+        <div class="index-catalog__card card" itemscope="" itemtype="https://schema.org/Product">
+          {% if product.image %}
+          <div class="card__image">
+
+            <img src="{{ product.image.url }}" width="" height="" alt="{{ product.name }}"
+                 title="{{ product.name }}" style="height: 100%"
+                 itemprop="image">
+          </div>
+          {% endif %}
+          <div class="card__content">
+            <a href="" class="card__content-title">
+                  <span itemprop="name">
+                      {{ product.name }}
+                  </span>
+            </a>
+            {% if product.price %}
+            <div class="card__content-price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+                <span itemprop="price" content="{{ product.price }}">
+                  {{ product.price }}
+                </span>
+              <span itemprop="priceCurrency" content="RUB">₽</span>
+              <meta itemprop="priceValidUntil" content="2029-12-31">
+              <link itemprop="availability" href="http://schema.org/InStock">
+            </div>
+            {% endif%}
+
+            <div itemprop="review" itemscope="" itemtype="http://schema.org/Review">
+              <span itemprop="name"></span>
+              <span itemprop="author"></span>
+              <meta itemprop="datePublished" content="2013-09-14">
+              <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
+                <meta itemprop="worstRating" content="1">
+                <span itemprop="ratingValue"></span>
+                <span itemprop="bestRating"></span>
+                <span itemprop="description"></span>
+              </div>
+            </div>
+          </div>
+          <a href="{{ product.get_absolute_url }}" class="card__content-link">
+            Подробнее
+          </a>
+        </div>
+        {% endfor %}
         {% endif %}
-      </a>
-      {% endfor %}
+      </div>
     </div>
   </div>
-</section>
-{% endif %}
+</div>
 
 {% if category.description %}
 <section class="py border-t">

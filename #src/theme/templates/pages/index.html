@@ -40,23 +40,25 @@
   </div>
 </div>
 
-{% if categories %}
+{% if category %}
 <div class="cards">
   <div class="container">
     <div class="cards__grid">
-      {% for category in categories %}
+      {% for cat in category %}
       <div class="cards__item">
         <div class="cards__content">
           <p class="cards__title">
-            {{ category.name }}
+            {{ cat.name }}
           </p>
-          <a href="{{ category.get_absolute_url }}" class="cards__link">
+          <a href="{{ cat.get_absolute_url }}" class="cards__link">
             Узнать подробнее
             <img src="{% static 'theme/img/icon/i-arrow-link.svg' %}" alt="">
           </a>
         </div>
         <div class="cards__image">
-          <img src="{{ category.image.url }}" alt="{{ category.name }}" title="{{ category.name }}">
+          {% if cat.image %}
+          <img src="{{ cat.image.url }}" alt="{{ cat.name }}" title="{{ cat.name }}">
+          {% endif %}
         </div>
       </div>
       {% endfor %}

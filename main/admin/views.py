@@ -118,7 +118,7 @@ def rename_image(filename):
 
 
 def import_products_from_excel(file_path):
-#     Product.objects.all().delete()
+    Product.objects.all().delete()
 #     Category.objects.all().delete()
 #     Models.objects.all().delete()
 
@@ -147,14 +147,17 @@ def import_products_from_excel(file_path):
 
 
         product_name = str(row.iloc[1]).strip()
+
         if not product_name:
             continue
 
-        product_image = row.iloc[3]
+        product_image = f'goods/{row.iloc[3]}'
 
         product_slug = slugify(product_name)
+        product_unique_slug = get_unique_slug(Product, product_slug)
+
         product, pr_created = Product.objects.get_or_create(
-            slug=product_slug,
+            slug=product_unique_slug,
             defaults={
               'name': product_name,
               'status': 'published',
@@ -162,7 +165,7 @@ def import_products_from_excel(file_path):
             }
         )
 
-        print(f'{category_name} -- {category_slug} -- {product_name}  -- {product_slug} -- {product_image}')
+        print(f'{category_name} -- {category_slug} -- {product_name}  -- {product_unique_slug} -- {product_image}')
 
         if not pr_created:
           if product_image:

@@ -44,16 +44,24 @@
       </div>
       <div class="footer__col">
         <p class="footer__title">Контакты</p>
+        {% if branch %}
         <div class="footer__info">
-          <a href="" class="footer__phone">+7(3822)-592-474</a>
-          <a href="" class="footer__phone">+7 (913) 829-24-74</a>
+          {% for br in branch %}
+          <a href="tel:{{ br.phone_one }}" class="footer__phone">{{ br.phone_one }}</a>
+          {% endfor %}
           <button type="button" class="footer__btn">Обратный звонок</button>
         </div>
+        {% endif %}
+
+        {% if branch %}
         <div class="footer__info">
           <p class="footer__city">г.Томск</p>
-          <p class="footer__address">Яковлева,43 ст2</p>
-          <p class="footer__address">Демьяна Бедного,16в ст1</p>
+          {% for br in branch %}
+            <p class="footer__address">{{ br.address }}</p>
+          {% endfor %}
         </div>
+        {% endif %}
+
         <div class="footer__info">
           <p class="footer__time">Время работы:</p>
           <p class="footer__timework">Понедельник - Выходной</p>

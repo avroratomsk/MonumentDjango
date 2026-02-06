@@ -11,17 +11,26 @@ import json
 
 
 
+
 def category(request):
   try:
     settings = ShopSettings.objects.get()
   except: 
     settings = ShopSettings()
 
-  category = Category.objects.filter(parent=None, status='published')
+  page = request.GET.get('page', 1)
+
+  products = Product.objects.filter(status='published').order_by('id')
+  categories = Category.objects.filter(parent=None, status='published')
+
+  paginator = Paginator(products, 16)
+  current_page = paginator.page(int(page))
+
 
   context = {
-    "category":category,
+    "categories":categories,
     "settings": settings,
+    "products": current_page,
   }
 
   return render(request, "pages/catalog/category.html", context)
@@ -53,8 +62,6 @@ def product(request, parent, slug):
     models = Models.objects.filter(parent=product)
 
 #     chars = ModelCharacteristic.objects.get(model=models_qs)
-
-#     print(chars)
 
     context = {
         "category": category,
