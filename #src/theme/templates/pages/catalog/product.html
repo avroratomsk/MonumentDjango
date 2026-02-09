@@ -22,17 +22,7 @@
           <div class="single__wrapper swiper-wrapper">
             <div class="single__slide swiper-slide">
               <div class="single__image">
-                <img src="@img/card.png" alt="">
-              </div>
-            </div>
-            <div class="single__slide swiper-slide">
-              <div class="single__image">
-                <img src="@img/card.png" alt="">
-              </div>
-            </div>
-            <div class="single__slide swiper-slide">
-              <div class="single__image">
-                <img src="@img/card.png" alt="">
+                <img src="{{ product.image.url }}" alt="">
               </div>
             </div>
           </div>
@@ -102,7 +92,7 @@
         </ul>
 
         <div class="single__price">
-          <p>Стоимость: <span>18 000 ₽</span></p>
+          <p>Стоимость: <span>{{ product.price }} ₽</span></p>
         </div>
 
         <div class="single__btns">
