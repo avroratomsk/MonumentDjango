@@ -1,69 +1,60 @@
-{% load thumbnail %}
-<section class="callback my">
-  {% if callback.image %}
-  {% thumbnail callback.image "1500x1500" format="WEBP" crop="center" as im %}
-  <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ callback.title }}"
-       title="{{ callback.title }}" class="callback__pattern">
-  {% endthumbnail %}
+{% load static %}{% load thumbnail %}
 
-  {% endif %}
+<div class="callback">
   <div class="container">
+    <!--<img src="{% static 'theme/img/angel.png' %}" alt="" class="callback__angel">
+    <img src="{% static 'theme/img/polygon.png' %}" alt="" class="callback__polygon">-->
     <div class="callback__row">
-      <div class="callback__info">
-        {% if callback.title %}
-        <h2>{{ callback.title }}</h2>
-        {% endif %}
-
-        {% if callback.description %}
-        <p>
-          {{ callback.description }}
+      <div class="callback__col">
+        <p class="callback__title">
+          Мы готовы ответитить на все ваши вопросы
         </p>
-        {% endif %}
-
-        {% if site_settings.logo_dark %}
-        <div class="callback__logo">
-          {% thumbnail site_settings.logo_dark "145x46" format="WEBP" crop="center" as im %}
-          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="{{ callback.title }}"
-               title="{{ callback.title }}">
-          {% endthumbnail %}
-        </div>
-        {% endif %}
-
+        <ul class="callback__list">
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Поможем выбрать памятник под ваш бюджет
+            </p>
+          </li>
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Выслушаем все ваши пожаления по оформлению
+            </p>
+          </li>
+          <li>
+            <img src="img/icon/i-check-outline.svg" alt="">
+            <p>
+              Проконсультируем по услугам нашей компании
+            </p>
+          </li>
+        </ul>
       </div>
-      <div class="callback__form">
-        <form action="." class="form">
-          <input type="text" class="form__input" placeholder="Имя" name="name">
-          <input type="tel" class="form__input" placeholder="Номер телефона" name="phone">
-          <textarea name="message" placeholder="Ваш вопрос" rows="5" class="form__textarea"></textarea>
+      <div class="callback__col">
+        <p class="callback__form-title">
+          Оставьте заявку - мы обязательно с вами свяжемся
+        </p>
+        <form action="" class="form">
+          <input type="text" placeholder="Ваше имя" class="form__input" name="name">
+          <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
           <div class="form__bottom">
-            <div class="form__action">
-              <button type="submit" class="form__submit">Оставить заявку</button>
-              <div class="form__action-social">
-                {% if socials %}
-                <div class="social">
-                  {% for social in socials %}
-                  <a href="{{ social.link }}" aria-label="Переходите в наш {{ social.name }}">
-                    <img src="{{ social.icon_white.url }}" width="32px" height="32px" alt="">
-                  </a>
-                  {% endfor %}
-                </div>
-                {% endif %}
-                {% if site_settings.phone %}
-                <a href="#" data-phone="{{ site_settings.phone }}" class="form__action-phone">{{ site_settings.phone }}</a>
-                {% endif %}
-              </div>
+            <div class="socials">
+              <a href=""><img src="img/icon/i-tg-white.svg" alt=""></a>
+              <a href=""><img src="img/icon/i-max-white.svg" alt=""></a>
             </div>
-
-            <div class="form__pivacy">
-              <label>
-                <input type="checkbox" class="form__checkbox">
-                Я даю свое согласие на обработку персональных данных и подверждаю, что ознакомлен(а)
-                с политикой конфиденциальности и обработки персональных данных
+            <div class="form__checkbox">
+              <input type="checkbox" id="agree" name="agree">
+              <label for="agree">
+                Я даю свое согласие на обработку персональных данных и подверждаю, что ознакомлен(а) с политикой
+                конфиденциальности и обработки персональных данных
               </label>
             </div>
+            <button type="submit" class="form__submit">
+              Оставить заявку
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
-</section>
+</div>

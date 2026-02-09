@@ -36,11 +36,11 @@ class Category(models.Model):
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="META keywords")
   updated_at = models.DateTimeField(auto_now=True)
   order_by = models.CharField(max_length=150, default="0", blank=True, null=True,  db_index=True, verbose_name="Порядок сортировки")
-  add_slider = models.CharField(
+  add_submenu = models.CharField(
    max_length=20,
    choices=STATUS_VIEW,
    default='draft',
-   verbose_name="Выводить в слайдер ?"
+   verbose_name="Выводить в под меню ?"
  )
   status = models.CharField(
     max_length=20,

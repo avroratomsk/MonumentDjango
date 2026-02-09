@@ -9,23 +9,96 @@
 
 {% block content %}
 
-  <div class="top-page">
-    <div class="container">
-      <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
-           class="breadcrumbs__item">
-          Главная
-          <meta itemprop="position" content="1">
-        </a>
-        <span itemprop="name" class="breadcrumbs__item">
+
+<div class="contact">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <span itemprop="name" class="breadcrumbs__item">
             Контакты
             <meta itemprop="position" content="2">
         </span>
+    </div>
+    <div class="contact__title title">Контакты</div>
+    <div class="contact__row">
+      <div class="contact__left">
+        <p class="contact__right-title">
+          Свяжитесь с нами
+        </p>
+
+        <div class="contact__grid">
+          <div class="contact__item">
+            <p class="contact__item-title">Адрес:</p>
+            <div class="contact__item-inner">
+              <p>г.Томск</p>
+              {% if branch %}
+                {% for br in branch %}
+                  <p>{{ br.address }}</p>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="contact__item">
+            <p class="contact__item-title">График работы:</p>
+            <div class="contact__item-inner">
+              <p>Понедельник - Выходной</p>
+              <p>Вт-Пт 09:00 - 17:00</p>
+              <p>Суббота 10:00 - 16:00</p>
+              <p>Воскресенье - Выходной</p>
+            </div>
+          </div>
+          <div class="contact__item">
+            <p class="contact__item-title">Реквизиты:</p>
+            <div class="contact__item-inner">
+              <p>ИНН 129548206852953</p>
+              <p>ОГРМ 85934959296854929</p>
+            </div>
+          </div>
+          <div class="contact__item">
+            <p class="contact__item-title">Связаться:</p>
+            <div class="contact__item-inner">
+              {% if branch %}
+              {% for br in branch %}
+              <a href="tel:{{ br.phone_one }}">{{ br.phone_one }}</a>
+              {% endfor %}
+              {% endif %}
+              {% if site_settings.email %}
+                <a href="mailto:{{ site_settings.email }}">{{ site_settings.email }}</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact__right">
+        <p class="contact__right-title">
+          Или оставьте заявку и мы перезвоним
+        </p>
+        <form action="" class="contact__form form">
+          <input type="text" placeholder="Ваше имя" class="form__input" name="name">
+          <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
+          <div class="form__bottom">
+            <div class="form__checkbox">
+              <input type="checkbox" id="agree" name="agree">
+              <label for="agree">
+                Я даю свое согласие на обработку персональных данных и подверждаю, что ознакомлен(а) с политикой
+                конфиденциальности и обработки персональных данных
+              </label>
+            </div>
+            <button type="submit" class="form__submit">
+              Оставить заявку
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  {% include "../includes/_contact.html" %}
+  {% include "../includes/_map.html" %}
 
   {% if contact.description %}
   <section class="py border-t">

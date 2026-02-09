@@ -17,7 +17,6 @@ def index(request):
 
   slides = GalleryItem.objects.filter(status='published')
   category = Category.objects.filter(parent=None, status='published')[:4]
-  slider_category = Category.objects.filter(parent=None, add_slider='published', status='published')
   contact = ContactPage.objects.get()
 
   context = {
@@ -26,7 +25,6 @@ def index(request):
     "category": category,
     "about": about,
     "contact": contact,
-    "slider_category": slider_category,
   }
 
   return render(request, 'pages/index.html', context)

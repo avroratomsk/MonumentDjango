@@ -17,18 +17,9 @@ class BaseSettings(SingletonModel):
   time_work = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Время работы")
   email = models.EmailField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Email")
   address = models.CharField(max_length=250, blank=True, null=True, verbose_name="Адрес")
-  meta_h1 = models.CharField(max_length=350, null=True, blank=True, verbose_name="Заголовок первого уровня")
-  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
-  meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
-  meta_keywords = models.TextField(null=True, blank=True, verbose_name="Meta keywords")
+  city = models.CharField(max_length=250, blank=True, null=True, verbose_name="Город")
   favicon = models.FileField(upload_to='base-settings/', blank=True, null=True, verbose_name="ФавИконка")
-  status = models.CharField(
-    max_length=20,
-    choices=STATUS_CHOICES,
-    default='draft',
-    verbose_name="Кнопка распродажа"
-  )
-  
+
 
 class HomeTemplate(SingletonModel):
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
