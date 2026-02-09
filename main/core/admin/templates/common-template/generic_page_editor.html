@@ -73,6 +73,15 @@
             </div>
             {% endif %}
 
+            {% if form.city %}
+            <div class="form__group">
+              <label for="{{ form.city.id_for_label }}" class="form__controls-label">
+                {{ form.city.label }}:
+              </label>
+              {{ form.city }} {{ form.city.errors }}
+            </div>
+            {% endif %}
+
           </div>
           {% if form.image or form.slug or form.category or form.parent or form.logo or form.logo_dark or form.logo_width or form.logo_height or form.icon_white or form.icon_dark or form.instance.image or form.latest or form.type_image or form.status %}
           <div class="page-content__col">

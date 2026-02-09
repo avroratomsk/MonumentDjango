@@ -15,6 +15,7 @@ class BaseSettings(SingletonModel):
   logo_height = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Высота логотипа")
   phone = models.CharField(max_length=50, blank=True, null=True, db_index=True, verbose_name="Основной номер телефона")
   time_work = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Время работы")
+  time_work_weekend = models.CharField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Время работы в выходные")
   email = models.EmailField(max_length=250, blank=True, null=True, db_index=True, verbose_name="Email")
   address = models.CharField(max_length=250, blank=True, null=True, verbose_name="Адрес")
   city = models.CharField(max_length=250, blank=True, null=True, verbose_name="Город")
@@ -68,6 +69,8 @@ class ContactPage(SingletonModel):
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
   map_code = models.CharField(max_length=250, blank=True, null=True, verbose_name="Код карты(iframe, script)")
+  iin = models.CharField(max_length=250, blank=True, null=True, verbose_name="ИНН")
+  ogrn = models.CharField(max_length=250, blank=True, null=True, verbose_name="ОГРН")
 
 class Socials(models.Model):
   STATUS_CHOICES = [

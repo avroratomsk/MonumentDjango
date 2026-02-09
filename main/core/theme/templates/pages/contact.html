@@ -34,7 +34,9 @@
           <div class="contact__item">
             <p class="contact__item-title">Адрес:</p>
             <div class="contact__item-inner">
-              <p>г.Томск</p>
+              {% if site_settings.city %}
+              <p>{{ site_settings.city }}</p>
+              {% endif %}
               {% if branch %}
                 {% for br in branch %}
                   <p>{{ br.address }}</p>
@@ -42,20 +44,29 @@
               {% endif %}
             </div>
           </div>
+
           <div class="contact__item">
             <p class="contact__item-title">График работы:</p>
             <div class="contact__item-inner">
-              <p>Понедельник - Выходной</p>
-              <p>Вт-Пт 09:00 - 17:00</p>
-              <p>Суббота 10:00 - 16:00</p>
-              <p>Воскресенье - Выходной</p>
+              {% if site_settings.time_work %}
+                <p>{{ site_settings.time_work }}</p>
+              {% endif %}
+
+              {% if site_settings.time_work_weekend %}
+                <p>{{ site_settings.time_work_weekend }}</p>
+              {% endif %}
             </div>
           </div>
           <div class="contact__item">
             <p class="contact__item-title">Реквизиты:</p>
             <div class="contact__item-inner">
-              <p>ИНН 129548206852953</p>
-              <p>ОГРМ 85934959296854929</p>
+              {% if contact.iin %}
+              <p>ИНН {{ contact.iin }}</p>
+              {% endif %}
+
+              {% if contact.ogrn %}
+              <p>ОГРН {{ contact.ogrn }}</p>
+              {% endif %}
             </div>
           </div>
           <div class="contact__item">
