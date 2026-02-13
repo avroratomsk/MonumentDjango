@@ -8,6 +8,10 @@
   &__row {
     display: flex;
     gap: 100px;
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
+    }
   }
 
   &__left {

@@ -7,7 +7,6 @@
     padding: 0 17px;
     border: 1px solid #f7e76f;
     border-radius: 5px;
-    width: 613px;
     height: 60px;
 
     font-weight: 300;
@@ -15,20 +14,32 @@
     letter-spacing: -0.03em;
     color: #545454;
 
+    @media screen and (min-width: 1200px) {
+      width: 613px;
+    }
+
   }
 
   &__bottom {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+    }
+
   }
 
   &__checkbox {
-    max-width: 229px;
     font-weight: 500;
     font-size: 16px;
     line-height: 121%;
     color: #c7c7c7;
+
+    @media screen and (min-width: 1200px) {
+      max-width: 229px;
+    }
   }
 
   &__submit {

@@ -20,18 +20,17 @@
 
     &:not(:last-child) {
       &::after {
-        content: '';
+        content: '/';
         display: block;
         background-repeat: no-repeat;
         background-position: center;
-        width: 20px;
         height: 100%;
         margin: 0 10px;
       }
     }
 
     &:last-child {
-      color: rgb(103, 103, 103);
+      color: $secondaryColor;
     }
 
     @media screen and (max-width: 620px) {

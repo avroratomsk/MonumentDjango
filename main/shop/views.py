@@ -10,8 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 
-
-
 def category(request):
   try:
     settings = ShopSettings.objects.get()
@@ -44,8 +42,11 @@ def category_detail(request, slug):
   if category.children:
     subcategories = Category.objects.filter(parent_id=category)
 
+  categories = Category.objects.filter(parent=None, status='published')
+
   context = {
     "subcategories": subcategories,
+    "categories": categories,
     "category": category,
     "products": products
   }

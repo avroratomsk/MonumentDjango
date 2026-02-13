@@ -24,6 +24,10 @@
     padding: 30px;
     border-radius: 10px;
 
+    @media screen and (max-width: 1200px) {
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
   &__col {
@@ -31,22 +35,40 @@
   }
 
   &__title {
-    max-width: 340px;
     margin-bottom: 22px;
     font-family: Spectral, sans-serif;
     font-weight: 600;
     font-size: 40px;
-    line-height: 97%;
+    line-height: 140%;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: #fff;
+
+
+
+    @media screen and (min-width: 1200px) {
+      max-width: 340px;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
+
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: 19px;
-    max-width: 420px;
+
+
+    @media screen and (min-width: 1200px) {
+      max-width: 420px;
+    }
+
+    @media screen and (max-width: 768px) {
+     gap: 10px;
+    }
 
     li {
       display: flex;
@@ -61,6 +83,10 @@
         font-weight: 600;
         font-size: 24px;
         color: #fff;
+
+        @media screen and (max-width: 768px) {
+          font-size: 18px;
+        }
       }
 
 

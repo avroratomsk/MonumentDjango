@@ -39,16 +39,20 @@
       <div class="nav__list">
         <div class="nav__item">
           <div>
-            <a href="">Каталог</a>
+            <a href="{% url 'category'%}">Каталог</a>
             <button type="button" class="nav__arrow">
               <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
             </button>
           </div>
+          {% if sub_category %}
           <ul class="nav__submenu">
-            <li><a href="">Каталог</a></li>
-            <li><a href="">Гравировка</a></li>
-            <li><a href="">Установка</a></li>
+            {% for sub_cat in sub_category %}
+            <li>
+              <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
+            </li>
+            {% endfor %}
           </ul>
+          {% endif %}
         </div>
         <div class="nav__item">
           <div>
@@ -57,11 +61,15 @@
               <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
             </button>
           </div>
+          {% if sub_category %}
           <ul class="nav__submenu">
-            <li><a href="">Каталог</a></li>
-            <li><a href="">Гравировка</a></li>
-            <li><a href="">Установка</a></li>
+            {% for sub_cat in sub_category %}
+              <li>
+                <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
+              </li>
+            {% endfor %}
           </ul>
+          {% endif %}
         </div>
         <div class="nav__item">
           <div><a href="">Гравировка</a></div>
@@ -76,7 +84,7 @@
           <div><a href="">О нас</a></div>
         </div>
         <div class="nav__item">
-          <div><a href="">Контакты</a></div>
+          <div><a href="{% url 'contact' %}">Контакты</a></div>
         </div>
         <div class="nav__item">
           <div><a href="">Документы</a></div>

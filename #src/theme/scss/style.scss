@@ -14,6 +14,8 @@
 
 @import './includes/_header';
 @import './includes/_footer';
+@import './includes/_popup';
+@import './components/_breadcrumbs';
 @import '_global';
 @import '_reset';
 @import '_accordion';
@@ -29,6 +31,7 @@
 @import '_works';
 @import '_popup';
 @import '_single';
+@import '_top-page';
 
 html {
   height: 100%;

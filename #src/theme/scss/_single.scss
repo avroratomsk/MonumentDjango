@@ -4,6 +4,11 @@
     display: grid;
     grid-template-columns: 464px 1fr;
     gap: 60px;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
   }
 
   &__left {
@@ -58,6 +63,10 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px 10px;
+
+    @media screen and (max-width: 992px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__filter-item {

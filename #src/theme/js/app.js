@@ -4,6 +4,7 @@ functions.isWebp();
 
 import "./modules/popup/popup.js";
 import "./modules/sliders.js";
+import "./modules/normalizeFormatPhoneLink.js";
 
 import Swiper from "swiper";
 import {Navigation, Pagination, Scrollbar, Thumbs, EffectFade} from "swiper/modules";

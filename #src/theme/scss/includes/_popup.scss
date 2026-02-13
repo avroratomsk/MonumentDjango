@@ -181,6 +181,13 @@ body._lock::after {
   }
 }
 
+.popup__close {
+  display: none !important;
+  opacity: 0 !important;
+  position: absolute !important;
+}
+
+
 .popup__contact {
   height: calc(100vh - 100px);
   overflow-y: auto;

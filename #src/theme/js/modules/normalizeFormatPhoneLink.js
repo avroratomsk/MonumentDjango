@@ -1,18 +1,8 @@
-/**
- * Складывает два числа и возвращает результат.
- *
- * @param {number} a - Первое число для сложения.
- * @param {number} b - Второе число для сложения.
- * @returns {number} Сумма двух чисел.
- * @example
-
-*/
-
-const regNum = document.querySelectorAll("[data-phone]");
-
+// Создание правильной ссылка номера телефона
+const regNum = document.querySelectorAll("a[href^=\"tel:\"]");
 if (regNum) {
   regNum.forEach(num => {
-    let number = formatPhoneNumber(num.dataset.phone);
+    let number = formatPhoneNumber(num.href);
     num.href = `tel:${number}`;
   });
 }
