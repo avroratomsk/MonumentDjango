@@ -118,7 +118,7 @@ def rename_image(filename):
 
 
 def import_products_from_excel(file_path):
-    Product.objects.all().delete()
+#     Product.objects.all().delete()
 #     Category.objects.all().delete()
 #     Models.objects.all().delete()
 
@@ -166,8 +166,6 @@ def import_products_from_excel(file_path):
               'image': product_image
             }
         )
-
-        print(f'{category_name} -- {category_slug} -- {product_name}  -- {product_unique_slug} -- {product_image}')
 
         if not pr_created:
           if product_image:
