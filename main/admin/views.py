@@ -30,8 +30,8 @@ from django.db import IntegrityError
 import logging
 logger = logging.getLogger(__name__)
 
-from slugify import slugify
-
+# from slugify import slugify
+from django.utils.text import slugify
 general_url_product = "/admin/product/"
 
 path = f"{BASE_DIR}/upload/upload.zip"

@@ -44,11 +44,14 @@ def category_detail(request, slug):
 
   categories = Category.objects.filter(parent=None, status='published')
 
+  paginator = Paginator(products, 16)
+  current_page = paginator.page(int(page))
+
   context = {
     "subcategories": subcategories,
     "categories": categories,
     "category": category,
-    "products": products
+    "products": current_page
   }
 
   return render(request, "pages/catalog/category-details.html", context)

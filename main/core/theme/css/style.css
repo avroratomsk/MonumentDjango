@@ -2282,6 +2282,7 @@ body._lock::after {
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 40px;
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .product-thumb__slider {
