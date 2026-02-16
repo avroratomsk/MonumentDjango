@@ -45,6 +45,6 @@ typing_extensions
 tzdata
 urllib3
 virtualenv
-whitenoise
+whitenoise==3.7
 xlrd
 zipp
