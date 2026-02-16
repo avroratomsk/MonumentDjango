@@ -71,7 +71,7 @@ LOGGING = {
             'level': 'INFO',
             'class': 'logging.FileHandler',
             'formatter': 'file',
-            'filename': '/home/a/avroraweb/tompc-tech/public_html/debug.log'
+            'filename': '/home/a/avroraweb/monument.ru/public_html/debug.log'
         }
     },
     'loggers': {
