@@ -67,14 +67,14 @@
 </div>
 {% endif %}
 
-{% if slides %}
+{% comment %}{% if slides %}
 <div class="works">
   <h2 class="title works__title">
     Наши работы
   </h2>
   <div class="works-slider swiper-slider">
     <div class="swiper-wrapper">
-      {% for work in slides  %}
+      {% for work in slides %}
       <div class="swiper-slide works__slide">
         <a href="" data-gallery="works">
           <img src="{{ work.image.url }}" alt="">
@@ -92,7 +92,46 @@
     </div>
   </div>
 </div>
-{% endif %}
+{% endif %}{% endcomment %}
+
+<div class="works">
+  <h2 class="title works__title">
+    Наши работы
+  </h2>
+  <div class="works-slider swiper-slider">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide works__slide">
+        <a href="{% static 'theme/img/images/6.jpg' %}" data-gallery="works">
+          <img src="{% static 'theme/img/images/6.jpg' %}" alt="">
+        </a>
+      </div>
+      <div class="swiper-slide works__slide">
+        <a href="{% static 'theme/img/images/7.jpg' %}" data-gallery="works">
+          <img src="{% static 'theme/img/images/7.jpg' %}" alt="">
+        </a>
+      </div>
+      <div class="swiper-slide works__slide">
+        <a href="{% static 'theme/img/images/8.jpg' %}" data-gallery="works">
+          <img src="{% static 'theme/img/images/8.jpg' %}" alt="">
+        </a>
+      </div>
+
+      <div class="swiper-slide works__slide">
+        <a href="{% static 'theme/img/images/9.jpg' %}" data-gallery="works">
+          <img src="{% static 'theme/img/images/9.jpg' %}" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="works__controls">
+      <div class="container">
+        <div class="works__controls-inner">
+          <div class="swiper-button-prev works-prev"></div>
+          <div class="swiper-button-next works-next"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="reviews">
   <div class="container">
