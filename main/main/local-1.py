@@ -1,9 +1,9 @@
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'avroraweb_tompc',
-        'USER': 'avroraweb_tompc',
-        'PASSWORD': 'qxHk1&Pnnw6b',
+        'NAME': 'avroraweb_monume',
+        'USER': 'avroraweb_monume',
+        'PASSWORD': 'f&MNCkPP8brB',
         'HOST': 'localhost',
     }
 }
