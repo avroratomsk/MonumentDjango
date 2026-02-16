@@ -17,7 +17,10 @@ def index(request):
 
   slides = GalleryItem.objects.filter(status='published')
   category = Category.objects.filter(parent=None, status='published')[:4]
-  contact = ContactPage.objects.get()
+  try:
+    contact = ContactPage.objects.get()
+  except:
+    contact = ContactPage()
 
   context = {
     "settings": settings,
