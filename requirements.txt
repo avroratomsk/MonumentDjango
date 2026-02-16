@@ -8,7 +8,7 @@ cryptography
 defusedxml
 distlib
 Django
-django-allauth==0.52.0
+django-allauth
 django-ckeditor
 django-ckeditor-5
 django-cors-headers
