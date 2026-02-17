@@ -1,0 +1,153 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %} Установка памятников на могилу в Томске | Акрополь {% endblock %}
+{% block description %} Компания Акрополь предлагает качественные услуги по установке памятников, надгробий, лавочек и
+столов. Сохраните память о ваших близких с заботой и уважением. {% endblock %}
+{% block keywords %} установка памятника, установка памятников томск, установка памятника на могилу {% endblock %}
+{% block content %}
+
+<body>
+  <div class="wrapper">
+    <div class="hero">
+      <div class="hero__container">
+        <img src="{% static 'theme/mb/images/first-image.png' %}" alt="Установка памятников в Томске"
+          title="Установка памятников в Томске" class="hero__image" />
+        <div class="hero__inner">
+          <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            <a href="" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+              class="breadcrumbs__item">
+              Главная
+              <meta itemprop="position" content="1" />
+            </a>
+            <a href="" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+              class="breadcrumbs__item">
+              Услуги
+              <meta itemprop="position" content="2" />
+            </a>
+            <span itemprop="name" class="breadcrumbs__item">
+              Установка памятников
+              <meta itemprop="position" content="3" />
+            </span>
+          </div>
+          <h1 class="hero__title">
+            <span>Установка памятников</span><br />
+            в Томске
+          </h1>
+          <p class="hero__subtitle">Установка памятника — это сложный и ответственный процесс, который требует
+            соблюдения определённых правил и технологий.</p>
+          <div class="hero__buttons">
+            <button type="button" class="hero__button hero__button--blue" data-popup="order-service"
+              data-order="Установка памятников">Заказать услугу</button>
+            <button type="button" class="hero__button hero__button--small" data-popup="consultation-form"
+              data-order="Установка памятников">?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="service-content">
+      <div class="service-content__container">
+        <div class="service-content__inner">
+          <h2 class="service-content__title _title-h2">Выбор монумента</h2>
+          <div class="service-content__row">
+            <div class="service-content__col">
+              <img src="{% static 'theme/mb/images/second-image.png' %}" alt="Выбор монумента" title="Выбор монумента"
+                class="" />
+            </div>
+            <div class="service-content__col">
+              <div class="service-content__text _text">
+                <p>Выбор памятника на могилу — это очень ответственный процесс, который требует внимательности и
+                  тщательного подхода. Ниже я приведу несколько важных факторов, которые следует учитывать при выборе
+                  памятника на могилу:</p>
+                <p><span>Материал: </span>памятники на могилы могут быть изготовлены из разных материалов, таких как
+                  гранит, мрамор, искусственные. Необходимо учитывать качество материала и его прочность, чтобы памятник
+                  мог прослужить долгие годы.</p>
+                <p><span>Размер: </span>размер памятника на могилу должен соответствовать размерам могилы и не выглядеть
+                  ни слишком маленьким, ни слишком большим. Необходимо учитывать допустимые размеры памятника.</p>
+                <p><span>Дизайн: </span>дизайн памятника на могилу должен отражать индивидуальность и личность усопшего,
+                  а также соответствовать его предпочтениям и желаниям. Можно выбрать разные декоративные элементы,
+                  такие как растительные орнаменты, символы религии, портреты, фотографии и т.д.</p>
+                <p><span>Стоимость: </span>стоимость памятника на могилу может значительно варьироваться в зависимости
+                  от материала, дизайна и сложности изготовления. Необходимо учитывать свой бюджет при выборе памятника.
+                </p>
+                <p><span>Культурные традиции: </span>следует учитывать культурные традиции и обычаи, которые могут
+                  регулировать типы и формы памятников на могилы.</p>
+                <p>
+                  <i> Важно помнить, что выбор памятника на могилу — это личное решение, которое зависит от
+                    индивидуальных предпочтений и ситуации. Поэтому следует уделить достаточно времени и внимания, чтобы
+                    выбрать наиболее подходящий памятник. </i>
+                </p>
+              </div>
+              <a href="{% url 'category' %}" class="service-content__btn _btn">Перейти в каталог</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="service-content">
+      <div class="service-content__container">
+        <div class="service-content__inner">
+          <h2 class="service-content__title _title-h2">Гранит и мрамор: в чём разница?</h2>
+          <div class="service-content__row">
+            <div class="service-content__col">
+              <img src="{% static 'theme/mb/images/third-image.png' %}" alt="Гранит и мрамор: в чём разница?"
+                title="Гранит и мрамор: в чём разница?" class="" />
+            </div>
+            <div class="service-content__col">
+              <div class="service-content__text _text">
+                <p><span>Гранит</span> является более плотным материалом, малопористым, а следовательно, и более
+                  прочным. Благодаря этому качеству памятники из такого камня сохраняются на века, прекрасно перенося
+                  любые климатические условия, оставаясь практически неизменными на протяжении всего этого времени.</p>
+                <p><span>Мрамор</span> же по своей структуре более порист, он обладает способностью впитывать воду,
+                  которая при замерзании ведёт к образованию трещин. И гранит, и мрамор часто используются при создании
+                  ритуальных памятников. Оба материала ассоциируются с вечностью, непоколебимостью, монументальностью.
+                </p>
+                <p>Разница между памятниками из <span>гранита</span> и <span>мрамора</span> заключается, собственно, в
+                  самом материале, у которого есть свои объективные свойства. Их необходимо учитывать при заказе
+                  надгробия.</p>
+              </div>
+              <button class="service-content__btn _btn" data-popup="consultation-form"
+                data-order="Установка памятников">Получить консультацию</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="service-content">
+      <div class="service-content__container">
+        <div class="service-content__inner">
+          <h2 class="service-content__title _title-h2">Технология установки памятника из гранита включает следующие
+            этапы</h2>
+          <div class="service-content__row">
+            <div class="service-content__col">
+              <img src="{% static 'theme/mb/images/fouth-image.png' %}" alt="Технология установки памятника"
+                title="Технология установки памятника" class="" />
+            </div>
+            <div class="service-content__col">
+              <div class="service-content__text _text">
+                <ul>
+                  <li>Планировка(подготовка) участка под фундамент</li>
+                  <li>Установка металлического каркаса под фундамент</li>
+                  <li>Изготовление внешней и внутренней опалубки из досок</li>
+                  <li>Подготовка бетона для фундамента и заливка его в опалубку</li>
+                  <li>Облицовка плиткой</li>
+                  <li>Затирка швов</li>
+                  <li>Подготовка монтажных отверстий в подставке и памятнике</li>
+                  <li>Монтаж подставки и цветника с помощью специального клея по камню</li>
+                  <li>Установка самого памятника вручную или с использованием крана-манипулятора</li>
+                  <li>Благоустройство вокруг надмогильного сооружения</li>
+                </ul>
+                <p>Необходимо помнить о том, что монтаж памятника – это трудоемкий и непростой процесс, требующий опыта
+                  и квалификации. Если в ходе монтажа будут допущены ошибки, это может привести к перекосу монумента или
+                  его полному уходу под землю. Чтобы избежать такой проблемы необходимо заказать установку памятника
+                  специалистам.</p>
+              </div>
+              <button class="service-content__btn _btn" data-popup="order-service"
+                data-order="Установка памятников">Заказать установку памятника</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include "../../includes/_callback.html" %}
+  </div>
+</body>
+{% endblock %}

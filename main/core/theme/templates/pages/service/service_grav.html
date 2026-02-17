@@ -14,47 +14,50 @@
 
 <body>
 <div class="wrapper">
-  <div class="hero">
-    <div class="hero__container">
-      <img src="{% static 'theme/mb/images/1.png' %}" alt="Гравировка на памятнике Томск"
-           title="Гравировка на памятнике Томск" class="hero__image-grav"/>
-      <div class="hero__inner">
-        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-          <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
-             class="breadcrumbs__item">
-            Главная
-            <meta itemprop="position" content="1"/>
-          </a>
-          <a href="{% url 'service' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
-             class="breadcrumbs__item">
-            Услуги
-            <meta itemprop="position" content="2"/>
-          </a>
-          <span itemprop="name" class="breadcrumbs__item">
+  <div class="service__hero">
+    <div class="container">
+      <div class="service__row">
+        <div class="service__col">
+          <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+               class="breadcrumbs__item">
+              Главная
+              <meta itemprop="position" content="1"/>
+            </a>
+            <a href="{% url 'service' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+               class="breadcrumbs__item">
+              Услуги
+              <meta itemprop="position" content="2"/>
+            </a>
+            <span itemprop="name" class="breadcrumbs__item">
               Гравировка
               <meta itemprop="position" content="3"/>
             </span>
+          </div>
+          <h1 class="service__hero-title title">
+            <span>Художественная гравировка </span><br/>
+            надписей на памятнике
+          </h1>
+          <p class="service__hero-subtitle">
+            это не только передача информации, но и способ выразить характер усопшего. Предлагаем свои услуги по
+            изготовлению надписей и нанесению изображений.
+          </p>
+          <div class="hero__buttons">
+            <button type="button" class="hero__button btn" data-popup="order-service">
+              Заказать консультацию
+            </button>
+          </div>
         </div>
-        <h1 class="hero__title">
-          <span>Художественная гравировка </span><br/>
-          надписей на памятнике
-        </h1>
-        <p class="hero__subtitle">
-          это не только передача информации, но и способ выразить характер усопшего. Предлагаем свои услуги по
-          изготовлению надписей и нанесению изображений.
-        </p>
-        <div class="hero__buttons">
-          <button type="button" class="hero__button hero__button--blue" data-popup="order-service"
-                  data-order="Гравировка">
-            Заказать консультацию
-          </button>
+        <div class="service__col">
+          <img src="{% static 'theme/img/1.png' %}" alt="Гравировка на памятнике Томск"
+               title="Гравировка на памятнике Томск" class="service__hero-image"/>
         </div>
       </div>
     </div>
   </div>
 
   <section class="service-content">
-    <div class="service-content__container">
+    <div class="container">
       <div class="service-content__text _text">
         <p>
           Художественная гравировка портретов, рисунков и надписей на памятнике — это не только передача информации, но
@@ -85,7 +88,7 @@
           </li>
           <li>
             Материал памятника: разные материалы требуют разных подходов к гравировке. Например, <a
-              href="https://xn----7sbbi3adkojmfupe8q.xn--p1ai/category/granitnye/">гранит</a> и мрамор могут
+            href="https://xn----7sbbi3adkojmfupe8q.xn--p1ai/category/granitnye/">гранит</a> и мрамор могут
             потребовать разных методов и инструментов
           </li>
           <li>
@@ -105,7 +108,7 @@
         <br>
         <p>
           Примеры портретов на памятниках можно найти на нашем сайте в разделе "<a
-            href="https://xn----7sbbi3adkojmfupe8q.xn--p1ai/gallery/">Наши работы</a>". Также можно обратиться к
+          href="https://xn----7sbbi3adkojmfupe8q.xn--p1ai/gallery/">Наши работы</a>". Также можно обратиться к
           специалистам в офисах компании "Акрополь", которые смогут продемонстрировать примеры своих работ.
         </p>
 
@@ -114,7 +117,7 @@
   </section>
 
   <section class="service-content">
-    <div class="service-content__container">
+    <div class="container">
       <div class="service-content__inner">
         <h2 class="service-content__title _title-h2">Портретная плитка на цветные и светлые камни</h2>
         <div class="service-content__row">
@@ -202,7 +205,7 @@
   </section>
 
   <section class="service-content">
-    <div class="service-content__container">
+    <div class="container">
       <div class="service-content__inner">
         <h2 class="service-content__title _title-h2">Сусальное золото</h2>
         <div class="service-content__row">
@@ -292,7 +295,7 @@
   </section>
 
   <section class="service-content">
-    <div class="service-content__container">
+    <div class="container">
       <div class="service-content__inner">
         <h2 class="service-content__title _title-h2">Портреты на стекле</h2>
         <div class="service-content__row">
@@ -363,7 +366,7 @@
   </section>
 
   <section class="service-content">
-    <div class="service-content__container">
+    <div class="container">
       <div class="service-content__inner">
         <h2 class="service-content__title _title-h2">Металокерамика</h2>
         <div class="service-content__row">
@@ -424,7 +427,7 @@
       </div>
     </div>
   </section>
-  {% include "../../components/map.html" %}
+  {% include "../../includes/_callback.html" %}
 </div>
 </body>
 {% endblock %}

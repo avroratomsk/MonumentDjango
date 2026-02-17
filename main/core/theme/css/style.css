@@ -5797,6 +5797,99 @@ body._lock::after {
   text-align: left;
 }
 
+.service__hero {
+  min-height: 450px;
+  position: relative;
+  background: rgb(65, 162, 208);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, rgba(65, 162, 208, 0.09)), to(rgb(255, 255, 255)));
+  background: -o-linear-gradient(bottom, rgba(65, 162, 208, 0.09) 50%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(0deg, rgba(65, 162, 208, 0.09) 50%, rgb(255, 255, 255) 100%);
+}
+
+.service__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.service__hero-image {
+  width: 550px;
+}
+
+.service__hero-title {
+  text-align: left;
+  max-width: 700px;
+}
+
+.service__hero-subtitle {
+  max-width: 800px;
+  text-wrap: balance;
+  line-height: 160%;
+  margin-bottom: 60px;
+}
+
+.service__items {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 80vw, 350px), 1fr));
+  gap: 50px 30px;
+}
+
+.service__item {
+  position: relative;
+  background-color: #41a2d0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.service__icon {
+  position: absolute;
+  bottom: -30px;
+  right: 0px;
+  z-index: 1;
+}
+
+.service__item-text {
+  padding: 40px;
+  min-height: 220px;
+  position: relative;
+  height: 100%;
+  font-size: 20px;
+  max-width: 235px;
+  color: #41a2d0;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 2;
+}
+
+.service__content {
+  padding: 80px 0;
+}
+
+.service__content-title {
+  margin-bottom: 30px;
+}
+
 html {
   height: 100%;
   font-size: 62.5%;
