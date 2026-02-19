@@ -1,0 +1,43 @@
+.filter-news {
+  margin-block: 40px;
+
+  @media screen and (max-width: 992px){
+    margin-block: 20px;
+  }
+
+  // .filter__inner
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  // .filter__item
+
+  &__item {
+    position: relative;
+  }
+
+  // .filter__btn
+
+  &__btn {
+    color: #02075d;
+    transition: $animation_speed;
+
+    @media (hover:hover) {
+      &:hover {
+        color: #02075d;
+        background-color: transparent;
+      }
+    }
+
+    &._active {
+        background: #02075d;
+        color: rgba($color: #fff, $alpha: 1.0);
+    }
+
+  }
+
+}

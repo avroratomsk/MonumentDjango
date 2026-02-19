@@ -4,6 +4,7 @@ from django.urls import reverse
 
 
 def generic_list(request, model, title, add_url, edit_url, delete_url):
+
     items = model.objects.all()
 
     context = {
@@ -15,6 +16,65 @@ def generic_list(request, model, title, add_url, edit_url, delete_url):
     }
 
     return render(request, "common-template/list-items.html", context)
+
+
+def generic_list_shop(request, product, category, title, add_url, edit_url, delete_url):
+
+
+    product = product.objects.all()
+    category = category.objects.all()
+
+    context = {
+        "items": items,
+        "product": product,
+        "category": category,
+        "title": title,
+        "add_url": add_url,
+        "edit_url": edit_url,
+        "delete_url": delete_url,
+    }
+
+    return render(request, "common-template/list-items.html", context)
+
+def generic_add_test(request, form_class, title, **kwargs):
+    """Универсальное добавление"""
+
+    template_name = kwargs.get('template_name', "common-template/template-edit-add-page.html")
+
+    form = form_class()
+    if request.method == "POST":
+        form = form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request,kwargs.get('messages', 'Успешно сохранено !'))
+            redirect_name = kwargs.get('redirect_name', None)
+            if redirect_name:
+                url = reverse(redirect_name)
+            else:
+                url = request.META.get('HTTP_REFERER', '/')
+            return redirect(url)
+        else:
+            error_list = []
+
+            for field_name, errors in form.errors.items():
+                if field_name == "__all__":
+                    for error in errors:
+                        error_list.append(error)
+                    continue
+
+                # получаем label поля
+                field_label = form[field_name].label
+
+                for error in errors:
+                    error_list.append(f"{field_label}: {error}")
+            messages.error(request, " | ".join(error_list))
+            return render(request, template_name, {"form": form, "title": title})
+
+    context = {
+        "form": form,
+        "title": title
+    }
+    return render(request, template_name, context)
 
 def generic_add(request, form_class, redirect_name, title, template_name=None):
     """Универсальное добавление"""
