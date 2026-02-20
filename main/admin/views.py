@@ -577,6 +577,10 @@ def gallery_settings(request):
   return generic_singleton_edit(request, GalleryPageForm, GalleryPage, "Настройки страницы галерея", template_name=None)
 
 @user_passes_test(lambda u: u.is_superuser)
+def gallery_list(request):
+  return generic_list(request, GalleryItem, "Добавление фотографии", "gallery_add", "gallery_edit", "gallery_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
 def gallery_add(request):
   return generic_add(request, GalleryItemForm, "gallery_settings", "Добавление фотографии",  template_name=None)
 

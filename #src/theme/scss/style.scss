@@ -17,7 +17,10 @@
 @import './includes/_header';
 @import './includes/_footer';
 @import './includes/_popup';
+
 @import './components/_breadcrumbs';
+@import './components/_mini-cart';
+
 @import '_global';
 @import '_reset';
 @import '_accordion';
@@ -36,6 +39,7 @@
 @import '_top-page';
 @import '_service';
 @import '_news';
+@import '_gallery';
 @import 'components/filter-news';
 
 html {

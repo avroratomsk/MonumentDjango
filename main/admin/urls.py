@@ -65,6 +65,7 @@ urlpatterns = [
 
     path('gallery-settings/', views.gallery_settings, name='gallery_settings'),
     path('gallery/add/', views.gallery_add, name='gallery_add'),
+    path('gallery-list/', views.gallery_list, name='gallery_list'),
     path('gallery/<int:pk>/edit/', views.gallery_edit, name='gallery_edit'),
     path('gallery/<int:pk>/delete/', views.gallery_delete, name='gallery_delete'),
 

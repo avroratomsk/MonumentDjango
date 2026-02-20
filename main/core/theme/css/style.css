@@ -4431,6 +4431,159 @@ body._lock::after {
   color: #F7E76F;
 }
 
+.mini-cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+  width: 20vw;
+  min-width: 290px;
+  height: 100vh;
+  background-color: #fff;
+  padding: 30px;
+  border-left: 1px solid #02075d;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  z-index: 999;
+}
+
+.mini-cart.show {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.mini-cart__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(2, 7, 93, 0.2);
+  border-top: 1px solid rgba(2, 7, 93, 0.2);
+}
+
+.mini-cart__close {
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  cursor: pointer;
+}
+
+.mini-cart__inner {
+  height: calc(100vh - 130px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  padding-block: 20px;
+}
+
+.mini-cart__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.mini-cart__link {
+  text-align: center;
+  width: 100%;
+}
+
+.mini-cart__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  max-width: 290px;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(2, 7, 93, 0.2);
+}
+
+.mini-cart__thumb {
+  width: 70px;
+  height: 70px;
+}
+
+.mini-cart__thumb img {
+  max-width: 100%;
+}
+
+.mini-cart__name {
+  color: #02075D;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.mini-cart__delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border: 1px solid red;
+}
+
+.mini-cart__counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1px;
+}
+
+.mini-cart__counter .number {
+  width: 50px;
+  height: 20px;
+  border: none;
+  text-align: center;
+}
+
+.mini-cart__counter .decrement,
+.mini-cart__counter .increment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
 .btn {
   padding: 10px 27px;
   border-radius: 5px;
@@ -4453,6 +4606,21 @@ body._lock::after {
 
 .btn:active {
   opacity: 0.9;
+}
+
+.py {
+  padding-block: 40px;
+}
+
+.border-t {
+  border-top: 1px solid rgba(2, 7, 93, 0.4);
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
 .close {
@@ -4492,7 +4660,6 @@ body._lock::after {
 }
 
 .title {
-  margin-bottom: 40px;
   text-align: center;
   font-weight: 600;
   font-size: 56px;
@@ -4832,9 +4999,11 @@ img {
 
 /* Указываем понятную периодичность в потоке данных у article*/
 
+/*
 article > * + * {
   margin-top: 1em;
 }
+*/
 
 /* Наследуем шрифты для инпутов и кнопок */
 
@@ -5897,20 +6066,60 @@ body._lock::after {
 .news__grid {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
   gap: 30px;
 }
 
 .card-news {
-  border: 1px solid #f7e76f;
-  border-radius: 10px;
+  position: relative;
   overflow: hidden;
+  border-radius: 10px;
+}
+
+.card-news::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.03)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.6) 100%);
+  -webkit-transition: opacity 3s ease;
+  -o-transition: opacity 3s ease;
+  transition: opacity 3s ease;
+  z-index: 1;
+}
+
+.card-news::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-10%, rgba(255, 255, 255, 0.03)), to(rgba(0, 0, 0, 0.6)));
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.03) -10%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) -10%, rgba(0, 0, 0, 0.6) 100%);
+  opacity: 0;
+  -webkit-transition: opacity 3s ease;
+  -o-transition: opacity 3s ease;
+  transition: opacity 3s ease;
+  z-index: 1;
+}
+
+.card-news__full-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
 }
 
 .card-news__image {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  z-index: -1;
 }
 
 .card-news__image img {
@@ -5920,13 +6129,103 @@ body._lock::after {
      object-fit: cover;
 }
 
+.card-news__content {
+  min-height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  position: relative;
+  padding: 30px;
+}
+
 .card-news__title {
   display: block;
-  color: #02075D;
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .card-news__title a {
   color: inherit;
+}
+
+@-webkit-keyframes imagesUp {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes imagesUp {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+.gallery__title {
+  margin-bottom: 40px;
+}
+
+.gallery__grid {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
+}
+
+.gallery__item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery__item i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  font-size: 25px;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
+.gallery__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 7, 93, 0.2);
+  opacity: 0;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
 }
 
 .filter-news {
@@ -8867,6 +9166,10 @@ body main {
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
   }
+
+  .gallery__grid {
+    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+  }
 }
 
 @media (min-width: 1200px) {
@@ -11159,6 +11462,23 @@ body main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+
+  .card-news:hover::after {
+    opacity: 1;
+  }
+
+  .card-news:hover .card-news__image {
+    -webkit-animation: imagesUp 5s ease forwards;
+            animation: imagesUp 5s ease forwards;
+  }
+
+  .gallery__item:hover i {
+    opacity: 1;
+  }
+
+  .gallery__item:hover::before {
+    opacity: 1;
   }
 
   .filter-news__btn:hover {

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # 'tinymce',
     "blog",
+    "cart",
     "news",
     "branch",
 ]

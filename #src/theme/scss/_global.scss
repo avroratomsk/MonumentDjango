@@ -28,6 +28,24 @@
 
 }
 
+.py {
+  padding-block: 40px;
+}
+
+.section-text {
+
+
+}
+
+.border-t {
+  border-top: 1px solid rgba($color: $primaryColor, $alpha: 0.4);
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
 
 .close {
   position: absolute;
@@ -67,7 +85,6 @@
 }
 
 .title {
-  margin-bottom: 40px;
   text-align: center;
   font-weight: 600;
   font-size: 56px;

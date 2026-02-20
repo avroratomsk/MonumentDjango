@@ -1,0 +1,37 @@
+{% load static %} {% load carts_tag %} {% load thumbnail %}{% for cart in carts %}
+<div class="mini-cart__item">
+  <div class="mini-cart__thumb">
+    {% if cart.product.image %}
+    {% thumbnail cart.product.image "70x70" format="WEBP" crop="center" as im %}
+    <img src="{{ im.url }}" alt="" width="{{ im.width }}" height="{{ im.height }}">
+    {% endthumbnail %}
+    {% endif %}
+  </div>
+  <div class="mini-cart__content">
+    <div class="mini-cart__info">
+      <a href="{{ cart.product.get_absolute_url }}" class="mini-cart__name">{{ cart.product.name }}</a>
+      <p class="mini-cart__price">{{ cart.product.sell_price }} руб.</p>
+
+    </div>
+    <div class="mini-cart__action">
+      <div id="delete-card close"
+           class="mini-cart__delete" data-id="{{ cart.id }}"
+           aria-label="Удаления товара из корзины">
+        <span></span>
+      </div>
+      <div class="mini-cart__counter">
+        <button class="decrement btn"
+                data-id="{{ cart.id }}"
+                data-change-url="{% url 'cart_change' %}"
+        >
+        -
+        </button>
+        <input type="text" id="quantity" class="number" name="quantity" value="{{ cart.quantity }}" readonly/>
+        <button class="increment btn" data-cart-id="{{ cart.id }}" data-cart-change-url="{% url 'cart_change' %}">
+          {% csrf_token %}+
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

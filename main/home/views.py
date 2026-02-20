@@ -73,6 +73,21 @@ def gallery(request):
 
   return render(request, 'pages/gallery.html', context)
 
+def documents(request):
+  try:
+    gallery = GalleryPage.objects.get()
+  except:
+    gallery = GalleryPage()
+
+  items = GalleryItem.objects.filter(status="published")
+
+  context = {
+    "gallery": gallery,
+    "items": items,
+  }
+
+  return render(request, 'pages/gallery.html', context)
+
 
 def privacy(request):
   return render(request, "pages/privacy.html")

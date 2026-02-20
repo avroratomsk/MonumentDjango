@@ -48,9 +48,10 @@
       {% endif %}
 
       {% if posts %}
-      <div class="news__grid">
+      <div class="news__grid py">
         {% for post in posts %}
         <article class="card-news">
+          <a href="{{ post.get_absolute_url }}" class="card-news__full-link"></a>
           {% if post.image %}
           <a href="{{ post.get_absolute_url }}" class="card-news__image">
             <img src="{{ post.image.url }}" alt="{{ post.name }}" title="{{ post.name }}">
@@ -74,9 +75,9 @@
 </section>
 
 {% if blog.description %}
-<section class="py border-t">
+<section class="py section-text border-t">
   <div class="container">
-    <div class="section-text text">
+    <div class="text">
       {{ blog.description|safe }}
     </div>
   </div>

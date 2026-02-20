@@ -2,9 +2,21 @@ import * as functions from './modules/functions.js';
 
 functions.isWebp();
 
+import {Fancybox} from "@fancyapps/ui"
+
 import "./modules/popup/popup.js";
 import "./modules/sliders.js";
 import "./modules/normalizeFormatPhoneLink.js";
+
+import { initCart } from './modules/cart/index.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCart();
+});
+
+Fancybox.bind("[data-fancybox]", {
+  // Your custom options
+});
 
 import Swiper from "swiper";
 import {Navigation, Pagination, Scrollbar, Thumbs, EffectFade} from "swiper/modules";
@@ -47,7 +59,6 @@ document.querySelectorAll('.accordion__title').forEach(title => {
     }
   });
 });
-
 
 const singleThumb = new Swiper('.single__thumb', {
 

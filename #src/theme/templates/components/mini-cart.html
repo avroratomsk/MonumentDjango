@@ -1,0 +1,32 @@
+{% load static %}{% load carts_tag %}{% user_carts request as carts %}
+<div class="mini-cart" id="mini-cart">
+
+  <div class="mini-cart_noempty" id="mini-cart_noempty">
+    {% if carts %}
+    <div class="mini-cart__top">
+      <h4 class="mini-cart__title">
+        Корзина
+        <span>(</span><strong id="mini-cart-count"> {{ carts.total_quantity }}</strong><span>)</span>
+      </h4>
+      <button type="button"
+              class="mini-cart__close close"
+              id="close-cart"
+              aria-label="Закрыть мини корзину">
+        <span></span>
+      </button>
+    </div>
+    <div class="mini-cart__inner" id="cart-item">
+      {% include "components/cart-item.html" %}
+    </div>
+
+    <div class="mini-cart__links">
+      <a href="" class="mini-cart__link btn btn--primary">Оформить заказ</a>
+    </div>
+    {% else %}
+    <div class="mini-cart__empty">
+      <p class="mini-cart__empty-text">Пусто</p>
+      <a href="{% url 'category' %}" class="mini-cart__empty-link">Перейти в каталог</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

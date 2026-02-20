@@ -1,0 +1,138 @@
+.mini-cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  width: 20vw;
+  min-width: 290px;
+  height: 100vh;
+  background-color: #fff;
+  padding: 30px;
+  border-left: 1px solid rgba($color: $primaryColor, $alpha: 1);
+  transition: $animation_speed;
+  z-index: 999;
+
+  &.show {
+    transform: translateX(0%);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid rgba($color: $primaryColor, $alpha: 0.2);
+    border-top: 1px solid rgba($color: $primaryColor, $alpha: 0.2);
+  }
+
+  &__close {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer;
+  }
+
+  &__title {
+
+  }
+
+  &__inner {
+    height: calc(100vh - 130px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-block: 20px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__link {
+    text-align: center;
+    width: 100%;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 290px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba($color: $primaryColor, $alpha: 0.2);
+  }
+
+  &__thumb {
+    width: 70px;
+    height: 70px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &__content {}
+
+  &__info {}
+
+  &__name {
+    color: $primaryColor;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  &__price {}
+
+  &__char {}
+
+  &__char-item {}
+
+  &__action {}
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    border: 1px solid red;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+
+    .number {
+      width: 50px;
+      height: 20px;
+      border: none;
+      text-align: center;
+    }
+
+    .decrement,
+    .increment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+  }
+
+
+
+
+
+
+
+
+}

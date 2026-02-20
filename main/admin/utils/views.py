@@ -155,7 +155,6 @@ def generic_singleton_edit(
     if not template_name:
         template_name = "common-template/template-edit-add-page.html"
 
-    # Получаем или создаем единственный экземпляр
     try:
         instance = model_class.objects.get()
     except model_class.DoesNotExist:

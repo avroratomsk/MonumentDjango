@@ -60,6 +60,18 @@
     </div>
 
     <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Галерея</p>
+      <a href="{% url 'gallery_settings' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-gear"></i>
+        <span>Настройки</span>
+      </a>
+      <a href="{% url 'gallery_list' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Фотографии</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
       <p class="menu-sidebar__item-title">Страницы с настройками</p>
       <a href="{% url 'admin_settings' %}" class="menu-sidebar__link-general">
         <i class="fas fa-cogs"></i>

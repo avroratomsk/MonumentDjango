@@ -39,15 +39,15 @@
     </div>
   </div>
 </div>
-{% if post.description %}
-<section class="py">
+
+<section class="">
   <div class="container">
     <h1>{% if post.meta_h1 %}{{ post.meta_h1 }}{% else %}{{ post.name }}{% endif %}</h1>
-    <div class="section-text text">
+    {% if post.description %}
+    <div class="section-text text py">
       {{ post.description|safe }}
     </div>
+    {% endif %}
   </div>
 </section>
-{% endif %}
-
 {% endblock %}

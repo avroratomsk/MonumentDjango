@@ -24,7 +24,7 @@
         <button type="button" class="header__search" aria-label="открыть поиск">
           <img src="{% static 'theme/img/icon/i-search.svg' %}" alt="">
         </button>
-        <button type="button" class="header__cart" aria-label="открыть корзину">
+        <button type="button" class="header__cart" data-popup="mini-cart" aria-label="открыть корзину">
           <img src="{% static 'theme/img/icon/i-cart.svg' %}" alt="">
         </button>
       </div>
@@ -87,7 +87,7 @@
           <div><a href="{% url 'contact' %}">Контакты</a></div>
         </div>
         <div class="nav__item">
-          <div><a href="">Документы</a></div>
+          <div><a href="{% url 'documents' %}">Документы</a></div>
         </div>
         <div class="nav__item">
           <div><a href="{% url 'blog' %}">Новости</a></div>

@@ -2,7 +2,13 @@
 {% load static %}
 {% load thumbnail %}
 {% block title %}
-{% if gallery.meta_title %}{{ gallery.meta_title }}{% else %}Галерея{% endif %}
+
+{% if gallery.meta_title %}
+  {{ gallery.meta_title }}
+{% else %}
+  Галерея
+{% endif %}
+
 {% endblock %}
 {% block description %}{{ gallery.meta_description }}{% endblock %}
 {% block keywords %}{{ gallery.meta_keywords }}{% endblock %}
@@ -23,27 +29,29 @@
             <meta itemprop="position" content="2">
         </span>
     </div>
-
-    <h1>Заголовок первого уровня</h1>
   </div>
 </div>
 
 {% if items %}
-<section class="gallery">
-  <div class="container">
-    <h1 class="gallery__title title">
-      {% if gallery.meta_h1 %}{{ gallery.meta_h1 }}{% else %}{{ gallery.name }}{% endif %}
-    </h1>
-    <div class="gallery__grid">
-      {% for item in items %}
-      <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
-        <i class="fa-solid fa-expand"></i>
-        <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
-      </a>
-      {% endfor %}
+  <section class="gallery">
+    <div class="container">
+      <h1 class="gallery__title">
+        {% if gallery.meta_h1 %}
+          {{ gallery.meta_h1 }}
+        {% else %}
+          {{ gallery.name }}
+        {% endif %}
+      </h1>
+      <div class="gallery__grid">
+        {% for item in items %}
+          <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
+            <i class="fa-solid fa-plus"></i>
+            <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
+          </a>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endif %}
 
 {% if gallery.description %}

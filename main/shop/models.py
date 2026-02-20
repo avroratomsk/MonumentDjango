@@ -67,7 +67,7 @@ class Product(models.Model):
     ('draft', 'Черновик'),
     ('hidden', 'Скрыто'),
   ]
-
+  sale = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Скидка")
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
   slug = models.SlugField(max_length=255, unique=True, default="", verbose_name="URL")
   model = models.CharField(max_length=250, null=True, blank=True, verbose_name="Модель")
