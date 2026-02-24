@@ -1,17 +1,5 @@
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    const cookies = document.cookie.split(';');
-    for (let cookie of cookies) {
-      cookie = cookie.trim();
-      if (cookie.startsWith(name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
+import {getCookie} from "../getCookie.js";
+import {initCart} from "./cart.js";
 
 export const addCartHandler = (e) => {
   const requestUrl = e.currentTarget.dataset.url;
@@ -30,7 +18,26 @@ export const addCartHandler = (e) => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('Added to cart:', data);
+      /*const cartItemBody = document.getElementById('cart-item');
+      cartItemBody.innerHTML = data.cart_items_html;*/
+      document.getElementById("mini-cart_noempty").innerHTML = `
+        <h4 class="mini-cart__title">
+          Корзина
+          <span>(</span>
+            <strong id="mini-cart-count">${data.cart_total_count}</strong>
+          <span>)</span>
+        </h4>
+        <div class="mini-cart__inner" id="cart-item">
+          {% include "components/cart-item.html" %}
+        </div>
+        <div class="mini-cart__links">
+          <a href="/orders/create/" class="mini-cart__link">Оформить заказ</a>
+        </div>`;
+
+      const cartItemsContainer = document.getElementById("cart-item");
+      cartItemsContainer.innerHTML = data.cart_items_html;
+      initCart();
+
     })
     .catch(error => console.error(error));
 };

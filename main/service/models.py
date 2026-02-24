@@ -26,6 +26,11 @@ class Service(models.Model):
   
   def get_absolute_url(self):
       return reverse("service_detail", kwargs={"slug": self.slug})
+
+class ServiceContent(models.Model):
+  parent = models.ForeignKey(Service, on_delete=models.CASCADE, related_name="blocks", verbose_name="Привязка к сервису")
+  image = models.ImageField(upload_to="services", blank=True, null=True, verbose_name="Изображение")
+  description = models.TextField(null=True, blank=True, verbose_name="Текст")
   
   
   

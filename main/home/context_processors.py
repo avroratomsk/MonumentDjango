@@ -14,6 +14,9 @@ def socials(request):
 
 def callback_block(request):
     return {"callback": CallBackBlock.load()}
+
+def contact_page(request):
+    return {"contact_page": ContactPage.load()}
  
 def load_settings(request):
     return {'site_settings': BaseSettings.load()}

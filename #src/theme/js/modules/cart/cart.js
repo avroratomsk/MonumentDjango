@@ -1,22 +1,16 @@
-import {addCartHandler, closeMiniCartHandler, openMiniCartHandler} from "./index.js";
+import {addCartHandler, closeMiniCartHandler, removeItemCartHandler} from "./index.js";
+import {addListener} from "../functions.js";
 
 export const initCart = () => {
   const addCartButtons = document.querySelectorAll('.add-cart-btn');
-
-  addCartButtons?.forEach(btn => {
-    btn.addEventListener('click', addCartHandler);
-  });
-
-  const openCartButtons = document.querySelectorAll('.header__cart');
-
-  openCartButtons?.forEach(btn => {
-    btn.addEventListener('click', openMiniCartHandler)
-  })
+  addListener(addCartButtons, 'click', addCartHandler);
 
   const closeCartButtons = document.querySelectorAll('.mini-cart__close');
+  addListener(closeCartButtons, 'click', closeMiniCartHandler);
 
-  closeCartButtons?.forEach(btn => {
-    btn.addEventListener('click', closeMiniCartHandler)
-  })
+  const miniCartItemRemoveButtons = document.querySelectorAll('.mini-cart__delete');
+  addListener(miniCartItemRemoveButtons, 'click', removeItemCartHandler);
+
+  const notification = document.querySelector('.notice');
 
 }

@@ -2,11 +2,10 @@
 <div class="mini-cart" id="mini-cart">
 
   <div class="mini-cart_noempty" id="mini-cart_noempty">
-    {% if carts %}
     <div class="mini-cart__top">
       <h4 class="mini-cart__title">
         Корзина
-        <span>(</span><strong id="mini-cart-count"> {{ carts.total_quantity }}</strong><span>)</span>
+        <span>(</span><strong id="mini-cart-count"> {{ carts.total_quantity }} </strong><span>)</span>
       </h4>
       <button type="button"
               class="mini-cart__close close"
@@ -15,6 +14,7 @@
         <span></span>
       </button>
     </div>
+    {% if carts %}
     <div class="mini-cart__inner" id="cart-item">
       {% include "components/cart-item.html" %}
     </div>
@@ -25,7 +25,7 @@
     {% else %}
     <div class="mini-cart__empty">
       <p class="mini-cart__empty-text">Пусто</p>
-      <a href="{% url 'category' %}" class="mini-cart__empty-link">Перейти в каталог</a>
+      <a href="{% url 'category' %}" class="mini-cart__empty-link btn bnt--primary">Перейти в каталог</a>
     </div>
     {% endif %}
   </div>

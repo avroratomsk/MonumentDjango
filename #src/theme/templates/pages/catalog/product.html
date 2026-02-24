@@ -98,43 +98,33 @@
         <div class="single__btns">
           <button class="btn btn--yellow single__btn">
             Купить сейчас
-            <img src="@img/icon/i-arrow-right-dark.svg" alt="">
+            <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
           <button class="btn btn--primary single__btn add-cart-btn" data-url="{% url 'cart_add' %}" data-id="{{ product.id }}">
             Добавить в корзину
-            <img src="@img/icon/i-arrow-right-dark.svg" alt="">
+            <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
 
           <button class="btn btn--outline single__btn">
             Заказать консультацию
-            <img src="@img/icon/i-arrow-right-dark.svg" alt="">
+            <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
 
         </div>
 
       </div>
     </div>
-
+    {% if product.text %}
     <div class="single__text text">
-      <h2>Описание</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur dolores doloribus eum labore
-        optio provident quae voluptatem! Aspernatur autem, dicta fugiat ipsam laborum nesciunt nihil porro repellendus
-        ut voluptatum!
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid consequatur dolores doloribus eum labore
-        optio provident quae voluptatem! Aspernatur autem, dicta fugiat ipsam laborum nesciunt nihil porro repellendus
-        ut voluptatum!
-      </p>
+      {{ product.text|safe }}
     </div>
+    {% endif %}
   </div>
 </div>
 
 {% include "../../includes/_callback.html" %}
 
-{% include "../../includes/_contact.html" %}
+{% include "../../includes/_map.html" %}
 
 
 {% endblock %}

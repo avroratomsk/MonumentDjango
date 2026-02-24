@@ -42,8 +42,11 @@
     }
 
     img {
+      aspect-ratio: 4 / 3;
       @media screen and (min-width: 768px) {
-        max-width: 256px;
+        max-width: 100%;
+        /*max-width: 256px;*/
+        max-height: 138px;
       }
     }
   }

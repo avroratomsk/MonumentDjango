@@ -17,10 +17,6 @@ def cart(request):
 
   return JsonResponse(response_data)
 
-def cart_add_test(request):
-  product_id = request.POST.get("product_id")
-  return JsonResponse({"status":"true"})
-
 def cart_add(request):
     data = json.loads(request.body)
     productId = data.get('productId')
@@ -78,10 +74,11 @@ def cart_change(request):
   return JsonResponse(response_data)
 
 def cart_remove(request):
-    
-    cart_id = request.POST.get("cart_id")
+    data = json.loads(request.body)
+    cart_id = data.get("cartId")
 
     cart = Cart.objects.get(id=cart_id)
+    print(cart)
     quantity = cart.quantity
     cart.delete()
 
