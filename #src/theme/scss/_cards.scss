@@ -17,6 +17,8 @@
     border: 1px solid $secondaryColor;
     border-radius: 10px;
     overflow: hidden;
+    max-height: 1378px;
+    height: 100%;
 
     @media screen and (max-width: 768px) {
       flex-direction: column;

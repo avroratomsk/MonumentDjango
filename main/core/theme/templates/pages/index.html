@@ -57,7 +57,10 @@
         </div>
         <div class="cards__image">
           {% if cat.image %}
-          <img src="{{ cat.image.url }}" alt="{{ cat.name }}" title="{{ cat.name }}">
+          {% thumbnail cat.image "256x138" format="WEBP" crop="center" as im %}
+          <img src="{{ im.url }}" alt="{{ cat.name }}" title="{{ cat.name }}" width="{{ im.width }}" height="{{ im.height }}">
+          {% endthumbnail %}
+
           {% endif %}
         </div>
       </div>

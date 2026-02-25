@@ -5329,6 +5329,8 @@ button {
   border: 1px solid #F7E76F;
   border-radius: 10px;
   overflow: hidden;
+  max-height: 1378px;
+  height: 100%;
 }
 
 .cards__content {
