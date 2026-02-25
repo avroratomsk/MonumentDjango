@@ -662,14 +662,12 @@ def services_delete(request, pk):
 def upload_archive(request):
   if request.method == 'POST':
     form = ArchiveUploadForm(request.POST, request.FILES)
+    GalleryItem.objects.all().delete()
     if form.is_valid():
-#       category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
-#             Gallery.objects.filter(category=category).delete()
       temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
       os.makedirs(temp_dir, exist_ok=True)
 
-      # Распаковываем архив
       with zipfile.ZipFile(archive, 'r') as zip_ref:
         zip_ref.extractall(temp_dir)
 
@@ -677,7 +675,7 @@ def upload_archive(request):
       for root, dirs, files in os.walk(temp_dir):
         for file in files:
           file_path = os.path.join(root, file)
-
+          print(file_path)
           try:
             image = file_path
             img = PILImage.open(file_path)
