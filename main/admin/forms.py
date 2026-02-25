@@ -287,3 +287,6 @@ class ServiceContentForm(AutoStyledModelForm):
     widgets = {
         'image': CustomImageWidget(),
     }
+
+class ArchiveUploadForm(forms.Form):
+  archive = forms.FileField()

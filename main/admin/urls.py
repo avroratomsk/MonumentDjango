@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path('', views.admin, name="admin"),
+    path('upload-archive/', views.upload_archive, name="upload_archive"),
 
     # Новые urls
     path('socials/', views.socials, name='socials'),

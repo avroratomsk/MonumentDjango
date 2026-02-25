@@ -39,6 +39,11 @@ path_to_excel = f"{BASE_DIR}/upload/upload.xlsx"
 images_folder = f"{BASE_DIR}/upload/image"
 folder = 'upload/'
 
+
+from django.conf import settings
+from PIL import Image as PILImage
+from django.core.files.base import ContentFile
+
 def unzip_archive():
   with zipfile.ZipFile(path, 'r') as zip_ref:
     zip_ref.extractall()
@@ -652,4 +657,42 @@ def services_edit(request, pk):
 @user_passes_test(lambda u: u.is_superuser)
 def services_delete(request, pk):
   return generic_delete(request, Service, pk)
+
+
+def upload_archive(request):
+  if request.method == 'POST':
+    form = ArchiveUploadForm(request.POST, request.FILES)
+    if form.is_valid():
+#       category = form.cleaned_data['category']
+      archive = form.cleaned_data['archive']
+#             Gallery.objects.filter(category=category).delete()
+      temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
+      os.makedirs(temp_dir, exist_ok=True)
+
+      # Распаковываем архив
+      with zipfile.ZipFile(archive, 'r') as zip_ref:
+        zip_ref.extractall(temp_dir)
+
+      # Обрабатываем каждый файл в директории
+      for root, dirs, files in os.walk(temp_dir):
+        for file in files:
+          file_path = os.path.join(root, file)
+
+          try:
+            image = file_path
+            img = PILImage.open(file_path)
+            img.verify()
+            new_image = GalleryItem.objects.create(
+              image=image,
+              status='published'
+            )
+          except (PILImage.UnidentifiedImageError, PILImage.DecompressionBombError):
+            print('Error')
+            continue
+
+      return redirect('gallery')
+  else:
+    form = ArchiveUploadForm()
+
+  return render(request, 'common-template/upload_archive.html', {'form': form})
 
