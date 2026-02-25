@@ -23,6 +23,25 @@
               <label for="{{ form.meta_h1.id_for_label }}" class="form__controls-label"> Заголовок h1: </label>
               {{ form.meta_h1 }} {{ form.meta_h1.errors }}
             </div>
+
+            {% if form.description %}
+            <div class="form__group">
+              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
+                {{ form.description.label }}:
+              </label>
+              {{ form.description }} {{ form.description.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.text %}
+            <div class="form__group">
+              <label for="{{ form.text.id_for_label }}" class="form__controls-label">
+                {{ form.text.label }}:
+              </label>
+              {{ form.text }} {{ form.text.errors }}
+            </div>
+            {% endif %}
+
             <div class="form__group">
               <label for="{{ form.meta_title.id_for_label }}" class="form__controls-label"> Мета заголовок: </label>
               {{ form.meta_title }} {{ form.meta_title.errors }}
@@ -39,15 +58,6 @@
                 keywords: </label>
               {{ form.meta_keywords }} {{ form.meta_keywords.errors }}
             </div>
-
-            {% if form.description %}
-            <div class="form__group">
-              <label for="{{ form.description.id_for_label }}" class="form__controls-label">
-                {{ form.description.label }}:
-              </label>
-              {{ form.description }} {{ form.description.errors }}
-            </div>
-            {% endif %}
 
             {% if form.image %}
             <div class="form__group">

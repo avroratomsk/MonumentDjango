@@ -70,6 +70,7 @@ urlpatterns = [
     path('gallery/<int:pk>/delete/', views.gallery_delete, name='gallery_delete'),
 
     path('services/', views.admin_services, name='admin_services'),
+    path('services-list/', views.services, name='services'),
     path('services/add/', views.services_add, name='services_add'),
     path('services/<int:pk>/edit/', views.services_edit, name='services_edit'),
     path('services/<int:pk>/delete/', views.services_delete, name='services_delete'),

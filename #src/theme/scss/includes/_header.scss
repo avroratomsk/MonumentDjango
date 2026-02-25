@@ -164,6 +164,7 @@
 
         .nav__submenu {
           transform: translateY(0px);
+          pointer-events: all;
           opacity: 1;
         }
       }
@@ -184,8 +185,10 @@
     transform: translateY(-30px);
     border-radius: 5px;
     opacity: 0;
+    pointer-events: none;
     background-color: $white;
     transition: $animation_speed;
+    z-index: 999;
 
     @media screen and (max-width: 992px) {
       display: none;

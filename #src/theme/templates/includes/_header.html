@@ -57,31 +57,34 @@
         <div class="nav__item">
           <div>
             <a href="{% url 'service' %}">Услуги</a>
-            <button type="button" class="nav__arrow">
-              <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
-            </button>
+            {% if services %}
+              <button type="button" class="nav__arrow">
+                <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
+              </button>
+            {% endif %}
           </div>
-          {% if sub_category %}
+
+          {% if services %}
           <ul class="nav__submenu">
-            {% for sub_cat in sub_category %}
+            {% for item in services %}
               <li>
-                <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
+                <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
               </li>
             {% endfor %}
           </ul>
           {% endif %}
         </div>
         <div class="nav__item">
-          <div><a href="">Гравировка</a></div>
+          <div><a href="/service/gravirovka-na-pamyatnike/">Гравировка</a></div>
         </div>
         <div class="nav__item">
-          <div><a href="">Установка</a></div>
+          <div><a href="/service/ustanovka-pamyatnikov/">Установка</a></div>
         </div>
         <div class="nav__item">
           <div><a href="">Наши работы</a></div>
         </div>
         <div class="nav__item">
-          <div><a href="">О нас</a></div>
+          <div><a href="{% url 'about' %}">О нас</a></div>
         </div>
         <div class="nav__item">
           <div><a href="{% url 'contact' %}">Контакты</a></div>

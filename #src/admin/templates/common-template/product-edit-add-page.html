@@ -139,7 +139,7 @@
             {% endif %}
 
           </div>
-          {% if form.status %}
+
           <div class="page-content__col">
             {% if form.slug %}
             <div class="form__group">
@@ -186,6 +186,15 @@
             </div>
             {% endif %}
 
+            {% if form.menu %}
+            <div class="form__group">
+              <label for="{{ form.menu.id_for_label }}" class="form__controls-label">
+                {{ form.menu.label }}:
+              </label>
+              {{ form.menu }} {{ form.menu.errors }}
+            </div>
+            {% endif %}
+
             {% if form.order_by %}
             <div class="form__group">
               <label for="{{ form.order_by.id_for_label }}" class="form__controls-label">{{ form.order_by.label }}:</label>
@@ -194,7 +203,7 @@
             {% endif %}
 
           </div>
-          {% endif %}
+
         </div>
       </div>
       <div class="page-content" id="seo">

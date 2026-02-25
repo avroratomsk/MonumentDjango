@@ -596,79 +596,60 @@ def gallery_delete(request, pk):
 """ Настройки услуг """
 @user_passes_test(lambda u: u.is_superuser)
 def admin_services(request):
-  try:
-     serv_page = ServicePage.objects.get()
-  except:
-     serv_page = ServicePage()
-     serv_page.save()
+  return generic_singleton_edit(request, ServicePageForm, ServicePage, "Настройки страницы Услуг", template_name="common-template/singleton_page_edit.html")
 
-  try:
-    items = Service.objects.all()
-  except:
-    items = Service()
-
-  if request.method == "POST":
-     form_new = ServicePageForm(request.POST, request.FILES, instance=serv_page)
-     if form_new.is_valid():
-       form_new.save()
-
-       return redirect(request.META.get('HTTP_REFERER'))
-     else:
-       return render(request, "serv/serv_settings.html", {"form": form_new})
-
-  serv_page = ServicePage.objects.get()
-
-  form = ServicePageForm(instance=serv_page)
-  context = {
-     "form": form,
-     "serv_page":serv_page,
-     "items": items
-  }
-
-  return render(request, "serv/serv_settings.html", context)
+@user_passes_test(lambda u: u.is_superuser)
+def services(request):
+  return generic_list(request, Service, "Услуги", "services_add", "services_edit", "services_delete")
 
 @user_passes_test(lambda u: u.is_superuser)
 def services_add(request):
-  form = ServiceForm()
-
-  if request.method == "POST":
-    form_new = ServiceForm(request.POST, request.FILES)
-    if form_new.is_valid():
-      form_new.save()
-      url = reverse("admin_service_page") + "?tab=list"
-      return redirect(url)
-    else:
-      return render(request, "serv/serv_add.html", {"form": form_new})
-
-  context = {
-    "form": form
-  }
-
-  return render(request, "serv/serv_add.html", context)
+  return generic_add(request, ServiceForm, "services", "Добавление услуги",  template_name=None)
 
 @user_passes_test(lambda u: u.is_superuser)
 def services_edit(request, pk):
-  services = Service.objects.get(id=pk)
-  form = ServiceForm(instance=services)
-  if request.method == "POST":
-    form_new = ServiceForm(request.POST, request.FILES, instance=services)
-    if form_new.is_valid():
-      form_new.save()
-      url = reverse("admin_service_page") + "?tab=list"
-      return redirect(url)
+  service = Service.objects.get(id=pk)
+  blocks = ServiceContent.objects.filter(parent=service)
+
+  if request.method == 'POST':
+    form = ServiceForm(request.POST, request.FILES, instance=service)
+
+    if form.is_valid():
+      service = form.save()
+
+      # получаем массивы
+      descriptions = request.POST.getlist('block_description[]')
+      images = request.FILES.getlist('block_image[]')
+
+      for i in range(len(descriptions)):
+        description = descriptions[i]
+        image = images[i] if i < len(images) else None
+
+        if description or image:
+          ServiceContent.objects.create(
+            parent=service,
+            description=description,
+            image=image
+          )
+
+      messages.success(request, "Успешно сохранено!")
+      return redirect(request.META.get('HTTP_REFERER'))
+
     else:
-      return render(request, "serv/stock_edit.html", {"form": form_new})
+      messages.error(request, "Ошибка формы")
+
+  else:
+    form = ServiceForm(instance=service)
 
   context = {
-    "form": form
+    "form": form,
+    "title": "Страница редактирования",
+    "block": blocks,
   }
 
-  return render(request, "serv/serv_edit.html", context)
+  return render(request, "common-template/product-edit-add-page.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def services_delete(request, pk):
-  service = Service.objects.get(id=pk)
-  service.delete()
-  url = reverse("admin_service_page") + "?tab=list"
-  return redirect(url)
+  return generic_delete(request, Service, pk)
 

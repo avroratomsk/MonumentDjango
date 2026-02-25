@@ -6,17 +6,16 @@ from django.db.models import Q
 from service.models import Service,ServicePage
 
 def service(request):
-  services = Service.objects.filter(status=True)
+  services = Service.objects.filter(status='published')
+
   try:
     service_settings = ServicePage.objects.get()
   except:
     service_settings = ServicePage()
-
-  print(service_settings)
   
   context = {
-    "service_settings": service_settings,
-    "services": services
+    "settings": service_settings,
+    "service": services
   }
   return render(request, "pages/service/service.html", context)
 
@@ -27,7 +26,7 @@ def service_detail(request, slug):
     "service": service
   }
   
-  return render(request, "pages/service/services.html", context)
+  return render(request, "pages/service/service_detail.html", context)
 
 
 def service_new(request):

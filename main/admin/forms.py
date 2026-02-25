@@ -20,79 +20,6 @@ class RobotsForm(forms.ModelForm):
     
     widgets = {'content': forms.Textarea(attrs={'class': INPUT_CLASS, 'rows': 30 }),}
 
-
-class ServicePageForm(forms.ModelForm):
-  """ Поля настроек старницы услуг"""
-  # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
-  
-  class Meta:
-    model = ServicePage
-    fields = "__all__"
-    widgets = {
-      'name': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-        'id': 'name'
-      }),
-      'slug': forms.TextInput(attrs={
-        'class':INPUT_CLASS,
-        "id": "slug"
-      }),
-      'meta_h1': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_title': forms.TextInput(attrs={
-              'class': INPUT_CLASS,
-            }),
-      'meta_description': forms.Textarea(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_keywords': forms.TextInput(attrs={
-        'class': INPUT_CLASS
-      })
-    }  
-    
-class ServiceForm(forms.ModelForm):
-  """ Form, добавление и редактирование услуг"""
-  # description = forms.CharField(label='Полное описание товара', required=False, widget=CKEditorUploadingWidget())
-  
-  class Meta:
-    model = Service
-    fields = '__all__'
-    widgets = {
-      'name': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-        'id': 'name'
-      }),
-      'slug': forms.TextInput(attrs={
-        'class':INPUT_CLASS,
-        "id": "slug"
-      }),
-      'description': forms.Textarea(attrs={
-          'class': INPUT_CLASS,
-      }),
-      'status': forms.CheckboxInput(attrs={
-        'class': 'form__controls-checkbox',
-      }),
-      'meta_h1': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_title': forms.TextInput(attrs={
-        'class': INPUT_CLASS,
-      }),
-      'meta_description': forms.Textarea(attrs={
-        'class': INPUT_CLASS,
-        'rows': 5,
-      }),
-      'meta_keywords': forms.TextInput(attrs={
-        'class': INPUT_CLASS
-      }),
-      'description':CKEditor5Widget(
-         attrs={'class': 'django_ckeditor_5'},
-         config_name='extends'
-      )
-    }
-
-
 class AutoStyledModelForm(forms.ModelForm):
     DEFAULT_INPUT_CLASS = "form__controls"
     DEFAULT_SELECT_CLASS = "form__controls-select"
@@ -316,3 +243,47 @@ class BranchForm(AutoStyledModelForm):
   class Meta:
     model = Branch
     fields = "__all__"
+
+class ServicePageForm(AutoStyledModelForm):
+  """ Поля настроек страницы услуг"""
+
+  class Meta:
+    model = ServicePage
+    fields = "__all__"
+
+    widgets = {
+      'description': CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      ),
+      'text': CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      )
+    }
+
+class ServiceForm(AutoStyledModelForm):
+  """ Form, добавление и редактирование услуг"""
+
+  class Meta:
+    model = Service
+    fields = '__all__'
+    widgets = {
+      'description': CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      ),
+      'text': CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      )
+    }
+
+class ServiceContentForm(AutoStyledModelForm):
+  class Meta:
+    model = ServiceContent
+    fields = "__all__"
+
+    widgets = {
+        'image': CustomImageWidget(),
+    }

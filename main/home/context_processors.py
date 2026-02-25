@@ -21,6 +21,9 @@ def contact_page(request):
 def load_settings(request):
     return {'site_settings': BaseSettings.load()}
 
+def services(request):
+    return {'services': Service.objects.all()}
+
 # проверенные функции
 
 def category(request):
@@ -37,10 +40,6 @@ def category_menu(request):
 
 def category_blog(request):
     return {'category_blog': BlogCategory.objects.all()}
-
-def services(request):
-    return {'services': Service.objects.filter(footer_view=True).order_by('-id')[:4]}
-
 
 def static_theme_path(request):
     from django.conf import settings

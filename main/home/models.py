@@ -131,6 +131,22 @@ class GalleryItem(models.Model):
       verbose_name="Статус"
   )
 
+class Document(models.Model):
+  STATUS_CHOICES = [
+      ('published', 'Опубликовано'),
+      ('draft', 'Черновик'),
+      ('hidden', 'Скрыто'),
+  ]
+  title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
+  image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
+
+  status = models.CharField(
+      max_length=20,
+      choices=STATUS_CHOICES,
+      default='draft',
+      verbose_name="Статус"
+  )
+
 
 class RobotsTxt(models.Model):
   content = models.TextField(default="User-agent: *\nDisallow: /admin/")

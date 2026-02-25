@@ -3,26 +3,18 @@
 {% block title %}
 {% if settings.meta_title %}
 {{ settings.meta_title }}
-{% else %}
-Мемориальные услуги компании Акрополь
 {% endif %}
 {% endblock %}
 
 {% block description %}
 {% if settings.meta_description %}
 {{ settings.meta_description }}
-{% else %}
-Заказывайте профессиональные услуги по гравировке на памятниках, установке памятников и благоустройству могил.
-Гарантируем качественное выполнение работ, долговечность и аккуратность. Создайте достойную память о близких с
-"Акрополь"
 {% endif %}
 {% endblock %}
 
 {% block keywords %}
 {% if settings.meta_keywords %}
 {{ settings.meta_keywords }}
-{% else %}
-ритуальные услуги томск, мемориальные услуги, ритуальные услуги
 {% endif %}
 {% endblock %}
 {% block content %}
@@ -51,10 +43,9 @@
             <span>Мемориальные улуги</span><br/> компании Монумент
             {% endif %}
           </h1>
-          <p class="service__hero-subtitle">
-            Благоустройство могил включает комплекс работ, направленных на создание
-            привлекательного и ухоженного вида захоронения.
-          </p>
+          {% if settings.description %}
+            {{ settings.description|safe }}
+          {% endif %}
 
           <div class="hero__buttons">
             <button type="button" class="service__hero-button btn">Проконсультироваться</button>
@@ -66,40 +57,33 @@
       </div>
     </div>
   </div>
-
+  {% if service %}
   <section class="service__content py">
     <div class="container">
-      <h1 class="service__content-title">Наши услуги</h1>
       <div class="service__items">
-        <a href="{% url 'service_new' %}" class="service__item"
+        {% for serv in service %}
+        <a href="{{ serv.get_absolute_url }}" class="service__item"
            style="background-image: url({% static 'theme/img/texture.jpg' %})">
           <div class="service__icon">
-            <img src="{% static 'theme/img/serice-5.png' %}" alt="" title=""/>
+            <img src="{{ serv.image.url }}" alt="" title=""/>
           </div>
-          <p class="service__item-text">Установка памятника</p>
+          <p class="service__item-text">{{ serv.name }}</p>
         </a>
-        <a href="{% url 'service_grav' %}" class="service__item"
-           style="background-image: url({% static 'theme/img/texture.jpg' %})">
-          <div class="service__icon">
-            <img src="{% static 'theme/img/service-6.png' %}" alt=""  title=""/>
-          </div>
-          <p class="service__item-text">Гравировка на памятнике</p>
-        </a>
+        {% endfor %}
       </div>
     </div>
   </section>
+  {% endif %}
 
-
-  {% if settings.description %}
-  <section class="service-content">
+  {% if settings.text %}
+  <section class="service-content py">
     <div class="container">
       <div class="service-content__inner">
         <div class="service-content__row">
           <div class="service-content__onecol">
-            <div class="service-content__text _text" style="margin-bottom: 20px;">
-              {{ settings.description|safe }}
+            <div class="service-content__text _text" style="margin-bottom: 40px;">
+              {{ settings.text|safe }}
             </div>
-            <a href="{% url 'category' %}" class="service-content__btn _btn">Перейти в каталог</a>
           </div>
         </div>
       </div>
