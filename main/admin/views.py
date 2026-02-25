@@ -687,7 +687,6 @@ def upload_archive(request):
               status='published'
             )
           except (PILImage.UnidentifiedImageError, PILImage.DecompressionBombError):
-            print('Error')
             continue
 
       return redirect('gallery')
