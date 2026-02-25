@@ -6053,7 +6053,10 @@ body._lock::after {
 
 .service__hero-image {
   max-width: 400px;
+  max-height: 400px;
   width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .service__hero-title {

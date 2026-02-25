@@ -35,7 +35,9 @@
 
   &__hero-image {
     max-width: 400px;
+    max-height: 400px;
     width: 100%;
+    object-fit: contain;
   }
 
   &__hero-title {
