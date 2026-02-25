@@ -50,7 +50,9 @@
 
         </div>
         <div class="service__col">
+          {% if service.image %}
           <img src="{{ service.image.url }}" alt="" title="" class="service__hero-image"/>
+          {% endif %}
         </div>
       </div>
     </div>
