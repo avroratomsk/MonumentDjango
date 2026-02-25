@@ -139,7 +139,7 @@ class Document(models.Model):
   ]
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
   image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
-
+  text = models.TextField(blank=True, null=True, verbose_name="Текст на странице")
   status = models.CharField(
       max_length=20,
       choices=STATUS_CHOICES,

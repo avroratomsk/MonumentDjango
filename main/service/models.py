@@ -44,7 +44,7 @@ class Service(models.Model):
       choices=STATUS_ACTIVE,
       default='published',
       verbose_name="Выводить в меню"
-    )
+  )
   
   def __str__(self):
     return self.name

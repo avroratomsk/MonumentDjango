@@ -487,6 +487,13 @@
             </div>
             {% endif %}
 
+            {% if form.menu %}
+            <div class="form__group">
+              <label for="{{ form.menu.id_for_label }}" class="form__controls-label">{{ form.menu.label }}:</label>
+              {{ form.menu }} {{ form.menu.errors }}
+            </div>
+            {% endif %}
+
             {% if form.add_submenu %}
             <div class="form__group">
               <label for="{{ form.add_submenu.id_for_label }}" class="form__controls-label">{{ form.add_submenu.label }}:</label>
