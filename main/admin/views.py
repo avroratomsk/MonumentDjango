@@ -675,13 +675,13 @@ def upload_archive(request):
       for root, dirs, files in os.walk(temp_dir):
         for file in files:
           file_path = os.path.join(root, file)
-          print(file_path)
+
           try:
-            image = file_path
             img = PILImage.open(file_path)
             img.verify()
+            relative_path = os.path.relpath(file_path, settings.MEDIA_ROOT)
             new_image = GalleryItem.objects.create(
-              image=image,
+              image=relative_path,
               status='published'
             )
           except (PILImage.UnidentifiedImageError, PILImage.DecompressionBombError):
