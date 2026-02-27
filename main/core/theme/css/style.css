@@ -6245,10 +6245,33 @@ body._lock::after {
   margin-bottom: 40px;
 }
 
+.gallery__filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.gallery__filter-link {
+  padding: 10px;
+  border: 1px solid #02075d;
+  color: #02075d;
+  border-radius: 10px;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+}
+
 .gallery__grid {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 20px;
 }
 
@@ -6336,6 +6359,52 @@ body._lock::after {
   -o-object-fit: cover;
      object-fit: cover;
   margin-top: 0px;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.pagination__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.pagination__item {
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #02075d;
+  border-radius: 5px;
+  color: #02075D;
+}
+
+.pagination__arrow {
+  font-size: 25px;
+  color: #02075D;
 }
 
 .filter-news {
@@ -9280,7 +9349,7 @@ body main {
   }
 
   .gallery__grid {
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
@@ -11596,6 +11665,11 @@ body main {
   .card-news:hover .card-news__image {
     -webkit-animation: imagesUp 5s ease forwards;
             animation: imagesUp 5s ease forwards;
+  }
+
+  .gallery__filter-link:hover {
+    background: #02075d;
+    color: #fff;
   }
 
   .gallery__item:hover i {

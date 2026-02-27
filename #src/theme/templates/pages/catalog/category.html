@@ -45,8 +45,8 @@
     <div class="category-details__col">
 
       <div class="index-catalog__cards">
-        {% if products %}
-        {% for product in products %}
+        {% if items %}
+        {% for product in items %}
           <div class="index-catalog__card card" itemscope="" itemtype="https://schema.org/Product">
             {% if product.image %}
               <div class="card__image">
@@ -92,6 +92,25 @@
         {% endfor %}
         {% endif %}
       </div>
+
+      {% if items.paginator.count > 15 %}
+      <div class="pagination">
+        <a href="{% if items.has_previous %}?{% chenge_params page=items.previous_page_number %}{% else %}#{% endif %}"
+           class="pagination__arrow {% if not items.has_previous%}disabled{% endif %}">«</a>
+        <ul class="pagination__list">
+          {% for page in items.paginator.page_range %}
+          {% if page >= items.number|add:-2 and page <= items.number|add:2 %}
+          <li>
+            <a href="?{% chenge_params page=page %}"
+               class="pagination__item  {% if items.number == page %}_active{% endif %}">{{page}}</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <a href="{% if items.has_next %}?{% chenge_params page=items.next_page_number %}{% else %}#{% endif %}"
+           class="pagination__arrow">»</a>
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>

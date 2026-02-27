@@ -83,6 +83,18 @@ class GalleryPageForm(AutoStyledModelForm):
       )
     }
 
+class GalleryCategoryForm(AutoStyledModelForm):
+  class Meta:
+    model = GalleryCategory
+    fields = "__all__"
+
+    widgets = {
+      'description':CKEditor5Widget(
+          attrs={'class': 'django_ckeditor_5'},
+          config_name='extends'
+      )
+    }
+
 class GalleryItemForm(AutoStyledModelForm):
   class Meta:
     model = GalleryItem
@@ -289,4 +301,5 @@ class ServiceContentForm(AutoStyledModelForm):
     }
 
 class ArchiveUploadForm(forms.Form):
+  category = forms.ModelChoiceField(queryset=GalleryCategory.objects.all())
   archive = forms.FileField()

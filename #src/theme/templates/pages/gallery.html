@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load shop_tags %}
 {% block title %}
 
 {% if gallery.meta_title %}
-  {{ gallery.meta_title }}
+{{ gallery.meta_title }}
 {% else %}
-  Галерея
+Галерея
 {% endif %}
 
 {% endblock %}
@@ -23,36 +24,72 @@
         Главная
         <meta itemprop="position" content="1">
       </a>
-      <span itemprop="itemListElement" itemscope=""
-            itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
-            {{ gallery.title }}
-            <meta itemprop="position" content="2">
-        </span>
+      <a href="{% url 'gallery' %}" itemprop="itemListElement" itemscope=""
+          itemtype="http://schema.org/ListItem" class="breadcrumbs__item">
+          {% if gallery.title %}{{ gallery.title }}{% else %}Галерея{% endif %}
+          <meta itemprop="position" content="2">
+      </a>
+      {% if category %}
+      <span itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        {{ category.title }}
+        <meta itemprop="position" content="3">
+      </span>
+      {% endif %}
     </div>
   </div>
 </div>
 
-{% if items %}
-  <section class="gallery">
-    <div class="container">
-      <h1 class="gallery__title">
-        {% if gallery.meta_h1 %}
-          {{ gallery.meta_h1 }}
-        {% else %}
-          {{ gallery.name }}
-        {% endif %}
-      </h1>
-      <div class="gallery__grid">
-        {% for item in items %}
-          <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
-            <i class="fa-solid fa-plus"></i>
-            <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
-          </a>
-        {% endfor %}
-      </div>
+
+<section class="gallery">
+  <div class="container">
+    <h1 class="gallery__title">
+      {{ category }}
+      {% if category.meta_h1 %}
+      {{ category.meta_h1 }}
+      {% else %}
+      {{ category.title }}
+      {% endif %}
+    </h1>
+    {% if categories %}
+    <div class="gallery__filter">
+      {% for category in categories %}
+      <a href="{{ category.get_absolute_url }}" class="gallery__filter-link">{{ category.title }}</a>
+      {% endfor %}
     </div>
-  </section>
-{% endif %}
+    {% endif %}
+
+    <div class="gallery__grid">
+      {% for item in items %}
+      <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
+        <i class="fa-solid fa-plus"></i>
+        <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if items.paginator.count > 15 %}
+    <div class="pagination">
+      <a href="{% if items.has_previous %}?{% chenge_params page=items.previous_page_number %}{% else %}#{% endif %}"
+         class="pagination__arrow {% if not items.has_previous%}disabled{% endif %}">«</a>
+      <ul class="pagination__list">
+        {% for page in items.paginator.page_range %}
+          {% if page >= items.number|add:-2 and page <= items.number|add:2 %}
+            <li>
+              <a href="?{% chenge_params page=page %}"
+               class="pagination__item  {% if items.number == page %}_active{% endif %}">{{page}}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <a href="{% if items.has_next %}?{% chenge_params page=items.next_page_number %}{% else %}#{% endif %}"
+         class="pagination__arrow">»</a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
 
 {% if gallery.description %}
 <section class="py">

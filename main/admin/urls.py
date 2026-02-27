@@ -63,6 +63,10 @@ urlpatterns = [
     path('category-blog/<int:pk>/edit/', views.category_blog_edit, name='category_blog_edit'),
     path('category-blog/<int:pk>/delete/', views.category_blog_delete, name='category_blog_delete'),
 
+    path('gallery-category/add/', views.gallery_category_add, name='gallery_category_add'),
+    path('gallery-list-category/', views.gallery_category_list, name='gallery_category_list'),
+    path('gallery-category/<int:pk>/edit/', views.gallery_category_edit, name='gallery_category_edit'),
+    path('gallery-category/<int:pk>/delete/', views.gallery_category_delete, name='gallery_category_delete'),
 
     path('gallery-settings/', views.gallery_settings, name='gallery_settings'),
     path('gallery/add/', views.gallery_add, name='gallery_add'),

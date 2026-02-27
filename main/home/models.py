@@ -116,12 +116,37 @@ class GalleryPage(SingletonModel):
   meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
   meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
 
+class GalleryCategory(models.Model):
+  STATUS_CHOICES = [
+      ('published', 'Опубликовано'),
+      ('draft', 'Черновик'),
+      ('hidden', 'Скрыто'),
+  ]
+  title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
+  slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
+  image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
+  description = models.TextField(blank=True, null=True, verbose_name="Текст на странице")
+  status = models.CharField(
+      max_length=20,
+      choices=STATUS_CHOICES,
+      default='draft',
+      verbose_name="Статус"
+  )
+
+  def __str__(self):
+      return self.title
+
+  def get_absolute_url(self):
+      return reverse("gallery_detail", kwargs={"slug": self.slug})
+
 class GalleryItem(models.Model):
   STATUS_CHOICES = [
       ('published', 'Опубликовано'),
       ('draft', 'Черновик'),
       ('hidden', 'Скрыто'),
   ]
+
+  category = models.ForeignKey(GalleryCategory, on_delete=models.CASCADE, null=True, blank=True, related_name="category", verbose_name="Категрия")
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
   image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
   status = models.CharField(
@@ -146,6 +171,21 @@ class Document(models.Model):
       default='draft',
       verbose_name="Статус"
   )
+
+""" class DocumentItem(models.Model):
+  STATUS_CHOICES = [
+      ('published', 'Опубликовано'),
+      ('draft', 'Черновик'),
+      ('hidden', 'Скрыто'),
+  ]
+  title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
+  image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
+  status = models.CharField(
+      max_length=20,
+      choices=STATUS_CHOICES,
+      default='draft',
+      verbose_name="Статус"
+  ) """
 
 
 class RobotsTxt(models.Model):

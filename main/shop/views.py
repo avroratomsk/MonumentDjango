@@ -28,7 +28,7 @@ def category(request):
   context = {
     "categories":categories,
     "settings": settings,
-    "products": current_page,
+    "items": current_page,
   }
 
   return render(request, "pages/catalog/category.html", context)
@@ -36,7 +36,7 @@ import urllib.parse
 
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
-  category = category = get_object_or_404(Category, slug=slug)
+  category = get_object_or_404(Category, slug=slug)
   products = Product.objects.filter(status='published', category=category).order_by('order_by')
 
   if category.children:
@@ -51,11 +51,10 @@ def category_detail(request, slug):
     "subcategories": subcategories,
     "categories": categories,
     "category": category,
-    "products": current_page
+    "items": current_page
   }
 
   return render(request, "pages/catalog/category-details.html", context)
-
 
 def product(request, parent, slug):
     product = Product.objects.get(slug=slug)

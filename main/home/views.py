@@ -66,27 +66,48 @@ def gallery(request):
 
   items = GalleryItem.objects.filter(status="published")
 
+  category = GalleryCategory.objects.filter(status="published")
+
+  page = request.GET.get('page', 1)
+  paginator = Paginator(items, 16)
+  current_page = paginator.page(int(page))
+
   context = {
     "gallery": gallery,
-    "items": items,
+    "items": current_page,
+    "categories": category
+  }
+
+  return render(request, 'pages/gallery.html', context)
+
+def gallery_detail(request, slug):
+  category = GalleryCategory.objects.get(slug=slug)
+  categories = GalleryCategory.objects.filter(status="published")
+  items = GalleryItem.objects.filter(category__slug=slug, status="published")
+
+  page = request.GET.get('page', 1)
+  paginator = Paginator(items, 16)
+  current_page = paginator.page(int(page))
+
+  context = {
+    "items": current_page,
+    "categories": categories,
+    "category": category,
   }
 
   return render(request, 'pages/gallery.html', context)
 
 def documents(request):
   try:
-    gallery = GalleryPage.objects.get()
+    item = Document.objects.get()
   except:
-    gallery = GalleryPage()
-
-  items = GalleryItem.objects.filter(status="published")
+    item = Document()
 
   context = {
-    "gallery": gallery,
-    "items": items,
+    "item": item,
   }
 
-  return render(request, 'pages/gallery.html', context)
+  return render(request, 'pages/documents.html', context)
 
 
 def privacy(request):

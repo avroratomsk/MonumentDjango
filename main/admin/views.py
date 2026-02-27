@@ -597,6 +597,22 @@ def gallery_edit(request, pk):
 def gallery_delete(request, pk):
   return generic_delete(request, GalleryItem, pk)
 
+@user_passes_test(lambda u: u.is_superuser)
+def gallery_category_list(request):
+  return generic_list(request, GalleryCategory, "Список категорий", "gallery_category_add", "gallery_category_edit", "gallery_category_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
+def gallery_category_add(request):
+  return generic_add(request, GalleryCategoryForm, "gallery_category_list", "Добавление категории фотографий",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def gallery_category_edit(request, pk):
+  return generic_edit(request,  pk, GalleryCategory,  GalleryCategoryForm, "gallery_category_list", "Редактирование категории фотографий", template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def gallery_category_delete(request, pk):
+  return generic_delete(request, GalleryCategory, pk)
+
 
 """ Настройки услуг """
 @user_passes_test(lambda u: u.is_superuser)
@@ -664,6 +680,7 @@ def upload_archive(request):
     form = ArchiveUploadForm(request.POST, request.FILES)
     GalleryItem.objects.all().delete()
     if form.is_valid():
+      category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
       temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
       os.makedirs(temp_dir, exist_ok=True)
@@ -682,6 +699,7 @@ def upload_archive(request):
             relative_path = os.path.relpath(file_path, settings.MEDIA_ROOT)
             new_image = GalleryItem.objects.create(
               image=relative_path,
+              category=category,
               status='published'
             )
           except (PILImage.UnidentifiedImageError, PILImage.DecompressionBombError):
