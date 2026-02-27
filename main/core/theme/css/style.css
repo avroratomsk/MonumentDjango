@@ -6020,9 +6020,9 @@ body._lock::after {
   min-height: 450px;
   position: relative;
   background: rgb(65, 162, 208);
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, rgba(65, 162, 208, 0.09)), to(rgb(255, 255, 255)));
-  background: -o-linear-gradient(bottom, rgba(65, 162, 208, 0.09) 50%, rgb(255, 255, 255) 100%);
-  background: linear-gradient(0deg, rgba(65, 162, 208, 0.09) 50%, rgb(255, 255, 255) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, rgba(2, 7, 93, 0.09)), to(rgb(255, 255, 255)));
+  background: -o-linear-gradient(bottom, rgba(2, 7, 93, 0.09) 50%, rgb(255, 255, 255) 100%);
+  background: linear-gradient(0deg, rgba(2, 7, 93, 0.09) 50%, rgb(255, 255, 255) 100%);
 }
 
 .service__hero p {

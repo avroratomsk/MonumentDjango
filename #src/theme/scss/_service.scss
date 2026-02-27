@@ -5,7 +5,7 @@
     min-height: 450px;
     position: relative;
     background: rgb(65, 162, 208);
-    background: linear-gradient(0deg, rgba(65, 162, 208, 0.09) 50%, rgb(255, 255, 255) 100%);
+    background: linear-gradient(0deg, rgba($primaryColor, 0.09) 50%, rgb(255, 255, 255) 100%);
 
     p {
       max-width: 800px;
