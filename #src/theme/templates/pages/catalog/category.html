@@ -49,12 +49,12 @@
         {% for product in items %}
           <div class="index-catalog__card card" itemscope="" itemtype="https://schema.org/Product">
             {% if product.image %}
-              <div class="card__image">
+            <a href="{{ product.get_absolute_url }}" class="card__image">
 
-                  <img src="{{ product.image.url }}" width="" height="" alt="{{ product.name }}"
-                     title="{{ product.name }}" style="height: 100%"
-                     itemprop="image">
-              </div>
+              <img src="{{ product.image.url }}" width="" height="" alt="{{ product.name }}"
+                   title="{{ product.name }}" style="height: 100%"
+                   itemprop="image">
+            </a>
             {% endif %}
             <div class="card__content">
               <a href="" class="card__content-title">
