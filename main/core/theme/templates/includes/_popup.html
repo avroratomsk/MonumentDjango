@@ -49,5 +49,21 @@
   </div>
 </div>
 
+<div id="search" class="popup">
+  <div class="popup__wrapper">
+    <div class="popup__content">
+      <div class="popup__top">
+        <button data-close type="button" class="popup__close close"><span></span></button>
+      </div>
+      <h2 class="popup__title">Поиск</h2>
+      <form action="." class="popup__form form" method="POST" id="">
+        {% csrf_token %}
+        <input type="search" name="search" class="form__input" placeholder="Поиск...">
+        <button type="submit" class="form__button btn btn--primary">Отправить</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 
