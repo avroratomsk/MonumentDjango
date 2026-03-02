@@ -4,14 +4,14 @@
 {% block title %}
 
 {% if gallery.meta_title %}
-{{ gallery.meta_title }}
+{{ docs.meta_title }}
 {% else %}
-Галерея
+Документы
 {% endif %}
 
 {% endblock %}
-{% block description %}{{ gallery.meta_description }}{% endblock %}
-{% block keywords %}{{ gallery.meta_keywords }}{% endblock %}
+{% block description %}{{ docs.meta_description }}{% endblock %}
+{% block keywords %}{{ docs.meta_keywords }}{% endblock %}
 
 {% block content %}
 
@@ -32,36 +32,50 @@
   </div>
 </div>
 
-{% if items %}
 <section class="gallery">
   <div class="container">
+
     <h1 class="gallery__title">
-      {% if gallery.meta_h1 %}
-      {{ gallery.meta_h1 }}
-      {% else %}
-      {{ gallery.name }}
-      {% endif %}
+      Документы
     </h1>
+
+    {% if docs.text %}
+    <section class="py">
+      <div class="container">
+        <div class="section-text text">
+          {{ docs.text|safe }}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if items %}
     <div class="gallery__grid">
       {% for item in items %}
-      <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
-        <i class="fa-solid fa-plus"></i>
-        <img src="{{ item.image.url }}" alt="{{ item.title }}" title="{{ item.title }}">
-      </a>
+        {% if item.image %}
+          <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
+            <i class="fa-solid fa-plus"></i>
+            <img src="{{ item.image.url }}" alt="{{ item.image.title }}" title="{{ item.image.title }}">
+          </a>
+        {% endif %}
       {% endfor %}
     </div>
-  </div>
-</section>
-{% endif %}
+    {% endif %}
 
-{% if gallery.description %}
-<section class="py">
-  <div class="container">
-    <div class="section-text text">
-      {{ gallery.description|safe }}
+    {% if items %}
+    <div class="gallery__grid py">
+      {% for item in items %}
+      {% if item.file %}
+      <a href="{{ item.file.url }}" class="gallery__link" download>
+        {{ item.title }}
+        <i class="fa-solid fa-download"></i>
+      </a>
+      {% endif %}
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
 </section>
-{% endif %}
+
 
 {% endblock %}

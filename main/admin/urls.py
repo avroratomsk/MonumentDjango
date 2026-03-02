@@ -68,6 +68,12 @@ urlpatterns = [
     path('gallery-category/<int:pk>/edit/', views.gallery_category_edit, name='gallery_category_edit'),
     path('gallery-category/<int:pk>/delete/', views.gallery_category_delete, name='gallery_category_delete'),
 
+    path('docs-settings/', views.docs_settings, name='docs_settings'),
+    path('docs-list/', views.docs_list, name='docs_list'),
+    path('docs/add/', views.docs_add, name='docs_add'),
+    path('docs/<int:pk>/edit/', views.docs_edit, name='docs_edit'),
+    path('docs/<int:pk>/delete/', views.docs_delete, name='docs_delete'),
+
     path('gallery-settings/', views.gallery_settings, name='gallery_settings'),
     path('gallery/add/', views.gallery_add, name='gallery_add'),
     path('gallery-list/', views.gallery_list, name='gallery_list'),

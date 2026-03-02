@@ -58,6 +58,22 @@ def contact(request):
 
   return render(request, 'pages/contact.html', context)
 
+def documents(request):
+
+  try:
+    docs = Document.objects.get()
+  except:
+    docs = Document()
+
+  items = DocumentItem.objects.filter(status='published')
+
+  context = {
+    "docs": docs,
+    "items": items
+  }
+
+  return render(request, 'pages/documents.html', context)
+
 def gallery(request):
   try:
     gallery = GalleryPage.objects.get()
@@ -81,7 +97,10 @@ def gallery(request):
   return render(request, 'pages/gallery.html', context)
 
 def gallery_detail(request, slug):
-  category = GalleryCategory.objects.get(slug=slug)
+  try:
+    category = GalleryCategory.objects.get(slug=slug)
+  except:
+    category = GalleryCategory.objects.all()
   categories = GalleryCategory.objects.filter(status="published")
   items = GalleryItem.objects.filter(category__slug=slug, status="published")
 
@@ -97,17 +116,7 @@ def gallery_detail(request, slug):
 
   return render(request, 'pages/gallery.html', context)
 
-def documents(request):
-  try:
-    item = Document.objects.get()
-  except:
-    item = Document()
 
-  context = {
-    "item": item,
-  }
-
-  return render(request, 'pages/documents.html', context)
 
 
 def privacy(request):

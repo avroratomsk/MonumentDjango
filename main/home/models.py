@@ -160,36 +160,30 @@ class GalleryItem(models.Model):
       verbose_name="Статус"
   )
 
-class Document(models.Model):
-  STATUS_CHOICES = [
-      ('published', 'Опубликовано'),
-      ('draft', 'Черновик'),
-      ('hidden', 'Скрыто'),
-  ]
+class Document(SingletonModel):
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
   image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
   text = models.TextField(blank=True, null=True, verbose_name="Текст на странице")
-  status = models.CharField(
-      max_length=20,
-      choices=STATUS_CHOICES,
-      default='draft',
-      verbose_name="Статус"
-  )
+  meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
+  meta_title = models.CharField(max_length=350, null=True, blank=True, verbose_name="Мета заголовок")
+  meta_description = models.TextField(null=True, blank=True, verbose_name="Meta описание")
+  meta_keywords = models.CharField(max_length=350, null=True, blank=True, verbose_name="Meta keywords")
 
-""" class DocumentItem(models.Model):
-  STATUS_CHOICES = [
-      ('published', 'Опубликовано'),
-      ('draft', 'Черновик'),
-      ('hidden', 'Скрыто'),
-  ]
-  title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
-  image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
-  status = models.CharField(
-      max_length=20,
-      choices=STATUS_CHOICES,
-      default='draft',
-      verbose_name="Статус"
-  ) """
+class DocumentItem(models.Model):
+   STATUS_CHOICES = [
+     ('published', 'Опубликовано'),
+     ('draft', 'Черновик'),
+     ('hidden', 'Скрыто'),
+   ]
+   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
+   file = models.FileField(null=True, blank=True, upload_to='documents/')
+   image = models.ImageField(upload_to="documents/", blank=True, null=True, verbose_name="Изображение")
+   status = models.CharField(
+     max_length=20,
+     choices=STATUS_CHOICES,
+     default='draft',
+     verbose_name="Статус"
+   )
 
 
 class RobotsTxt(models.Model):

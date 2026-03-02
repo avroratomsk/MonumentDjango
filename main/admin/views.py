@@ -575,6 +575,26 @@ def category_blog_edit(request, pk):
 def category_blog_delete(request, pk):
   return generic_delete(request, BlogCategory, pk)
 
+""" Настройки Документы """
+@user_passes_test(lambda u: u.is_superuser)
+def docs_settings(request):
+  return generic_singleton_edit(request, DocumentForm, Document, "Настройки страницы документы", template_name="common-template/singleton_page_edit.html")
+
+@user_passes_test(lambda u: u.is_superuser)
+def docs_list(request):
+  return generic_list(request, DocumentItem, "Добавление документов", "docs_add", "docs_edit", "docs_delete")
+
+@user_passes_test(lambda u: u.is_superuser)
+def docs_add(request):
+  return generic_add(request, DocumentItemForm, "docs_settings", "Добавление документов",  template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def docs_edit(request, pk):
+  return generic_edit(request,  pk, DocumentItem,  DocumentItemForm, "docs_settings", "Редактирование фотографии", template_name=None)
+
+@user_passes_test(lambda u: u.is_superuser)
+def docs_delete(request, pk):
+  return generic_delete(request, DocumentItem, pk)
 
 """ Настройки Галереи """
 @user_passes_test(lambda u: u.is_superuser)

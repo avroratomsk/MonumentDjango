@@ -124,6 +124,7 @@
                 {{ form.max_capacity }} {{ form.max_capacity.errors }}
               </div>
               {% endif %}
+
               {% if form.max_capacity_min %}
               <div class="form__group">
                 <label for="{{ form.max_capacity_min.id_for_label }}" class="form__controls-label">
@@ -408,6 +409,13 @@
             <div class="form__group form__group-image">
               <label for="{{ form.image.id_for_label }}" class="form__controls-label">{{ form.image.label }}:</label>
               {{ form.image }} {{ form.image.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.file %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.file.id_for_label }}" class="form__controls-label">{{ form.file.label }}:</label>
+              {{ form.file }} {{ form.file.errors }}
             </div>
             {% endif %}
 

@@ -100,6 +100,23 @@ class GalleryItemForm(AutoStyledModelForm):
     model = GalleryItem
     fields = "__all__"
 
+class DocumentForm(AutoStyledModelForm):
+  class Meta:
+    model = Document
+    fields = "__all__"
+
+    widgets = {
+      'text':CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'},
+        config_name='extends'
+      )
+    }
+
+class DocumentItemForm(AutoStyledModelForm):
+  class Meta:
+    model = DocumentItem
+    fields = "__all__"
+
 class SocialsForm(AutoStyledModelForm):
   class Meta:
     model = Socials

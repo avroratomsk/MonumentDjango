@@ -6248,6 +6248,26 @@ body._lock::after {
   transition: 0.25s;
 }
 
+.gallery__link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background-color: #f7fafc;
+  color: #02075D;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  border-radius: 5px;
+}
+
 .about__grid {
   display: -ms-grid;
   display: grid;
@@ -11612,6 +11632,10 @@ body main {
 
   .gallery__item:hover::before {
     opacity: 1;
+  }
+
+  .gallery__link:hover {
+    background-color: rgba(2, 7, 93, 0.1);
   }
 
   .filter-news__btn:hover {

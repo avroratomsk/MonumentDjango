@@ -98,6 +98,18 @@
     </div>
 
     <div class="menu-sidebar__item">
+      <p class="menu-sidebar__item-title">Документы</p>
+      <a href="{% url 'docs_settings' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-gear"></i>
+        <span>Настройки</span>
+      </a>
+      <a href="{% url 'docs_list' %}" class="menu-sidebar__link-general">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Документы</span>
+      </a>
+    </div>
+
+    <div class="menu-sidebar__item">
       <p class="menu-sidebar__item-title">Страницы с настройками</p>
       <a href="{% url 'admin_settings' %}" class="menu-sidebar__link-general">
         <i class="fas fa-cogs"></i>
