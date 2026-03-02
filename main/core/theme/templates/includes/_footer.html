@@ -62,10 +62,8 @@
 
         <div class="footer__info">
           <p class="footer__time">Время работы:</p>
-          <p class="footer__timework">Понедельник - Выходной</p>
-          <p class="footer__timework">Вт-Пт 09:00 - 17:00</p>
-          <p class="footer__timework">Суббота 10:00 - 16:00</p>
-          <p class="footer__timework">Воскресенье - Выходной</p>
+          {% if site_settings.time_work %}<p class="footer__timework">{{ site_settings.time_work }}</p>{% endif %}
+          {% if site_settings.time_work_weekend %}<p class="footer__timework">{{ site_settings.time_work_weekend }}</p>{% endif %}
         </div>
       </div>
     </div>
