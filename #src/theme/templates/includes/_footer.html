@@ -8,38 +8,36 @@
         </a>
         {% endif %}
       </div>
+      {% if services %}
       <div class="footer__col">
         <p class="footer__title">Услуги</p>
         <ul class="footer__nav">
-          <li><a href="">Доставка</a></li>
-          <li><a href="">Установка</a></li>
-          <li><a href="">Гравировка</a></li>
+          {% for service in services %}
+            <li><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></li>
+          {% endfor %}
         </ul>
       </div>
+      {% endif %}
+
+      {% if categories %}
       <div class="footer__col">
         <p class="footer__title">Каталог</p>
         <ul class="footer__nav">
-          <li><a href="">Памятники</a></li>
-          <li><a href="">Гравировка</a></li>
-          <li><a href="">Портреты</a></li>
-          <li><a href="">Оградки</a></li>
-          <li><a href="">Столы, лавки, кресты</a></li>
-          <li><a href="">Декор</a></li>
-          <li><a href="">Мемориальные комплексы</a></li>
-          <li><a href="">Металлические памятники</a></li>
-          <li><a href="">Рамки и таблицы</a></li>
+          {% for cat in categories %}
+          <li><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+          {% endfor %}
         </ul>
       </div>
+      {% endif %}
+
       <div class="footer__col">
         <p class="footer__title">Меню</p>
         <ul class="footer__nav">
-          <li><a href="">Каталог</a></li>
-          <li><a href="">О нас</a></li>
-          <li><a href="">Наши работы</a></li>
-          <li><a href="">Оплата</a></li>
-          <li><a href="">Услуги</a></li>
+          <li><a href="{% url 'category' %}">Каталог</a></li>
+          <li><a href="{% url 'about' %}">О нас</a></li>
+          <li><a href="{% url 'gallery' %}">Наши работы</a></li>
+          <li><a href="{% url 'service' %}">Услуги</a></li>
           <li><a href="{% url 'contact' %}">Контакты</a></li>
-          <li><a href="">Гравировка</a></li>
         </ul>
       </div>
       <div class="footer__col">
