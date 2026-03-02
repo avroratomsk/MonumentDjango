@@ -6020,6 +6020,10 @@ body._lock::after {
   z-index: 1;
 }
 
+.service__icon img {
+  max-height: 250px;
+}
+
 .service__item-text {
   padding: 40px;
   min-height: 220px;
