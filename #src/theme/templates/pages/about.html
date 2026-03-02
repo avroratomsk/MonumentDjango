@@ -1,115 +1,96 @@
 {% extends 'base.html' %} {% load static %}
 {% block title %}
-О компании | Акрополь в Томске
+{% if about.title %}{{ about.title }}{% else %}О компании{% endif %}
 {% endblock %}
+
 {% block description %}
-Компания Акрополь является одним из лидеров изготовления и продажи изделий из натурального гранита в Томской области.
-Основанная в 1989 году, компания уже много лет успешно работает на внутреннем рынке России.
+{{ about.description }}
 {% endblock %}
+
 {% block keywords %}
-наши работы, портфолио памятников на могилу, фотогрsource афии памятников на могилу
+{{ about.keywords }}
 {% endblock %}
 {% block content %}
 <main class="page">
-  <div class="hero">
-    <div class="hero__container">
-      <img src="{% static 'theme/mb/images/about-hero.png' %}" alt="О компании Акрополь" title="О компании Акрополь"
-           class="hero__image"/>
-      <div class="hero__inner">
-        <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-          <a href="" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
-             class="breadcrumbs__item">
-            Главная
-            <meta itemprop="position" content="1"/>
-          </a>
-          <span itemprop="name" class="breadcrumbs__item">
-            О нас
-            <meta itemprop="position" content="2"/>
-          </span>
+  <div class="service__hero">
+    <div class="container">
+      <div class="service__row">
+        <div class="service__col">
+          <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            <a href="/" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+               class="breadcrumbs__item">
+              Главная
+              <meta itemprop="position" content="1"/>
+            </a>
+            <span itemprop="name" class="breadcrumbs__item">
+              О компании
+              <meta itemprop="position" content="3"/>
+            </span>
+          </div>
+          <h1 class="service__hero-title title">
+            {{ about.name }}
+          </h1>
+
+          {{ about.description|safe }}
+
+          <div class="hero__buttons">
+            <button type="button" class="hero__button btn" data-popup="order-service">
+              Заказать консультацию
+            </button>
+          </div>
+
         </div>
-        <h1 class="hero__title">
-          О компании <span>"Акрополь"</span>
-        </h1>
-        <p class="hero__subtitle">
-          Компания “Акрополь” является одним из лидеров изготовления и продажи изделий из
-          натурального гранита в Томской области.
-          Основанная в 1989 году, компания уже более 30-ти лет успешно работает на внутреннем рынке
-          России.
-        </p>
-        <div class="hero__buttons">
-          <button type="button" class="hero__button hero__button--blue" data-popup="consultation-form"
-                  data-order="По услугам">Получить
-            консультацию
-          </button>
-          <!-- <button type="button" class="hero__button hero__button--small">?</button> -->
+        <div class="service__col">
+          {% if about.image %}
+          <img src="{{ about.image.url }}" alt="" title="" class="service__hero-image"/>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
-  <section class="about">
-    <div class="about__container">
+
+  <section class="about py">
+    <div class="container">
       <div class="about__inner">
         <div class="about__grid">
           <div class="about__grid-item">
-            <p>
-              В нашем интернет-магазине вы можете ознакомиться с широким ассортиментом памятников и
-              выбрать подходящий вариант для вашего близкого.
-            </p>
-            <p>
-              Предоставляем гарантию на все наши памятники на срок до 30 лет.
-              Мы несём полную ответственность за качество своих работ.
-            </p>
-            <p>Преимущественно мы занимается изготовлением гранитных памятников и надгробий на
-              протяжении многих лет, и мы можем с уверенностью сказать, что гранитные памятники обладают
-              рядом преимуществ перед памятниками из других материалов.
-            </p>
-            <img src="{% static 'theme/mb/images/about.jpg' %}" alt="О нашей компании" title="О нашей компании">
+           {% if about.text %}
+            {{ about.text|safe }}
+           {% endif %}
+            {% if about.image_two %}
+            <img src="{{ about.image_two.url }}" alt="О нашей компании" title="О нашей компании">
+            {% endif %}
           </div>
           <div class="about__grid-item">
             <div class="about__grid-image">
-              <img src="{% static 'theme/mb/images/about-1.jpg' %}" alt="О нашей компании" title="О нашей компании">
+              {% if about.image_three %}
+              <img src="{{ about.image_three.url }}" alt="О нашей компании" title="О нашей компании">
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="service-content">
-    <div class="service-content__container">
-      <div class="service-content__inner">
-        <div class="service-content__row">
-          <div class="service-content__col">
-            <img src="{% static 'theme/mb/images/about-3.png' %}" alt="О нашей компании" title="О нашей компании"/>
+
+  <section class="service-content py">
+    <div class="container">
+      <div class="service-content__row">
+        <div class="service-content__col">
+          {% if about.image_four %}
+          <img src="{{ about.image_four.url }}" alt="О нашей компании" title="О нашей компании"/>
+          {% endif %}
+        </div>
+        <div class="service-content__col">
+          <div class="service-content__text _text">
+            {% if about.description %}
+            {{ about.description|safe }}
+            {% endif %}
           </div>
-          <div class="service-content__col">
-            <div class="service-content__text _text">
-              <p>
-                Во-первых, гранит - очень прочный и долговечный материал, который способен сохранять свой
-                первоначальный вид на протяжении столетий.
-              </p>
-              <p>
-                Во-вторых, гранитные памятники имеют очень элегантный и стильный вид, благодаря чему они
-                будут отлично смотреться на могиле.
-              </p>
-              <p>
-                В-третьих, гранит устойчив к воздействию погодных условий и не требует особого ухода.
-                И наконец, гранит - экологически чистый материал, который не наносит вреда окружающей среде
-                и здоровью человека.
-              </p>
-              <p>
-                Компания "Акрополь" создает неповторимые надгробия, которые сохранят память о любимых
-                навсегда. Мы ценим каждого клиента и готовы воплотить ваши идеи в камне.
-              </p>
-              <p>
-                У нас вы найдете широкий выбор дизайнов и материалов для памятников любой сложности.
-                Доверьте создание памятника профессионалам с многолетним опытом.
-              </p>
-              <p><i>Сохраните достойную память о близких и любимых в граните - выбирайте компанию "Акрополь"!</i></p>
-            </div>
-            <button class="service-content__btn _btn" data-popup="order-service" data-order="Заказать памятник">Заказать
-              памятник
-            </button>
-          </div>
+          <button class="service-content__btn btn btn--outline" data-popup="order-service"
+                  data-order="Заказать памятник">Заказать
+            памятник
+          </button>
         </div>
       </div>
     </div>

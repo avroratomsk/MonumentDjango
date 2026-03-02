@@ -398,6 +398,27 @@
             </div>
             {% endif %}
 
+            {% if form.image_two %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.image_two.id_for_label }}" class="form__controls-label">{{ form.image_two.label }}:</label>
+              {{ form.image_two }} {{ form.image_two.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image_three %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.image_three.id_for_label }}" class="form__controls-label">{{ form.image_three.label }}:</label>
+              {{ form.image_three }} {{ form.image_three.errors }}
+            </div>
+            {% endif %}
+
+            {% if form.image_four %}
+            <div class="form__group form__group-image">
+              <label for="{{ form.image_four.id_for_label }}" class="form__controls-label">{{ form.image_four.label }}:</label>
+              {{ form.image_four }} {{ form.image_four.errors }}
+            </div>
+            {% endif %}
+
             {% if form.logo %}
             <div class="form__group form__group-image">
               <label for="{{ form.logo.id_for_label }}" class="form__controls-label">{{ form.logo.label }}:</label>
@@ -475,7 +496,8 @@
             {% if form.type_image %}
             <div class="form__group-checkbox">
               {{ form.type_image }} {{ form.type_image.errors }}
-              <label for="{{ form.type_image.id_for_label }}" class="form__controls-label">Отображение картинки ?
+              <label for="{{ form.type_image.id_for_label }}" class="form__controls-label">
+                Отображение картинки ?
                 : </label>
             </div>
             {% endif %}
