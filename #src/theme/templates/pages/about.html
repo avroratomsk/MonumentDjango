@@ -27,17 +27,17 @@
               <meta itemprop="position" content="3"/>
             </span>
           </div>
-          <h1 class="service__hero-title title">
-            {{ about.name }}
+          {% if about.meta_h1 %}
+          <h1 class="about__hero-title title">
+            {{ about.meta_h1 }}
           </h1>
 
-          {{ about.description|safe }}
+          {% endif %}
+          <div>{{ about.small_description|safe }}</div>
 
-          <div class="hero__buttons">
-            <button type="button" class="hero__button btn" data-popup="order-service">
-              Заказать консультацию
-            </button>
-          </div>
+          <button style="margin-top: 20px;" type="button" class="hero__button btn" data-popup="order-service">
+            Заказать консультацию
+          </button>
 
         </div>
         <div class="service__col">
@@ -54,9 +54,9 @@
       <div class="about__inner">
         <div class="about__grid">
           <div class="about__grid-item">
-           {% if about.text %}
+            {% if about.text %}
             {{ about.text|safe }}
-           {% endif %}
+            {% endif %}
             {% if about.image_two %}
             <img src="{{ about.image_two.url }}" alt="О нашей компании" title="О нашей компании">
             {% endif %}

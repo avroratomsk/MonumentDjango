@@ -6253,6 +6253,11 @@ body._lock::after {
   width: 100%;
 }
 
+.about__hero-title {
+  text-align: left;
+  padding-bottom: 30px;
+}
+
 .about__grid-item p {
   line-height: 140%;
 }

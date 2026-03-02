@@ -22,6 +22,12 @@
     }
   }
 
+  &__hero-title {
+    text-align: left;
+    padding-bottom: 30px;
+  }
+
+
   // .about__grid-item
 
   &__grid-item {
@@ -80,6 +86,9 @@
 
   &__btn {
     margin-top: 40px;
+
   }
+
+
 
 }

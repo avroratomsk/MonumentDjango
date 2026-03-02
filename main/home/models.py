@@ -37,6 +37,7 @@ class AboutPage(SingletonModel):
   image_three = models.ImageField(upload_to="about-page/", blank=True, null=True, verbose_name="Третья фотография")
   image_four = models.ImageField(upload_to="about-page/", blank=True, null=True, verbose_name="Четвертая фотография")
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок")
+  small_description = models.TextField(blank=True, null=True, verbose_name="Небольшое описание под заголовком")
   description = models.TextField(blank=True, null=True, verbose_name="Текст справа от картинки")
   text = models.TextField(blank=True, null=True, verbose_name="Текст на странице")
   meta_h1 = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок первого уровня")
