@@ -24,6 +24,12 @@ def load_settings(request):
 def services(request):
     return {'services': Service.objects.all()}
 
+def category_gallery(request):
+    return {'category_gallery': GalleryCategory.objects.all()}
+
+def gallery(request):
+    return {'gallery': GalleryItem.objects.filter(status='published')[:10]}
+
 # проверенные функции
 
 def category(request):

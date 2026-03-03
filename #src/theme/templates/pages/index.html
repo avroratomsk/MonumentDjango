@@ -66,34 +66,20 @@
   </div>
 </div>
 {% endif %}
-
+{% if gallery %}
 <div class="works">
   <h2 class="title works__title">
     Наши работы
   </h2>
   <div class="works-slider swiper-slider">
     <div class="swiper-wrapper">
+      {% for gal in gallery %}
       <div class="swiper-slide works__slide">
-        <a href="{% static 'theme/img/images/6.jpg' %}" data-gallery="works">
-          <img src="{% static 'theme/img/images/6.jpg' %}" alt="">
+        <a href="{{ gal.image.url }}" data-fancybox="works">
+          <img src="{{ gal.image.url }}" alt="">
         </a>
       </div>
-      <div class="swiper-slide works__slide">
-        <a href="{% static 'theme/img/images/7.jpg' %}" data-gallery="works">
-          <img src="{% static 'theme/img/images/7.jpg' %}" alt="">
-        </a>
-      </div>
-      <div class="swiper-slide works__slide">
-        <a href="{% static 'theme/img/images/8.jpg' %}" data-gallery="works">
-          <img src="{% static 'theme/img/images/8.jpg' %}" alt="">
-        </a>
-      </div>
-
-      <div class="swiper-slide works__slide">
-        <a href="{% static 'theme/img/images/9.jpg' %}" data-gallery="works">
-          <img src="{% static 'theme/img/images/9.jpg' %}" alt="">
-        </a>
-      </div>
+      {% endfor %}
     </div>
     <div class="works__controls">
       <div class="container">
@@ -109,6 +95,7 @@
     </div>
   </div>
 </div>
+{% endif %}
 
 <div class="reviews">
   <div class="container">

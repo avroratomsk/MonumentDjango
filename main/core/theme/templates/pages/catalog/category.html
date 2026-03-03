@@ -30,12 +30,16 @@
 
     <div class="category-details__col">
       <div class="category-details__col" id="filter-category">
-          {% if categories %}
+          {% if categories or category_gallery%}
           <div class="filter__body">
             <!--<label class="filter__label">Категории</label>-->
             <div class="filter__inner">
               {% for category in categories %}
               <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.name }}</a>
+              {% endfor %}
+
+              {% for category in category_gallery %}
+                <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
               {% endfor %}
             </div>
           </div>

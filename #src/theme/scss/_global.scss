@@ -367,6 +367,8 @@ table, th, td {
   // .filter__link
   &__link {
     color: $primaryColor;
+    font-weight: 500;
+    font-size: 16px;
 
     @media screen and (max-width: 992px) {
       padding: 10px 27px;

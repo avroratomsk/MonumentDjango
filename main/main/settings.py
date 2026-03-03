@@ -73,6 +73,8 @@ TEMPLATES = [
                 "home.context_processors.clients",
                 "home.context_processors.sub_category",
                 "home.context_processors.contact_page",
+                "home.context_processors.category_gallery",
+                "home.context_processors.gallery",
             ],
         },
     },
