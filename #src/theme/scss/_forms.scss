@@ -37,8 +37,11 @@
     line-height: 121%;
     color: #c7c7c7;
 
-    @media screen and (min-width: 1200px) {
-      max-width: 229px;
+
+
+    a {
+      text-decoration: underline;
+      color: #c7c7c7;
     }
   }
 

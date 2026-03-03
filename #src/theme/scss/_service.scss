@@ -17,8 +17,11 @@
 
   &__row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 40px;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   &__blocks {

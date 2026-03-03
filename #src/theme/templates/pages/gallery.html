@@ -44,11 +44,16 @@
 <section class="gallery">
   <div class="container">
     <h1 class="gallery__title">
-      {{ category }}
       {% if category.meta_h1 %}
       {{ category.meta_h1 }}
       {% else %}
       {{ category.title }}
+      {% endif %}
+
+      {% if gallery.meta_h1 %}
+      {{ gallery.meta_h1 }}
+      {% else %}
+      {{ gallery.title }}
       {% endif %}
     </h1>
     {% if categories %}
@@ -90,12 +95,21 @@
   </div>
 </section>
 
-
 {% if gallery.description %}
 <section class="py">
   <div class="container">
     <div class="section-text text">
       {{ gallery.description|safe }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if category.description %}
+<section class="py">
+  <div class="container">
+    <div class="section-text text">
+      {{ category.description|safe }}
     </div>
   </div>
 </section>

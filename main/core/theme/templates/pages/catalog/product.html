@@ -43,7 +43,7 @@
       </div>
       <div class="single__right">
         {% if product.name %}<h1 class="single__title">{{ product.name }}</h1>{% endif %}
-        <p class="single__article">Артикул: 1221050012</p>
+        {% if product.model %}<p class="single__article">Модель: {{ product.model }}</p>{% endif %}
 
         <!--<div class="single__filter">
           <div class="single__filter-item">
@@ -100,10 +100,10 @@
             Купить сейчас
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
-          <button class="btn btn--primary single__btn add-cart-btn" data-url="{% url 'cart_add' %}" data-id="{{ product.id }}">
+          <!--<button class="btn btn&#45;&#45;primary single__btn add-cart-btn" data-url="{% url 'cart_add' %}" data-id="{{ product.id }}">
             Добавить в корзину
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
-          </button>
+          </button>-->
 
           <button class="btn btn--outline single__btn">
             Заказать консультацию

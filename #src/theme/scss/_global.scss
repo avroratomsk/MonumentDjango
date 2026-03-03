@@ -55,6 +55,7 @@ table, th, td {
   width: 25px;
   height: 25px;
   transition: $animation_speed;
+  cursor: pointer;
 
 
   &::before,

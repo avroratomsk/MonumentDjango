@@ -17,6 +17,13 @@
     z-index: -1;
   }
 
+  .form__submit {
+
+    @media (max-width: 578px) {
+      width: 100%;
+    }
+  }
+
 
   &__row {
     background: $primaryColor;

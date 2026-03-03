@@ -5,6 +5,12 @@
   overflow: hidden;
   color: #ffffff;
 
+  .form__checkbox {
+    @media screen and (min-width: 1200px) {
+      max-width: 229px !important;
+    }
+  }
+
   &__pattern {
     position: absolute;
     top: -80%;

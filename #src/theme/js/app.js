@@ -7,6 +7,7 @@ import {Fancybox} from "@fancyapps/ui"
 import "./modules/popup/popup.js";
 import "./modules/sliders.js";
 import "./modules/normalizeFormatPhoneLink.js";
+import "./modules/menu/mobileMenu.js";
 
 import { initCart } from './modules/cart/index.js';
 
@@ -21,22 +22,7 @@ Fancybox.bind("[data-fancybox]", {
 import Swiper from "swiper";
 import {Navigation, Pagination, Scrollbar, Thumbs, EffectFade} from "swiper/modules";
 
-const worksSlider = new Swiper('.works-slider', {
-  modules: [Navigation, EffectFade],
-  direction: 'horizontal',
-  /*effect: 'fade',
-  fade: {
-    crossFade: true,
-  },*/
-  autoHeight: true,
-  slidesPerView: 3.5,
-  spaceBetween: 20,
 
-  navigation: {
-    nextEl: '.works-next',
-    prevEl: '.works-prev',
-  },
-});
 
 document.querySelectorAll('.accordion__title').forEach(title => {
   title.addEventListener('click', () => {
@@ -58,72 +44,4 @@ document.querySelectorAll('.accordion__title').forEach(title => {
       body.style.maxHeight = body.scrollHeight + 'px';
     }
   });
-});
-
-const singleThumb = new Swiper('.single__thumb', {
-
-  direction: 'horizontal',
-  loop: true,
-  autoHeight: true,
-  spaceBetween: 20,
-  slidesPerView: 4,
-
-  // scrollbar: {
-  //   el: '.swiper-scrollbar',
-  //   draggable: true,
-  // },
-
-  // breakpoints: {
-  //   320: {
-  //     scrollbar: {
-  //       enabled: true
-  //     },
-  //     slidesPerView: 1,
-  //   },
-  //   992: {
-  //     slidesPerView: 3,
-  //     scrollbar: {
-  //       enabled: false
-  //     },
-  //   }
-  // }
-
-});
-
-const singleSlider = new Swiper('.single__slider', {
-  modules: {Scrollbar, Pagination},
-  direction: 'horizontal',
-  loop: true,
-  autoHeight: true,
-  spaceBetween: 20,
-
-  navigation: {
-    nextEl: '.project__slider-next',
-    prevEl: '.project__slider-prev',
-  },
-
-  scrollbar: {
-    el: '.swiper-scrollbar',
-    draggable: true,
-  },
-
-  thumbs: {
-    swiper: singleThumb,
-  },
-
-  // breakpoints: {
-  //   320: {
-  //     scrollbar: {
-  //       enabled: true
-  //     },
-  //     slidesPerView: 1,
-  //   },
-  //   992: {
-  //     slidesPerView: 3,
-  //     scrollbar: {
-  //       enabled: false
-  //     },
-  //   }
-  // }
-
 });

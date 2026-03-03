@@ -4,7 +4,6 @@ const burger = document.querySelector("#burger");
 const menuClose = document.querySelector("#menu-close");
 
 export const openMenu = (e) => {
-  console.log("openMenu");
   document.querySelector(".nav").classList.add("_active");
   bodyLock();
 }

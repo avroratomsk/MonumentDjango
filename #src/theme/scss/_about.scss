@@ -78,6 +78,10 @@
     display: flex;
     flex-direction: row-reverse;
     gap: 40px;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
   }
 
   &__col {}
