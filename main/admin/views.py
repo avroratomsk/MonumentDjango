@@ -188,7 +188,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
