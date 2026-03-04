@@ -19,7 +19,7 @@ def category(request):
   page = request.GET.get('page', 1)
 
   products = Product.objects.filter(status='published').order_by('id')
-  categories = Category.objects.filter(parent=None, status='published').order_by('id')
+  categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 
   paginator = Paginator(products, 16)
   current_page = paginator.page(int(page))
