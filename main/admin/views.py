@@ -31,7 +31,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 # from slugify import slugify
-from django.utils.text import slugify
+# from django.utils.text import slugify
 general_url_product = "/admin/product/"
 
 path = f"{BASE_DIR}/upload/upload.zip"
@@ -123,61 +123,63 @@ def rename_image(filename):
 
 
 def import_products_from_excel(file_path):
-#     Product.objects.all().delete()
-#     Category.objects.all().delete()
-#     Models.objects.all().delete()
+  Product.objects.all().delete()
+  Category.objects.all().delete()
+  Models.objects.all().delete()
 
-    df = pd.read_excel(file_path, engine='openpyxl')
+  df = pd.read_excel(file_path, engine='openpyxl')
 
-    FIXED_COLUMNS_COUNT = 7
+  FIXED_COLUMNS_COUNT = 7
 
-    for _, row in df.iterrows():
+  for _, row in df.iterrows():
 
-        category_name = str(row.iloc[0]).strip()
+    category_name = str(row.iloc[0]).strip()
 
 
-        if not category_name:
-            continue
+    if not category_name:
+        continue
 
 #         image = rename_image(row.iloc[3])
 
-        category_slug = slugify(category_name)
-        category, created = Category.objects.get_or_create(
-            slug=category_slug,
-            defaults={
-                'name': category_name,
-                'status': 'published',
-            }
-        )
+    category_slug = slugify(category_name)
+    category, created = Category.objects.get_or_create(
+        slug=category_slug,
+        defaults={
+            'name': category_name,
+            'status': 'published',
+        }
+    )
 
 
-        product_name = str(row.iloc[1]).strip()
+    product_name = str(row.iloc[1]).strip()
 
-        if not product_name:
-            continue
+    if not product_name:
+        continue
 
-        product_image = f'goods/{row.iloc[3]}'
+    product_image = f'goods/{row.iloc[3]}'
 
-        product_slug = slugify(product_name)
-        product_unique_slug = get_unique_slug(Product, product_slug)
-        price = row.iloc[4]
+    product_slug = slugify(product_name)
+    product_unique_slug = get_unique_slug(Product, product_slug)
+    price = row.iloc[4]
+    model = row.iloc[2]
 
-        product, pr_created = Product.objects.get_or_create(
-            slug=product_unique_slug,
-            defaults={
-              'name': product_name,
-              'price': price,
-              'status': 'published',
-              'image': product_image
-            }
-        )
+    product, pr_created = Product.objects.get_or_create(
+        slug=product_unique_slug,
+        defaults={
+          'name': product_name,
+          'price': price,
+          'status': 'published',
+          'image': product_image,
+          'model': model
+        }
+    )
 
-        if not pr_created:
-          if product_image:
-            product.image = product_image
-          product.save(update_fields=['image'])
+    if not pr_created:
+      if product_image:
+        product.image = product_image
+      product.save(update_fields=['image'])
 
-        product.category.add(category)
+    product.category.add(category)
 
 
 

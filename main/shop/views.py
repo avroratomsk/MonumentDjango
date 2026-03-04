@@ -19,7 +19,7 @@ def category(request):
   page = request.GET.get('page', 1)
 
   products = Product.objects.filter(status='published').order_by('id')
-  categories = Category.objects.filter(parent=None, status='published')
+  categories = Category.objects.filter(parent=None, status='published').order_by('id')
 
   paginator = Paginator(products, 16)
   current_page = paginator.page(int(page))
@@ -37,7 +37,7 @@ import urllib.parse
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
   category = get_object_or_404(Category, slug=slug)
-  products = Product.objects.filter(status='published', category=category).order_by('order_by')
+  products = Product.objects.filter(status='published', category=category).order_by('price')
 
   if category.children:
     subcategories = Category.objects.filter(parent_id=category)

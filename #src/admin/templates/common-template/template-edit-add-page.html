@@ -544,6 +544,13 @@
             </div>
             {% endif %}
 
+            {% if form.order_by %}
+            <div class="form__group">
+              <label for="{{ form.order_by.id_for_label }}" class="form__controls-label">{{ form.order_by.label }}:</label>
+              {{ form.order_by }} {{ form.order_by.errors }}
+            </div>
+            {% endif %}
+
           </div>
           {% endif %}
         </div>
