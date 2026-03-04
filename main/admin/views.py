@@ -123,9 +123,9 @@ def rename_image(filename):
 
 
 def import_products_from_excel(file_path):
-  Product.objects.all().delete()
-  Category.objects.all().delete()
-  Models.objects.all().delete()
+#   Product.objects.all().delete()
+#   Category.objects.all().delete()
+#   Models.objects.all().delete()
 
   df = pd.read_excel(file_path, engine='openpyxl')
 
@@ -188,7 +188,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-  import_products_from_excel(path_to_excel)
+#   import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
