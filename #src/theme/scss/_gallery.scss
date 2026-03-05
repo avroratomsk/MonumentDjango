@@ -39,7 +39,15 @@
 
   }
 
+  &__grid-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
   &__item {
+    display: flex;
     max-height: 290px;
     position: relative;
     border-radius: 10px;

@@ -45,13 +45,23 @@
               <img src="{% static 'theme/img/icon/i-chevron-down.svg' %}" alt="">
             </button>
           </div>
-          {% if sub_category %}
+          {% if sub_category or category_gallery%}
           <ul class="nav__submenu">
-            {% for sub_cat in sub_category %}
-            <li>
-              <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
-            </li>
-            {% endfor %}
+            {% if sub_category %}
+              {% for sub_cat in sub_category %}
+              <li>
+                <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
+              </li>
+              {% endfor %}
+            {% endif %}
+
+            {% if category_gallery %}
+              {% for sub_cat in category_gallery %}
+                <li>
+                  <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.title }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
           </ul>
           {% endif %}
         </div>

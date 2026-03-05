@@ -52,25 +52,18 @@
     {% if items %}
     <div class="gallery__grid">
       {% for item in items %}
-        {% if item.image %}
+        <div class="gallery__grid-inner">
+          {% if item.image %}
           <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
             <i class="fa-solid fa-plus"></i>
             <img src="{{ item.image.url }}" alt="{{ item.image.title }}" title="{{ item.image.title }}">
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if items %}
-    <div class="gallery__grid py">
-      {% for item in items %}
-      {% if item.file %}
-      <a href="{{ item.file.url }}" class="gallery__link" download>
-        {{ item.title }}
-        <i class="fa-solid fa-download"></i>
-      </a>
-      {% endif %}
+          </a>{% endif %}
+          {% if item.file %}
+          <a href="{{ item.file.url }}" class="gallery__link" download>
+            {{ item.title }}
+            <i class="fa-solid fa-download"></i>
+          </a>{% endif %}
+        </div>
       {% endfor %}
     </div>
     {% endif %}
