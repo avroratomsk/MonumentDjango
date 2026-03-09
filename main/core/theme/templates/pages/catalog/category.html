@@ -35,7 +35,12 @@
             <!--<label class="filter__label">Категории</label>-->
             <div class="filter__inner">
               {% for category in categories %}
-              <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.name }}</a>
+                <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.name }}</a>
+                {% if category.children.all %}
+                  {% for cat in category.children.all %}
+                    <a href="{{ cat.get_absolute_url }}" class="filter__link filter__link-sub">{{ cat.name }}</a>
+                  {% endfor %}
+                {% endif %}
               {% endfor %}
 
               {% for category in category_gallery %}

@@ -4900,8 +4900,13 @@ td {
 
 .filter__link {
   color: #02075D;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
+}
+
+.filter__link-sub {
+  font-weight: 500;
+  margin-left: 10px;
 }
 
 .filter__item {

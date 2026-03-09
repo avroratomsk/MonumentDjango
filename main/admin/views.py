@@ -121,11 +121,11 @@ def rename_image(filename):
 #         print(f"Ошибка rename_image({filename}): {e}")
         return ""
 
-
+from decimal import Decimal
 def import_products_from_excel(file_path):
-#   Product.objects.all().delete()
-#   Category.objects.all().delete()
-#   Models.objects.all().delete()
+  Product.objects.all().delete()
+  Category.objects.all().delete()
+  Models.objects.all().delete()
 
   df = pd.read_excel(file_path, engine='openpyxl')
 
@@ -143,9 +143,9 @@ def import_products_from_excel(file_path):
 
     category_slug = slugify(category_name)
     category, created = Category.objects.get_or_create(
-        slug=category_slug,
+        name=category_name,
         defaults={
-            'name': category_name,
+            'slug': category_slug,
             'status': 'published',
         }
     )
@@ -160,7 +160,14 @@ def import_products_from_excel(file_path):
 
     product_slug = slugify(product_name)
     product_unique_slug = get_unique_slug(Product, product_slug)
-    price = row.iloc[4]
+
+    price_raw = row.iloc[4]
+
+    if pd.isna(price_raw) or str(price_raw).lower() == "nan":
+        price = None
+    else:
+        price = Decimal(str(price_raw))
+
     model = row.iloc[2]
 
     product, pr_created = Product.objects.get_or_create(
@@ -188,7 +195,7 @@ import urllib.parse
 
 @user_passes_test(lambda u: u.is_superuser)
 def admin(request):
-#   import_products_from_excel(path_to_excel)
+  import_products_from_excel(path_to_excel)
 
   # unzip_archive()
   """Данная предстовление отобразает главную страницу админ панели"""
