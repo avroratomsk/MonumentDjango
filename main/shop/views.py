@@ -92,30 +92,39 @@ def model_detail(request, parent, product, model):
 
 @csrf_exempt
 def catalog_search(request):
+    query = request.GET.get("search", "").strip()
 
-    if request.method == "POST":
-        try:
-            result = request.body.decode("utf-8")
-            value = json.loads(result).get('value')
-            try:
-                products = Product.objects.filter(name__icontains=value)
-                data = []
-                for product in products:
+    products = Product.objects.none()
+    models = Models.objects.none()
+    categories = Category.objects.none()
 
-                    try:
-                        image  = product.image.url
-                    except:
-                        image = "/core/theme/mb/images/no-image.png"
+    if query:
+        # Категории
+        categories = Category.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query),
+            status="published"
+        ).distinct()
 
-                    data.append({
-                      'name': product.name,
-                      'price': product.price,
-                      'url': product.get_absolute_url(),
-                      'image': image,
-                    })
-            except Exception as e:
-                print(e)
-            return JsonResponse({"value": data})
-        except json.JSONDecodeError:
-            return JsonResponse({'error': 'Invalid JSON'}, status=400)
-    return JsonResponse({'error': 'Invalid JSON'}, status=400)
+        # Товары
+        products = Product.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query),
+            status="published"
+        ).prefetch_related("category").distinct()
+
+        # Модели
+        models = Models.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query),
+            status="published"
+        ).select_related("parent").distinct()
+
+    context = {
+        "query": query,
+        "products": products,
+        "models": models,
+        "categories": categories,
+    }
+
+    return render(request, "pages/catalog/search.html", context)

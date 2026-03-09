@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% load static %} {% load thumbnail %}
+
+{% block title %}
+Страница поиска
+{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block keywords %}
+
+{% endblock %}
+
+{% block content %}
+<div class="top-page">
+  <div class="container">
+    <div class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <a href="{% url 'home' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Главная
+        <meta itemprop="position" content="1">
+      </a>
+      <a href="{% url 'category' %}" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"
+         class="breadcrumbs__item">
+        Каталог
+        <meta itemprop="position" content="2">
+      </a>
+      <span itemprop="name" class="breadcrumbs__item">
+            Поиск
+            <meta itemprop="position" content="3">
+        </span>
+    </div>
+    {% if query %}
+    <h1 class="top-page__title title">Результаты поиска по запросу: <strong>{{ query }}</strong></h1>
+    {% else %}
+    <p>Введите поисковый запрос</p>
+    {% endif %}
+    <br>
+    <hr>
+    <br>
+  </div>
+</div>
+
+<div class="container">
+
+{% if categories %}
+<h2>Категории</h2>
+
+{% include "../../section/services.html" with category=categories %}
+
+{% endif %}
+
+{% if products %}
+<h2>Подкатегории</h2>
+  {% include "../../section/services.html" with category=products %}
+  <hr>
+  <br>
+{% endif %}
+
+{% if models %}
+<h2>Модели</h2>
+  {% include "../../section/services.html" with category=models %}
+  <hr>
+  <br>
+{% endif %}
+
+{% if not products and not models and query and not categories %}
+<p class="empty">Ничего не найдено</p>
+{% endif %}
+</div>
+{% endblock %}
