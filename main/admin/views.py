@@ -168,7 +168,12 @@ def import_products_from_excel(file_path):
     else:
         price = Decimal(str(price_raw))
 
-    model = row.iloc[2]
+    model_raw = row.iloc[2]
+
+    if pd.isna(model_raw):
+        model = None
+    else:
+        model = str(model_raw).strip()
 
     product, pr_created = Product.objects.get_or_create(
         slug=product_unique_slug,
