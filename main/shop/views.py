@@ -40,7 +40,11 @@ def category_detail(request, slug):
   products = Product.objects.filter(status='published', category=category).order_by('price')
 
   if category.children:
-    subcategories = Category.objects.filter(parent_id=category)
+
+    subcategories = Category.objects.filter(parent_id=category).order_by('order_by')
+
+  for sub in subcategories:
+    print(sub.name)
 
   categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 

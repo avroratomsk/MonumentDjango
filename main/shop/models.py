@@ -53,6 +53,7 @@ class Category(models.Model):
     db_table = 'category' 
     verbose_name = 'Категория'
     verbose_name_plural = "Категории"
+    ordering = ("order_by",)
     
   def __str__(self):
     return self.name
@@ -110,8 +111,14 @@ class Product(models.Model):
     return self.price
 
   def get_absolute_url(self):
-    category = self.category.first()
-    return reverse("product", kwargs={"parent": category.slug, "slug": self.slug})
+      category = self.category.first()
+      if not category:
+          return reverse("home")  # или нужная страница
+
+      return reverse("product", kwargs={
+          "parent": category.slug,
+          "slug": self.slug
+      })
 
 
 
