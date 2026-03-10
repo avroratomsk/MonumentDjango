@@ -39,7 +39,7 @@ def category_detail(request, slug):
   category = get_object_or_404(Category, slug=slug)
 
   if category.view_all == 'published':
-    products = Product.objects.filter(status='published').order_by('price')
+    products = Product.objects.filter(status='published').order_by('-price')
   else:
     products = Product.objects.filter(status='published', category=category).order_by('price')
 
