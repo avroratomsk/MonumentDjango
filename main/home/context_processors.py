@@ -25,7 +25,7 @@ def services(request):
     return {'services': Service.objects.all()}
 
 def category_gallery(request):
-    return {'category_gallery': GalleryCategory.objects.all()}
+    return {'category_gallery': GalleryCategory.objects.filter(add_submenu='published')}
 
 def gallery(request):
     return {'gallery': GalleryItem.objects.filter(status='published')[:10]}

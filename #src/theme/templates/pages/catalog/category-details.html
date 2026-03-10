@@ -49,6 +49,8 @@
             <!--<label class="filter__label">Категории</label>-->
             <div class="filter__inner">
 
+              <a href="{% url 'gallery' %}" class="filter__link">Макеты СВО</a>
+
               {% for category in category_gallery %}
               <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
               {% endfor %}

@@ -56,13 +56,13 @@
       {{ gallery.title }}
       {% endif %}
     </h1>
-    {% if categories %}
+    {% comment %}{% if categories %}
     <div class="gallery__filter">
       {% for category in categories %}
       <a href="{{ category.get_absolute_url }}" class="gallery__filter-link">{{ category.title }}</a>
       {% endfor %}
     </div>
-    {% endif %}
+    {% endif %}{% endcomment %}
 
     <div class="gallery__grid">
       {% for item in items %}

@@ -47,15 +47,6 @@
           </div>
           {% if sub_category or category_gallery%}
           <ul class="nav__submenu">
-
-            {% if category_gallery %}
-            {% for sub_cat in category_gallery %}
-            <li>
-              <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.title }}</a>
-            </li>
-            {% endfor %}
-            {% endif %}
-
             {% if sub_category %}
               {% for sub_cat in sub_category %}
               <li>
@@ -63,6 +54,15 @@
               </li>
               {% endfor %}
             {% endif %}
+
+            {% if category_gallery %}
+              {% for sub_cat in category_gallery %}
+                <li>
+                  <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.title }}</a>
+                </li>
+              {% endfor %}
+            {% endif %}
+
           </ul>
           {% endif %}
         </div>
