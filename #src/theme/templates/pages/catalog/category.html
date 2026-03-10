@@ -34,10 +34,9 @@
           <div class="filter__body">
             <!--<label class="filter__label">Категории</label>-->
             <div class="filter__inner">
+              <a href="{% url 'gallery' %}" class="filter__link">Макеты СВО</a>
 
-              {% for category in category_gallery %}
-              <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
-              {% endfor %}
+
 
               {% for category in categories %}
                 <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.name }}</a>
@@ -46,6 +45,10 @@
                     <a href="{{ cat.get_absolute_url }}" class="filter__link filter__link-sub">{{ cat.name }}</a>
                   {% endfor %}
                 {% endif %}
+              {% endfor %}
+
+              {% for category in category_gallery %}
+              <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
               {% endfor %}
 
             </div>

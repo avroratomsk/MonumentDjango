@@ -51,10 +51,6 @@
 
               <a href="{% url 'gallery' %}" class="filter__link">Макеты СВО</a>
 
-              {% for category in category_gallery %}
-              <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
-              {% endfor %}
-
               {% for category in categories %}
               <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.name }}</a>
               {% if category.children.all %}
@@ -63,6 +59,7 @@
               {% endfor %}
               {% endif %}
               {% endfor %}
+
 
               {% for category in category_gallery %}
               <a href="{{ category.get_absolute_url }}" class="filter__link">{{ category.title }}</a>
