@@ -25,6 +25,11 @@ class Category(models.Model):
     ('draft', 'Не выводить'),
   ]
 
+  STATUS_VIEW_ALL = [
+    ('published', 'Выводить'),
+    ('draft', 'Не выводить'),
+  ]
+
   name = models.CharField(max_length=150, db_index=True, unique=True, verbose_name="Название категории")
   slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
   description = models.TextField(null=True, blank=True,  verbose_name="Описание категории")
@@ -36,6 +41,12 @@ class Category(models.Model):
   meta_keywords = models.TextField(null=True, blank=True, verbose_name="META keywords")
   updated_at = models.DateTimeField(auto_now=True)
   order_by = models.CharField(max_length=150, default="0", blank=True, null=True,  db_index=True, verbose_name="Порядок сортировки")
+  view_all = models.CharField(
+                max_length=20,
+                choices=STATUS_VIEW_ALL,
+                default='draft',
+                verbose_name="Выводить все товары(не только категории)"
+              )
   add_submenu = models.CharField(
    max_length=20,
    choices=STATUS_VIEW,

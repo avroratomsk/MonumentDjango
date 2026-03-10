@@ -37,7 +37,11 @@ import urllib.parse
 def category_detail(request, slug):
   page = request.GET.get("page", 1)
   category = get_object_or_404(Category, slug=slug)
-  products = Product.objects.filter(status='published', category=category).order_by('price')
+
+  if category.view_all == 'published':
+    products = Product.objects.filter(status='published').order_by('price')
+  else:
+    products = Product.objects.filter(status='published', category=category).order_by('price')
 
   if category.children:
     subcategories = Category.objects.filter(parent_id=category).order_by('order_by')
