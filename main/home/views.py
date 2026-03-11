@@ -28,7 +28,6 @@ def order_form(request):
   return JsonResponse({'status': 'error', 'mailTpl': 'Invalid request method'})
 
 def callback_form(request):
-  print("VIEW WORKS")
   if request.method == "POST":
     form = CallbackForm(request.POST)
     print(form)
