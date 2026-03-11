@@ -30,7 +30,6 @@ def order_form(request):
 def callback_form(request):
   if request.method == "POST":
     form = CallbackForm(request.POST)
-    print(form)
     if form.is_valid():
       name  = form.cleaned_data['name']
       phone = form.cleaned_data['phone']
