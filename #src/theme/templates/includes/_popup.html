@@ -6,7 +6,7 @@
         <button data-close type="button" class="popup__close close"></button>
       </div>
       <h2 class="popup__title">Оставить заявку</h2>
-      <form action="." class="popup__form form" method="POST" id="order-form">
+      <form action="{% url 'order_form' %}" class="popup__form form" method="POST" id="order-form">
         {% csrf_token %}
         <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
@@ -31,15 +31,15 @@
         <button data-close type="button" class="popup__close close"></button>
       </div>
       <h2 class="popup__title">Обратный звонок</h2>
-      <form action="." class="popup__form form" method="POST" id="callback-form">
+      <form action="{% url 'callback_form' %}" class="popup__form form" method="POST" id="callback-form">
         {% csrf_token %}
         <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
         <div class="form__checkbox">
-          <input type="checkbox" id="agree" name="agree">
-          <label for="agree">
+          <input type="checkbox" id="callback-agree" name="agree" required>
+          <label for="callback-agree">
             Я даю свое согласие на обработку персональных данных и подтверждаю, что ознакомлен(а) с
-            <a href="">политикой конфиденциальности и обработки персональных данных</a>
+            <a href="{% url 'privacy' %}">политикой конфиденциальности и обработки персональных данных</a>
           </label>
         </div>
         <button type="submit" class="form__button btn btn--primary">Отправить</button>
@@ -55,7 +55,7 @@
         <button data-close type="button" class="popup__close close"><span></span></button>
       </div>
       <h2 class="popup__title">Поиск</h2>
-      <form action="." class="popup__form form" method="POST" id="">
+      <form action="{% url 'catalog_search' %}" class="popup__form form" method="GET" id="">
         {% csrf_token %}
         <input type="search" name="search" class="form__input" placeholder="Поиск...">
         <button type="submit" class="form__button btn btn--primary">Отправить</button>

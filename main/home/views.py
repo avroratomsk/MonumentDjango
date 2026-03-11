@@ -1,9 +1,55 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from home.models import *
 from home.forms import *
 from home.callback_send import email_callback
+
+def order_form(request):
+  if request.method == "POST":
+    form = OrderForm(request.POST)
+    if form.is_valid():
+      name  = form.cleaned_data['name']
+      phone = form.cleaned_data['phone']
+      product = form.cleaned_data['product']
+      title = 'Заказ обратного звонка'
+
+      mailTpl = "Заявка с сайта" + "\n\n" + "Имя: " +str(name) + "\n" + "Номер телефон: " + str(phone) + "\n" + "Товар: " + str(product) + "\n"
+
+
+      email_callback(mailTpl, title)
+
+      return JsonResponse({"success": "success", "message": "Форма успешно отправлена !"})
+    else:
+      print(form)
+  else:
+    return JsonResponse({'status': "error", 'errors': form.errors})
+
+  return JsonResponse({'status': 'error', 'mailTpl': 'Invalid request method'})
+
+def callback_form(request):
+  print("VIEW WORKS")
+  if request.method == "POST":
+    form = CallbackForm(request.POST)
+    print(form)
+    if form.is_valid():
+      name  = form.cleaned_data['name']
+      phone = form.cleaned_data['phone']
+#       agree = form.cleaned_data['agree']
+
+      title = 'Заказ обратного звонка'
+
+      mailTpl = "Обратный звонок" + "\n\n" + "Имя: " +str(name) + "\n" + "Номер телефон: " + str(phone) + "\n"
+
+      email_callback(mailTpl, title)
+
+      return JsonResponse({"success": "success", "message": "Форма успешно отправлена !"})
+    else:
+      print(form)
+  else:
+    return JsonResponse({'status': "error"})
+
+  return JsonResponse({'status': 'error', 'mailTpl': 'Invalid request method'})
 
 
 def index(request):

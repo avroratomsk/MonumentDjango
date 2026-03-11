@@ -149,6 +149,9 @@ class GalleryCategory(models.Model):
     verbose_name="Выводить в под меню ?"
   )
 
+  class Meta:
+    ordering = ['-id']
+
   def __str__(self):
       return self.title
 
@@ -171,6 +174,9 @@ class GalleryItem(models.Model):
       default='draft',
       verbose_name="Статус"
   )
+
+  class Meta:
+    ordering = ['-id']
 
 class Document(SingletonModel):
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")

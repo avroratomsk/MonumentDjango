@@ -52,8 +52,35 @@
 {% endif %}
 
 {% if products %}
-<h2>Подкатегории</h2>
-  {% include "../../section/services.html" with category=products %}
+<h2>Товары</h2>
+  <div class="index-catalog__cards">
+    {% for product in products %}
+      <div class="index-catalog__card card">
+      {% if product.image %}
+      <a href="{{ product.get_absolute_url }}" class="card__image">
+
+        <img src="{{ product.image.url }}" width="" height="" alt="{{ product.name }}"
+             title="{{ product.name }}" style="height: 100%"
+             itemprop="image">
+      </a>
+      {% endif %}
+      <div class="card__content">
+        <a href="{{ product.get_absolute_url }}" class="card__content-title">
+          {% if product.model  %}Модель {{ product.model }}{% else %}{{ product.name }}{% endif %}
+        </a>
+
+        {% if product.price %}
+        <div class="card__content-price">{{ product.price }}</div>
+        {% endif%}
+
+      </div>
+      <a href="{{ product.get_absolute_url }}" class="card__content-link">
+        Подробнее
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
   <hr>
   <br>
 {% endif %}

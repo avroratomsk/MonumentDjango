@@ -34,7 +34,8 @@
         <p class="callback__form-title">
           Оставьте заявку - мы обязательно с вами свяжемся
         </p>
-        <form action="" class="form">
+        <form action="{% url 'callback_form' %}" class="form" method="POST" id="callback-form">
+          {% csrf_token %}
           <input type="text" placeholder="Ваше имя" class="form__input" name="name">
           <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
           <div class="form__bottom">

@@ -8,6 +8,8 @@ import "./modules/popup/popup.js";
 import "./modules/sliders.js";
 import "./modules/normalizeFormatPhoneLink.js";
 import "./modules/menu/mobileMenu.js";
+import "./modules/sendForm.js";
+import "./modules/mask.js";
 
 import { initCart } from './modules/cart/index.js';
 

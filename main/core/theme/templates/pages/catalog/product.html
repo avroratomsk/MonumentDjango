@@ -96,7 +96,7 @@
         </div>
 
         <div class="single__btns">
-          <button class="btn btn--yellow single__btn">
+          <button class="btn btn--yellow single__btn" data-popup="leave-request" data-name="{{ product.name }}{% if product.model %} - модель {{ product.model }}{% endif %}">
             Купить сейчас
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
@@ -105,7 +105,7 @@
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>-->
 
-          <button class="btn btn--outline single__btn">
+          <button class="btn btn--outline single__btn" data-popup="callback">
             Заказать консультацию
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>

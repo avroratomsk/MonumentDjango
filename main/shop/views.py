@@ -98,7 +98,7 @@ def model_detail(request, parent, product, model):
 @csrf_exempt
 def catalog_search(request):
     query = request.GET.get("search", "").strip()
-
+    print(f'{query} - первый запрос')
     products = Product.objects.none()
     models = Models.objects.none()
     categories = Category.objects.none()
@@ -113,22 +113,23 @@ def catalog_search(request):
 
         # Товары
         products = Product.objects.filter(
-            Q(name__icontains=query) |
+            Q(model__icontains=query) |
             Q(description__icontains=query),
             status="published"
         ).prefetch_related("category").distinct()
 
         # Модели
-        models = Models.objects.filter(
-            Q(name__icontains=query) |
-            Q(description__icontains=query),
-            status="published"
-        ).select_related("parent").distinct()
+#         models = Models.objects.filter(
+#             Q(name__icontains=query) |
+#             Q(description__icontains=query),
+#             status="published"
+#         ).select_related("parent").distinct()
 
+    print(f'{query} - запрос')
     context = {
         "query": query,
         "products": products,
-        "models": models,
+#         "models": models,
         "categories": categories,
     }
 
