@@ -74,7 +74,7 @@
               {% if product.name %}
               <a href="{{ product.get_absolute_url }}" class="card__content-title">
                   <span itemprop="name">
-                      {{ product.name }} {{ product.model }}
+                      {{ product.name }} {% if product.model != None %}{{ product.model }}{% endif %}
                   </span>
               </a>
               {% endif %}
