@@ -71,11 +71,13 @@
             </a>
             {% endif %}
             <div class="card__content">
-              <a href="" class="card__content-title">
+              {% if product.name %}
+              <a href="{{ product.get_absolute_url }}" class="card__content-title">
                   <span itemprop="name">
-                      Модель {{ product.model }}
+                      {{ product.name }} {{ product.model }}
                   </span>
               </a>
+              {% endif %}
               {% if product.price %}
               <div class="card__content-price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
                 <span itemprop="price" content="{{ product.price }}">

@@ -4766,7 +4766,7 @@ td {
 .index-catalog__cards {
   display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 40px;
   width: 100%;
   margin-bottom: 40px;
@@ -4824,7 +4824,7 @@ td {
   line-height: 150%;
   margin-bottom: 23px;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: -0.03em;
   color: #000;
 }
@@ -4842,7 +4842,7 @@ td {
 .card__content-price {
   font-family: Spectral, sans-serif;
   font-weight: 500;
-  font-size: 32px;
+  font-size: 25px;
   letter-spacing: -0.03em;
   color: #02075D;
 }
