@@ -42,8 +42,12 @@
         </div>
       </div>
       <div class="single__right">
-        {% if product.name %}<h1 class="single__title">{{ product.name }}</h1>{% endif %}
-        {% if product.model %}<p class="single__article">Модель: {{ product.model }}</p>{% endif %}
+        {% if product.name %}<h1 class="single__title">{{ product.name }} {{ product.model }}</h1>{% endif %}
+        {% comment %}
+          {% if product.model %}
+            <p class="single__article">Модель: {{ product.model }}</p>
+          {% endif %}
+        {% endcomment %}
 
         <!--<div class="single__filter">
           <div class="single__filter-item">
