@@ -133,28 +133,58 @@ def import_products_from_excel(file_path):
 
   for _, row in df.iterrows():
 
+    parent_raw = row.iloc[17]
+
+    if pd.isna(parent_raw):
+      parent_category_name = None
+    else:
+      parent_category_name = str(parent_raw).strip()
+
+    parent_category_slug = slugify(parent_category_name)
+
+    category_parent = None
+
+    if parent_category_name:
+      parent_category_slug = slugify(parent_category_name)
+
+      category_parent, created = Category.objects.get_or_create(
+          name=parent_category_name,
+          defaults={
+              'slug': parent_category_slug,
+              'status': 'published',
+          }
+      )
+
     category_name = str(row.iloc[0]).strip()
-
-
     if not category_name:
         continue
 
 #         image = rename_image(row.iloc[3])
-
+    order_by_category = row.iloc[15]
+    category_image = row.iloc[18]
     category_slug = slugify(category_name)
     category, created = Category.objects.get_or_create(
         name=category_name,
         defaults={
             'slug': category_slug,
+            'parent': category_parent,
             'status': 'published',
+            'order_by': order_by_category,
+            'image': category_image,
         }
     )
-
 
     product_name = str(row.iloc[1]).strip()
 
     if not product_name:
         continue
+
+    model_raw = row.iloc[2]
+
+    if pd.isna(model_raw):
+        model = None
+    else:
+        model = str(model_raw).strip()
 
     product_image = f'goods/{row.iloc[3]}'
 
@@ -168,12 +198,8 @@ def import_products_from_excel(file_path):
     else:
         price = Decimal(str(price_raw))
 
-    model_raw = row.iloc[2]
+    order_by_product = row.iloc[16]
 
-    if pd.isna(model_raw):
-        model = None
-    else:
-        model = str(model_raw).strip()
 
     product, pr_created = Product.objects.get_or_create(
         slug=product_unique_slug,
@@ -182,7 +208,8 @@ def import_products_from_excel(file_path):
           'price': price,
           'status': 'published',
           'image': product_image,
-          'model': model
+          'model': model,
+          'order_by': order_by_product
         }
     )
 

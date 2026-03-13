@@ -18,10 +18,10 @@ def category(request):
 
   page = request.GET.get('page', 1)
 
-  products = Product.objects.filter(status='published').order_by('id')
+  products = Product.objects.filter(status='published').order_by('order_by')
   categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 
-  paginator = Paginator(products, 16)
+  paginator = Paginator(products, 12)
   current_page = paginator.page(int(page))
 
 
@@ -39,9 +39,9 @@ def category_detail(request, slug):
   category = get_object_or_404(Category, slug=slug)
 
   if category.view_all == 'published':
-    products = Product.objects.filter(status='published').order_by('-price')
+    products = Product.objects.filter(status='published').order_by('order_by')
   else:
-    products = Product.objects.filter(status='published', category=category).order_by('price')
+    products = Product.objects.filter(status='published', category=category).order_by('order_by')
 
   if category.children:
     subcategories = Category.objects.filter(parent_id=category).order_by('order_by')
@@ -49,7 +49,7 @@ def category_detail(request, slug):
 
   categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 
-  paginator = Paginator(products, 16)
+  paginator = Paginator(products, 12)
   current_page = paginator.page(int(page))
 
   context = {
