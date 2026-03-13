@@ -123,9 +123,9 @@ def rename_image(filename):
 
 from decimal import Decimal
 def import_products_from_excel(file_path):
-  Product.objects.all().delete()
-  Category.objects.all().delete()
-  Models.objects.all().delete()
+#   Product.objects.all().delete()
+#   Category.objects.all().delete()
+#   Models.objects.all().delete()
 
   df = pd.read_excel(file_path, engine='openpyxl')
 
@@ -161,7 +161,7 @@ def import_products_from_excel(file_path):
 
 #         image = rename_image(row.iloc[3])
     order_by_category = row.iloc[15]
-    category_image = row.iloc[18]
+    category_image = f'goods/{row.iloc[18]}'
     category_slug = slugify(category_name)
     category, created = Category.objects.get_or_create(
         name=category_name,
