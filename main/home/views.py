@@ -60,7 +60,7 @@ def index(request):
   about = AboutPage.objects.first()
 
   slides = GalleryItem.objects.filter(status='published')
-  category = Category.objects.filter(parent=None, status='published')[:4]
+  category = Category.objects.filter(parent=None, home_view='published')[:4]
   try:
     contact = ContactPage.objects.get()
   except:

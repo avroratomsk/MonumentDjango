@@ -15,6 +15,12 @@ class ShopSettings(SingletonModel):
 # Категория
 class Category(models.Model):
   STATUS_CHOICES = [
+    ('published', 'Опубликован'),
+    ('draft', 'Черновик'),
+    ('hidden', 'Скрыто'),
+  ]
+
+  STATUS_CHOICES_HOME = [
     ('published', 'Выводить'),
     ('draft', 'Не выводить'),
     ('hidden', 'Скрыто'),
@@ -42,22 +48,31 @@ class Category(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
   order_by = models.PositiveIntegerField(default=0, verbose_name="Сортировка")
   view_all = models.CharField(
-                max_length=20,
-                choices=STATUS_VIEW_ALL,
-                default='draft',
-                verbose_name="Выводить все товары(не только категории)"
-              )
+    max_length=20,
+    choices=STATUS_VIEW_ALL,
+    default='draft',
+    verbose_name="Выводить все товары(не только категории)"
+  )
+
   add_submenu = models.CharField(
    max_length=20,
    choices=STATUS_VIEW,
    default='draft',
    verbose_name="Выводить в под меню ?"
  )
+
+  home_view = models.CharField(
+    max_length=20,
+    choices=STATUS_CHOICES_HOME,
+    default='draft',
+    verbose_name="Выводить на главной ?"
+  )
+
   status = models.CharField(
     max_length=20,
-    choices=STATUS_CHOICES,
+    choices=STATUS_CHOICES_HOME,
     default='draft',
-    verbose_name="Выводить в каталог ?"
+    verbose_name="Статус публикации"
   )
   
   class Meta:
