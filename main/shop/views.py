@@ -18,7 +18,7 @@ def category(request):
 
   page = request.GET.get('page', 1)
 
-  products = Product.objects.filter(status='published').order_by('order_by')
+  products = Product.objects.filter(status='published').order_by('category__order_by', 'order_by')
   categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 
   paginator = Paginator(products, 12)
