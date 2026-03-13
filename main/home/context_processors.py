@@ -36,7 +36,7 @@ def category(request):
   return {'categories': Category.objects.filter(status='published')}
 
 def sub_category(request):
-  return {'sub_category': Category.objects.filter(status='published')}
+  return {'sub_category': Category.objects.filter(add_submenu='published')}
 
 def branch(request):
     return {"branch": Branch.objects.filter(status='published')}

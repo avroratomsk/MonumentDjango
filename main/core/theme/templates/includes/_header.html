@@ -49,8 +49,15 @@
           <ul class="nav__submenu">
             {% if sub_category %}
               {% for sub_cat in sub_category %}
-              <li>
+              <li class="nav__submenu-item">
                 <a href="{{ sub_cat.get_absolute_url }}">{{ sub_cat.name }}</a>
+                {% if sub_cat.children %}
+                  <ul class="sub-sub__menu">
+                    {% for sub in sub_cat.children.all %}
+                    <li><a href="">{{ sub.name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               </li>
               {% endfor %}
             {% endif %}
