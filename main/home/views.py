@@ -124,7 +124,7 @@ def gallery(request):
   except:
     gallery = GalleryPage()
 
-  items = GalleryItem.objects.filter(status="published")
+  items = GalleryItem.objects.filter(status="published",category__add_page="published")
 
   category = GalleryCategory.objects.filter(status="published")
 

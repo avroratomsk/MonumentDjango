@@ -273,7 +273,7 @@ def upload_goods(request):
       form = UploadFileForm(request.POST, request.FILES)
       if form.is_valid():
         file = request.FILES['file']
-        import_products_from_excel(file)
+#         import_products_from_excel(file)
 
 #         destination = open(os.path.join('upload/', file.name), 'wb+')
 #
@@ -744,7 +744,7 @@ def upload_archive(request):
       category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
 
-#       GalleryItem.objects.filter(category=category).delete()
+      GalleryItem.objects.filter(category=category).delete()
 
       temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
       os.makedirs(temp_dir, exist_ok=True)
