@@ -13,7 +13,7 @@ from main.settings import BASE_DIR
 from service.models import *
 from shop.models import *
 from .utils.views import *
-
+import shutil
 
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, get_list_or_404
@@ -743,16 +743,19 @@ def upload_archive(request):
     if form.is_valid():
       category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
+      print(archive)
 
       GalleryItem.objects.filter(category=category).delete()
 
-      temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
+      temp_dir = os.path.join(settings.MEDIA_ROOT, f'temp_gallery_{uuid.uuid4()}')
       os.makedirs(temp_dir, exist_ok=True)
 
       with zipfile.ZipFile(archive, 'r') as zip_ref:
-        zip_ref.extractall(temp_dir)
+          zip_ref.extractall(temp_dir)
 
-      # Обрабатываем каждый файл в директории
+      gallery_dir = os.path.join(settings.MEDIA_ROOT, "gallery", category.slug)
+      os.makedirs(gallery_dir, exist_ok=True)
+
       for root, dirs, files in os.walk(temp_dir):
         for file in files:
           file_path = os.path.join(root, file)
@@ -760,16 +763,28 @@ def upload_archive(request):
           try:
             img = PILImage.open(file_path)
             img.verify()
-            relative_path = os.path.relpath(file_path, settings.MEDIA_ROOT)
-            new_image = GalleryItem.objects.create(
-              image=relative_path,
-              category=category,
-              status='published'
-            )
+
+            # уникальное имя файла
+            ext = os.path.splitext(file)[1]
+            new_filename = f"{uuid.uuid4()}{ext}"
+
+            new_path = os.path.join(gallery_dir, new_filename)
+
+            shutil.move(file_path, new_path)
+
+            relative_path = os.path.relpath(new_path, settings.MEDIA_ROOT)
+
+            GalleryItem.objects.create(
+                image=relative_path,
+                category=category,
+                status='published'
+              )
+
           except (PILImage.UnidentifiedImageError, PILImage.DecompressionBombError):
             continue
 
-      return redirect('gallery')
+      shutil.rmtree(temp_dir)
+      return redirect(request.META.get('HTTP_REFERER'))
   else:
     form = ArchiveUploadForm()
 

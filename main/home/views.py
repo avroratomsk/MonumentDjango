@@ -124,15 +124,8 @@ def gallery(request):
   except:
     gallery = GalleryPage()
 
-  a = GalleryCategory.objects.values("title", "add_page")
-  c = GalleryItem.objects.filter(category=None)
-  b = GalleryItem.objects.values("title","status")
-  d = GalleryItem.objects.values("title","category")
+  items = GalleryItem.objects.filter(status="published", category__add_page='published')
 
-  items = GalleryItem.objects.filter(
-      status="published",
-      category__add_page="published"
-  ).select_related("category")
 
   category = GalleryCategory.objects.filter(status="published")
 
@@ -141,13 +134,9 @@ def gallery(request):
   current_page = paginator.page(int(page))
 
   context = {
-    "a": a,
     "gallery": gallery,
     "items": current_page,
     "categories": category,
-    "c": c,
-    "b":b,
-    "d":d
   }
 
   return render(request, 'pages/gallery.html', context)
