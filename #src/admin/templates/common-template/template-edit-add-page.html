@@ -544,6 +544,13 @@
             </div>
             {% endif %}
 
+            {% if form.add_page %}
+            <div class="form__group">
+              <label for="{{ form.add_page.id_for_label }}" class="form__controls-label">{{ form.add_page.label }}:</label>
+              {{ form.add_page }} {{ form.add_page.errors }}
+            </div>
+            {% endif %}
+
             {% if form.home_view %}
             <div class="form__group">
               <label for="{{ form.home_view.id_for_label }}" class="form__controls-label">{{ form.home_view.label }}:</label>
