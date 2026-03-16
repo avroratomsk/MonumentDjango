@@ -124,6 +124,8 @@ def gallery(request):
   except:
     gallery = GalleryPage()
 
+  a = GalleryCategory.objects.values("title", "add_page")
+
   items = GalleryItem.objects.filter(status="published",category__add_page="published")
 
   category = GalleryCategory.objects.filter(status="published")
@@ -133,6 +135,7 @@ def gallery(request):
   current_page = paginator.page(int(page))
 
   context = {
+    "a": a,
     "gallery": gallery,
     "items": current_page,
     "categories": category

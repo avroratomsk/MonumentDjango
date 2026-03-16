@@ -45,15 +45,15 @@
   <div class="container">
     <h1 class="gallery__title">
       {% if category.meta_h1 %}
-      {{ category.meta_h1 }}
+        {{ category.meta_h1 }}
       {% else %}
-      {{ category.title }}
+        {{ category.title }}
       {% endif %}
 
       {% if gallery.meta_h1 %}
-      {{ gallery.meta_h1 }}
+        {{ gallery.meta_h1 }}
       {% else %}
-      {{ gallery.title }}
+        {{ gallery.title }}
       {% endif %}
     </h1>
     {% comment %}{% if categories %}
@@ -63,7 +63,7 @@
       {% endfor %}
     </div>
     {% endif %}{% endcomment %}
-
+    {{ a }}
     <div class="gallery__grid">
       {% for item in items %}
       <a href="{{ item.image.url }}" class="gallery__item" data-fancybox="gallery">
