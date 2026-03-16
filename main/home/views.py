@@ -129,7 +129,10 @@ def gallery(request):
   b = GalleryItem.objects.values("title","status")
   d = GalleryItem.objects.values("title","category")
 
-  items = GalleryItem.objects.filter(status="published",category__add_page="published")
+  items = GalleryItem.objects.filter(
+      status="published",
+      category__add_page="published"
+  ).select_related("category")
 
   category = GalleryCategory.objects.filter(status="published")
 
