@@ -211,6 +211,13 @@
 
     li {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .nav__arrow {
+        transform: rotate(-90deg) !important;
+      }
 
       @media(hover: hover) {
         &:hover {
