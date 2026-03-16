@@ -125,6 +125,9 @@ def gallery(request):
     gallery = GalleryPage()
 
   a = GalleryCategory.objects.values("title", "add_page")
+  c = GalleryItem.objects.filter(category=None)
+  b = GalleryItem.objects.values("title","status")
+  d = GalleryItem.objects.values("title","category")
 
   items = GalleryItem.objects.filter(status="published",category__add_page="published")
 
@@ -138,7 +141,10 @@ def gallery(request):
     "a": a,
     "gallery": gallery,
     "items": current_page,
-    "categories": category
+    "categories": category,
+    "c": c,
+    "b":b,
+    "d":d
   }
 
   return render(request, 'pages/gallery.html', context)
