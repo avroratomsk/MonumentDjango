@@ -123,9 +123,9 @@ def rename_image(filename):
 
 from decimal import Decimal
 def import_products_from_excel(file_path):
-  Product.objects.all().delete()
-  Category.objects.all().delete()
-  Models.objects.all().delete()
+#   Product.objects.all().delete()
+#   Category.objects.all().delete()
+#   Models.objects.all().delete()
 
   df = pd.read_excel(file_path, engine='openpyxl')
 
@@ -739,10 +739,13 @@ def services_delete(request, pk):
 def upload_archive(request):
   if request.method == 'POST':
     form = ArchiveUploadForm(request.POST, request.FILES)
-    GalleryItem.objects.all().delete()
+
     if form.is_valid():
       category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
+
+#       GalleryItem.objects.filter(category=category).delete()
+
       temp_dir = os.path.join(settings.MEDIA_ROOT, 'gallery-image')
       os.makedirs(temp_dir, exist_ok=True)
 

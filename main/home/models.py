@@ -132,6 +132,11 @@ class GalleryCategory(models.Model):
     ('draft', 'Не выводить'),
   ]
 
+  STATUS_VIEW_CATEGORY = [
+    ('published', 'Выводить'),
+    ('draft', 'Не выводить'),
+  ]
+
   title = models.CharField(max_length=250, blank=True, null=True, verbose_name="Заголовок(alt/title)")
   slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
   image = models.ImageField(upload_to="gallery/", blank=True, null=True, verbose_name="Изображение")
@@ -148,6 +153,12 @@ class GalleryCategory(models.Model):
     default='draft',
     verbose_name="Выводить в под меню ?"
   )
+  add_page = models.CharField(
+      max_length=20,
+      choices=STATUS_VIEW_CATEGORY,
+      default='draft',
+      verbose_name="Выводить на странице категории ?"
+    )
 
   class Meta:
     ordering = ['-id']
