@@ -55,7 +55,7 @@
 <h2>Товары</h2>
   <div class="index-catalog__cards">
     {% for product in products %}
-      <div class="index-catalog__card card">
+    <div class="index-catalog__card card" itemscope="" itemtype="https://schema.org/Product">
       {% if product.image %}
       <a href="{{ product.get_absolute_url }}" class="card__image">
 
@@ -65,14 +65,35 @@
       </a>
       {% endif %}
       <div class="card__content">
+        {% if product.name %}
         <a href="{{ product.get_absolute_url }}" class="card__content-title">
-          {% if product.model  %}Модель {{ product.model }}{% else %}{{ product.name }}{% endif %}
+                  <span itemprop="name">
+                      {{ product.name }} {% if product.model != None %}{{ product.model }}{% endif %}
+                  </span>
         </a>
-
+        {% endif %}
         {% if product.price %}
-        <div class="card__content-price">{{ product.price }}</div>
+        <div class="card__content-price" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+                <span itemprop="price" content="{{ product.price }}">
+                  от {{ product.price }}
+                </span>
+          <span itemprop="priceCurrency" content="RUB">₽</span>
+          <meta itemprop="priceValidUntil" content="2029-12-31">
+          <link itemprop="availability" href="http://schema.org/InStock">
+        </div>
         {% endif%}
 
+        <div itemprop="review" itemscope="" itemtype="http://schema.org/Review">
+          <span itemprop="name"></span>
+          <span itemprop="author"></span>
+          <meta itemprop="datePublished" content="2013-09-14">
+          <div itemprop="reviewRating" itemscope="" itemtype="http://schema.org/Rating">
+            <meta itemprop="worstRating" content="1">
+            <span itemprop="ratingValue"></span>
+            <span itemprop="bestRating"></span>
+            <span itemprop="description"></span>
+          </div>
+        </div>
       </div>
       <a href="{{ product.get_absolute_url }}" class="card__content-link">
         Подробнее

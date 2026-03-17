@@ -455,3 +455,27 @@ table, th, td {
     padding: 5px 10px;
   }
 }
+
+.social-sticky {
+  position: fixed;
+  bottom: 50px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+  &__item {
+    padding: 5px;
+    border: 1px solid $secondaryColor;
+    border-radius: 10px;
+
+    img {
+      width: 34px;
+      height: 34px;
+      object-fit: cover;
+    }
+
+  }
+
+}

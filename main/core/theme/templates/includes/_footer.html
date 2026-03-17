@@ -78,3 +78,17 @@
     </div>
   </div>
 </div>
+
+{% if socials %}
+<div class="social-sticky">
+  {% for social in socials %}
+  <a href="{{ social.link }}" class="social-sticky__item">
+    {% if social.icon_white %}
+      <img src="{{ social.icon_white.url }}" alt="{{ social.name }}">
+    {% else %}
+      <img src="{{ social.icon_dark.url }}" alt="{{ social.name }}">
+    {% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% endif %}

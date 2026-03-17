@@ -4991,6 +4991,33 @@ td {
   padding: 5px 10px;
 }
 
+.social-sticky {
+  position: fixed;
+  bottom: 50px;
+  right: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+
+.social-sticky__item {
+  padding: 5px;
+  border: 1px solid #F7E76F;
+  border-radius: 10px;
+}
+
+.social-sticky__item img {
+  width: 34px;
+  height: 34px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /* Указываем box sizing */
 
 *,
@@ -11615,6 +11642,10 @@ body main {
 @media (max-width: 768px) {
   .map {
     padding: 40px 0;
+  }
+
+  .map__inner iframe {
+    height: 400px;
   }
 
   .reviews {
