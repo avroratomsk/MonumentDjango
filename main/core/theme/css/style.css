@@ -5009,6 +5009,7 @@ td {
   padding: 5px;
   border: 1px solid #F7E76F;
   border-radius: 10px;
+  background: #fff;
 }
 
 .social-sticky__item img {
@@ -11363,16 +11364,6 @@ body main {
   .header__info {
     margin-inline: 2rem;
     gap: 1rem;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-
-  .header__action {
-    position: fixed;
-    right: 2.6rem;
-    bottom: 1.6rem;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

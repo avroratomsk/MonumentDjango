@@ -69,13 +69,6 @@
       margin-right: 2.6rem;
     }
 
-    @media screen and (max-width: 1200px) {
-      position: fixed;
-      right: 2.6rem;
-      bottom: 1.6rem;
-      flex-direction: column;
-    }
-
   }
 
   &__search {
