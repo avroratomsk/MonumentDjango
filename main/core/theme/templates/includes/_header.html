@@ -20,6 +20,7 @@
         {% endfor %}
       </div>
       {% endif %}
+      {% comment %}
       <div class="header__action">
         <button type="button" data-popup="search" class="header__search" aria-label="открыть поиск">
           <img src="{% static 'theme/img/icon/i-search.svg' %}" alt="">
@@ -28,6 +29,7 @@
           <img src="{% static 'theme/img/icon/i-cart.svg' %}" alt="">
         </button>-->
       </div>
+      {% endcomment %}
       <button type="button" class="header__btn btn btn--primary" data-popup="callback">Заказать звонок</button>
       <button type="button" class="burger" id="burger"><span></span></button>
     </div>
