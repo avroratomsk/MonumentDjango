@@ -122,10 +122,11 @@ def rename_image(filename):
         return ""
 
 from decimal import Decimal
+
 def import_products_from_excel(file_path):
-#   Product.objects.all().delete()
-#   Category.objects.all().delete()
-#   Models.objects.all().delete()
+  Product.objects.all().delete()
+  Category.objects.all().delete()
+  Models.objects.all().delete()
 
   df = pd.read_excel(file_path, engine='openpyxl')
 
@@ -190,7 +191,8 @@ def import_products_from_excel(file_path):
 
     product_slug = slugify(product_name)
     product_unique_slug = get_unique_slug(Product, product_slug)
-
+    product_description = row.iloc[7]
+    product_text = row.iloc[8]
     price_raw = row.iloc[4]
 
     if pd.isna(price_raw) or str(price_raw).lower() == "nan":
@@ -208,6 +210,8 @@ def import_products_from_excel(file_path):
           'price': price,
           'status': 'published',
           'image': product_image,
+          'description':product_description,
+          'text':product_text,
           'model': model,
           'order_by': order_by_product
         }
@@ -273,7 +277,7 @@ def upload_goods(request):
       form = UploadFileForm(request.POST, request.FILES)
       if form.is_valid():
         file = request.FILES['file']
-#         import_products_from_excel(file)
+        import_products_from_excel(file)
 
 #         destination = open(os.path.join('upload/', file.name), 'wb+')
 #

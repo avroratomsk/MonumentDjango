@@ -48,7 +48,7 @@
           {% for br in branch %}
           <a href="tel:{{ br.phone_one }}" class="footer__phone">{{ br.phone_one }}</a>
           {% endfor %}
-          <button type="button" class="footer__btn">Обратный звонок</button>
+          <button type="button" class="footer__btn" data-popup="callback">Обратный звонок</button>
         </div>
         {% endif %}
 

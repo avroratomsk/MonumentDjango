@@ -5979,6 +5979,12 @@ body._lock::after {
   font-weight: 600;
 }
 
+.single__text-notice {
+  font-size: 14px;
+  margin-top: 30px;
+  max-width: 450px;
+}
+
 .single__text {
   margin-top: 40px;
   border-top: 1px solid #F7E76F;

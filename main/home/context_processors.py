@@ -28,7 +28,7 @@ def category_gallery(request):
     return {'category_gallery': GalleryCategory.objects.filter(add_submenu='published')}
 
 def gallery(request):
-    return {'gallery': GalleryItem.objects.filter(status='published')[:10]}
+    return {'gallery': GalleryItem.objects.filter(status='published', category__add_page='published')[:10]}
 
 # проверенные функции
 

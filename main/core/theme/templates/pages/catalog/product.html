@@ -44,10 +44,14 @@
       <div class="single__right">
         {% if product.name %}<h1 class="single__title">{{ product.name }} {{ product.model }}</h1>{% endif %}
         {% comment %}
-          {% if product.model %}
-            <p class="single__article">Модель: {{ product.model }}</p>
-          {% endif %}
+        {% if product.model %}
+        <p class="single__article">Модель: {{ product.model }}</p>
+        {% endif %}
         {% endcomment %}
+
+        <div class="single__description">
+          {{ product.description|safe }}
+        </div>
 
         <!--<div class="single__filter">
           <div class="single__filter-item">
@@ -96,11 +100,12 @@
         </ul>-->
 
         <div class="single__price">
-          <p>Стоимость: <span>{{ product.price }} ₽</span></p>
+          <p>Стоимость: <span>От {{ product.price }} ₽</span></p>
         </div>
 
         <div class="single__btns">
-          <button class="btn btn--yellow single__btn" data-popup="leave-request" data-name="{{ product.name }}{% if product.model %} - модель {{ product.model }}{% endif %}">
+          <button class="btn btn--yellow single__btn" data-popup="leave-request"
+                  data-name="{{ product.name }}{% if product.model %} - модель {{ product.model }}{% endif %}">
             Купить сейчас
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
@@ -114,6 +119,12 @@
             <img src="{% static 'theme/img/icon/i-arrow-right-dark.svg' %}" alt="">
           </button>
 
+        </div>
+
+        <div class="single__text-notice">
+          В связи с частыми изменениями цен у поставщиков, указанная информация о ценах на сайте является
+          ориентировочной. Точную информацию о ценах можно получить у менеджеров компании по телефону или оставить
+          заявку с сайта.
         </div>
 
       </div>

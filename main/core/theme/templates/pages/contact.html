@@ -35,7 +35,7 @@
             <p class="contact__item-title">Адрес:</p>
             <div class="contact__item-inner">
               {% if site_settings.city %}
-              <p>{{ site_settings.city }}</p>
+              <p><strong>{{ site_settings.city }}</strong></p>
               {% endif %}
               {% if branch %}
                 {% for br in branch %}
