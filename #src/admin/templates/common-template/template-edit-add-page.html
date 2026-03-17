@@ -530,6 +530,13 @@
             </div>
             {% endif %}
 
+            {% if form.add_callback %}
+            <div class="form__group">
+              <label for="{{ form.add_callback.id_for_label }}" class="form__controls-label">{{ form.add_callback.label }}:</label>
+              {{ form.add_callback }} {{ form.add_callback.errors }}
+            </div>
+            {% endif %}
+
             {% if form.menu %}
             <div class="form__group">
               <label for="{{ form.menu.id_for_label }}" class="form__controls-label">{{ form.menu.label }}:</label>

@@ -79,7 +79,11 @@ class ContactPage(SingletonModel):
 class Socials(models.Model):
   STATUS_CHOICES = [
     ('published', 'Опубликовано'),
-    ('draft', 'Черновик'),
+    ('hidden', 'Скрыто'),
+  ]
+
+  STATUS_CHOICES_LIST = [
+    ('published', 'Да'),
     ('hidden', 'Скрыто'),
   ]
 
@@ -92,6 +96,13 @@ class Socials(models.Model):
     choices=STATUS_CHOICES,
     default='draft',
     verbose_name="Статус"
+  )
+
+  add_callback = models.CharField(
+    max_length=20,
+    choices=STATUS_CHOICES_LIST,
+    default='draft',
+    verbose_name="Добавлять в блок callback формы"
   )
 
 class SliderHero(models.Model):

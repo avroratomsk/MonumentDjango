@@ -98,7 +98,7 @@ class Product(models.Model):
   name = models.CharField(max_length=150, db_index=True, verbose_name="Наименование")
   slug = models.SlugField(max_length=255, unique=True, default="", verbose_name="URL")
   model = models.CharField(max_length=250, null=True, blank=True, verbose_name="Модель")
-  price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, verbose_name="Цена")
+  price = models.CharField(max_length=150, blank=True, null=True, verbose_name="Цена")
   category = models.ManyToManyField(Category, default="", verbose_name="Категории")
   image = models.ImageField(upload_to="product-image/", blank=True, null=True, verbose_name="Изображение товара")
   description = models.TextField(null=True, blank=True,  verbose_name="Описание")
@@ -129,12 +129,6 @@ class Product(models.Model):
   def display_id(self):
     return f'{self.id:05}' #self.id:05 - сделает так чтобы id состоял из 5 символов, если не хватате символов в начало добавить 0
 
-  """ Данный метод возвращает цену со скидкой"""
-  def sell_price(self):
-    if self.sale:
-      return round(self.price - self.price * self.sale / 100, 2)
-
-    return self.price
 
   def get_absolute_url(self):
       category = self.category.first()

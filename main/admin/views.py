@@ -160,8 +160,9 @@ def import_products_from_excel(file_path):
     if not category_name:
         continue
 
-#         image = rename_image(row.iloc[3])
     order_by_category = row.iloc[15]
+    if isinstance(order_by_category, float) and math.isnan(order_by_category):
+      order_by_category = 0
     category_image = f'goods/{row.iloc[18]}'
     category_slug = slugify(category_name)
     category, created = Category.objects.get_or_create(
@@ -193,15 +194,21 @@ def import_products_from_excel(file_path):
     product_unique_slug = get_unique_slug(Product, product_slug)
     product_description = row.iloc[7]
     product_text = row.iloc[8]
-    price_raw = row.iloc[4]
 
-    if pd.isna(price_raw) or str(price_raw).lower() == "nan":
-        price = None
-    else:
-        price = Decimal(str(price_raw))
+    if isinstance(product_description, float) and math.isnan(product_description):
+        product_description = None
+
+    if isinstance(product_text, float) and math.isnan(product_text):
+        product_text = None
+
+    price = row.iloc[4]
+
+    if isinstance(price, float) and math.isnan(price):
+      price = None
 
     order_by_product = row.iloc[16]
-
+    if isinstance(order_by_product, float) and math.isnan(order_by_product):
+      order_by_product = 0
 
     product, pr_created = Product.objects.get_or_create(
         slug=product_unique_slug,

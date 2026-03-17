@@ -10,7 +10,7 @@
   <div class="mini-cart__content">
     <div class="mini-cart__info">
       <a href="{{ cart.product.get_absolute_url }}" class="mini-cart__name">{{ cart.product.name }}</a>
-      <p class="mini-cart__price">{{ cart.product.sell_price }} руб.</p>
+      {%comment %}<p class="mini-cart__price">{{ cart.product.sell_price }} руб.</p>{% endcomment %}
 
     </div>
     <div class="mini-cart__action">

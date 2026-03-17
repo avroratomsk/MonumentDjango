@@ -194,7 +194,8 @@
     opacity: 0;
     pointer-events: none;
     background-color: $white;
-    transition: $animation_speed;
+    transition-duration: $animation_speed;
+    transition-delay: .15s;
     z-index: 999;
 
     @media screen and (max-width: 992px) {

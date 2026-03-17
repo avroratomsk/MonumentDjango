@@ -12,6 +12,9 @@ def clients(request):
 def socials(request):
     return {"socials": Socials.objects.filter(status='published')}
 
+def socials_callback(request):
+    return {"socials_callback": Socials.objects.filter(add_callback='published')}
+
 def callback_block(request):
     return {"callback": CallBackBlock.load()}
 

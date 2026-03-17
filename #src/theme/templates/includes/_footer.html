@@ -54,10 +54,15 @@
 
         {% if branch %}
         <div class="footer__info">
-          <p class="footer__city">г.Томск</p>
+
+          {% if site_settings.city %}
+            <p class="footer__city">{{ site_settings.city }}</p>
+          {% endif %}
+
           {% for br in branch %}
             <p class="footer__address">{{ br.address }}</p>
           {% endfor %}
+
         </div>
         {% endif %}
 
@@ -82,7 +87,7 @@
 {% if socials %}
 <div class="social-sticky">
   {% for social in socials %}
-  <a href="{{ social.link }}" class="social-sticky__item">
+  <a href="{{ social.link }}" class="social-sticky__item" target="_blank">
     {% if social.icon_dark %}
       <img src="{{ social.icon_dark.url }}" alt="{{ social.name }}">
     {% endif %}

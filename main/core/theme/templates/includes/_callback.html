@@ -39,10 +39,15 @@
           <input type="text" placeholder="Ваше имя" class="form__input" name="name">
           <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
           <div class="form__bottom">
+            {% if socials_callback %}
             <div class="socials">
-              <a href=""><img src="{% static 'theme/img/icon/i-tg-white.svg' %}" alt=""></a>
-              <a href=""><img src="{% static 'theme/img/icon/i-max-white.svg' %}" alt=""></a>
+              {% for social in socials_callback %}
+                <a href="{{ social.link }}" target="_blank">
+                  <img src="{{ social.icon_white.url }}" alt="{{ social.name }}">
+                </a>
+              {% endfor %}
             </div>
+            {% endif %}
             <div class="form__checkbox" style="max-width: 229px;">
               <input type="checkbox" id="agree" name="agree">
               <label for="agree">
