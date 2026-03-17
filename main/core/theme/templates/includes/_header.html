@@ -59,7 +59,7 @@
                 {% if sub_cat.children.all %}
                   <ul class="sub-sub__menu">
                     {% for sub in sub_cat.children.all %}
-                    <li><a href="">{{ sub.name }}</a></li>
+                    <li><a href="{{ sub.get_absolute_url }}">{{ sub.name }}</a></li>
                     {% endfor %}
                   </ul>
                 {% endif %}
