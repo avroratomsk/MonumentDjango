@@ -99,9 +99,11 @@
           <li>Гравировка даты: 5000 ₽</li>
         </ul>-->
 
+        {% if product.price %}
         <div class="single__price">
-          <p>Стоимость: <span>От {{ product.price }} ₽</span></p>
+          <p>Стоимость: <span>{{ product.price }} ₽</span></p>
         </div>
+        {% endif %}
 
         <div class="single__btns">
           <button class="btn btn--yellow single__btn" data-popup="leave-request"
