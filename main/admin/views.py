@@ -754,7 +754,6 @@ def upload_archive(request):
     if form.is_valid():
       category = form.cleaned_data['category']
       archive = form.cleaned_data['archive']
-      print(archive)
 
       GalleryItem.objects.filter(category=category).delete()
 
