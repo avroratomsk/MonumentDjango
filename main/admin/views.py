@@ -123,6 +123,14 @@ def rename_image(filename):
 
 from decimal import Decimal
 
+def to_str(value):
+    import pandas as pd
+
+    if pd.isna(value):
+        return ""
+
+    return str(value).strip()
+
 def import_products_from_excel(file_path):
   Product.objects.all().delete()
   Category.objects.all().delete()
@@ -201,10 +209,7 @@ def import_products_from_excel(file_path):
     if isinstance(product_text, float) and math.isnan(product_text):
         product_text = None
 
-    price = row.iloc[4]
-
-    if pd.isna(price):
-      price = None
+    price = to_str(row.iloc[4])
 
     order_by_product = row.iloc[16]
     if isinstance(order_by_product, float) and math.isnan(order_by_product):
