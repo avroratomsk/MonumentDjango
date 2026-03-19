@@ -128,108 +128,108 @@ def import_products_from_excel(file_path):
   Category.objects.all().delete()
   Models.objects.all().delete()
 
-  df = pd.read_excel(file_path, engine='openpyxl')
-
-  FIXED_COLUMNS_COUNT = 7
-
-  for _, row in df.iterrows():
-
-    parent_raw = row.iloc[17]
-
-    if pd.isna(parent_raw):
-      parent_category_name = None
-    else:
-      parent_category_name = str(parent_raw).strip()
-
-    parent_category_slug = slugify(parent_category_name)
-
-    category_parent = None
-
-    if parent_category_name:
-      parent_category_slug = slugify(parent_category_name)
-
-      category_parent, created = Category.objects.get_or_create(
-          name=parent_category_name,
-          defaults={
-              'slug': parent_category_slug,
-              'status': 'published',
-          }
-      )
-
-    category_name = str(row.iloc[0]).strip()
-    if not category_name:
-        continue
-
-    order_by_category = row.iloc[15]
-    if isinstance(order_by_category, float) and math.isnan(order_by_category):
-      order_by_category = 0
-    category_image = f'goods/{row.iloc[18]}'
-    category_slug = slugify(category_name)
-    category, created = Category.objects.get_or_create(
-        name=category_name,
-        defaults={
-            'slug': category_slug,
-            'parent': category_parent,
-            'status': 'published',
-            'order_by': order_by_category,
-            'image': category_image,
-        }
-    )
-
-    product_name = str(row.iloc[1]).strip()
-
-    if not product_name:
-        continue
-
-    model_raw = row.iloc[2]
-
-    if pd.isna(model_raw):
-        model = None
-    else:
-        model = str(model_raw).strip()
-
-    product_image = f'goods/{row.iloc[3]}'
-
-    product_slug = slugify(product_name)
-    product_unique_slug = get_unique_slug(Product, product_slug)
-    product_description = row.iloc[7]
-    product_text = row.iloc[8]
-
-    if isinstance(product_description, float) and math.isnan(product_description):
-        product_description = None
-
-    if isinstance(product_text, float) and math.isnan(product_text):
-        product_text = None
-
-    price = row.iloc[4]
-
-    if isinstance(price, float) and math.isnan(price):
-      price = None
-
-    order_by_product = row.iloc[16]
-    if isinstance(order_by_product, float) and math.isnan(order_by_product):
-      order_by_product = 0
-
-    product, pr_created = Product.objects.get_or_create(
-        slug=product_unique_slug,
-        defaults={
-          'name': product_name,
-          'price': price,
-          'status': 'published',
-          'image': product_image,
-          'description':product_description,
-          'text':product_text,
-          'model': model,
-          'order_by': order_by_product
-        }
-    )
-
-    if not pr_created:
-      if product_image:
-        product.image = product_image
-      product.save(update_fields=['image'])
-
-    product.category.add(category)
+#   df = pd.read_excel(file_path, engine='openpyxl')
+#
+#   FIXED_COLUMNS_COUNT = 7
+#
+#   for _, row in df.iterrows():
+#
+#     parent_raw = row.iloc[17]
+#
+#     if pd.isna(parent_raw):
+#       parent_category_name = None
+#     else:
+#       parent_category_name = str(parent_raw).strip()
+#
+#     parent_category_slug = slugify(parent_category_name)
+#
+#     category_parent = None
+#
+#     if parent_category_name:
+#       parent_category_slug = slugify(parent_category_name)
+#
+#       category_parent, created = Category.objects.get_or_create(
+#           name=parent_category_name,
+#           defaults={
+#               'slug': parent_category_slug,
+#               'status': 'published',
+#           }
+#       )
+#
+#     category_name = str(row.iloc[0]).strip()
+#     if not category_name:
+#         continue
+#
+#     order_by_category = row.iloc[15]
+#     if isinstance(order_by_category, float) and math.isnan(order_by_category):
+#       order_by_category = 0
+#     category_image = f'goods/{row.iloc[18]}'
+#     category_slug = slugify(category_name)
+#     category, created = Category.objects.get_or_create(
+#         name=category_name,
+#         defaults={
+#             'slug': category_slug,
+#             'parent': category_parent,
+#             'status': 'published',
+#             'order_by': order_by_category,
+#             'image': category_image,
+#         }
+#     )
+#
+#     product_name = str(row.iloc[1]).strip()
+#
+#     if not product_name:
+#         continue
+#
+#     model_raw = row.iloc[2]
+#
+#     if pd.isna(model_raw):
+#         model = None
+#     else:
+#         model = str(model_raw).strip()
+#
+#     product_image = f'goods/{row.iloc[3]}'
+#
+#     product_slug = slugify(product_name)
+#     product_unique_slug = get_unique_slug(Product, product_slug)
+#     product_description = row.iloc[7]
+#     product_text = row.iloc[8]
+#
+#     if isinstance(product_description, float) and math.isnan(product_description):
+#         product_description = None
+#
+#     if isinstance(product_text, float) and math.isnan(product_text):
+#         product_text = None
+#
+#     price = row.iloc[4]
+#
+#     if isinstance(price, float) and math.isnan(price):
+#       price = None
+#
+#     order_by_product = row.iloc[16]
+#     if isinstance(order_by_product, float) and math.isnan(order_by_product):
+#       order_by_product = 0
+#
+#     product, pr_created = Product.objects.get_or_create(
+#         slug=product_unique_slug,
+#         defaults={
+#           'name': product_name,
+#           'price': price,
+#           'status': 'published',
+#           'image': product_image,
+#           'description':product_description,
+#           'text':product_text,
+#           'model': model,
+#           'order_by': order_by_product
+#         }
+#     )
+#
+#     if not pr_created:
+#       if product_image:
+#         product.image = product_image
+#       product.save(update_fields=['image'])
+#
+#     product.category.add(category)
 
 
 
