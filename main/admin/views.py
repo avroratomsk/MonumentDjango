@@ -129,7 +129,7 @@ def to_str(value):
     if pd.isna(value):
         return ""
 
-    return str(value).strip()
+    return str(value)
 
 def import_products_from_excel(file_path):
   Product.objects.all().delete()
