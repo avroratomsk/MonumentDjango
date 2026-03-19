@@ -203,7 +203,7 @@ def import_products_from_excel(file_path):
 
     price = row.iloc[4]
 
-    if math.isnan(price):
+    if pd.isna(price)::
       price = None
 
     order_by_product = row.iloc[16]
