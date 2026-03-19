@@ -168,7 +168,13 @@ def import_products_from_excel(file_path):
           }
       )
 
-    category_name = str(row.iloc[0]).strip()
+    category_raw = row.iloc[0]
+
+    if pd.isna(category_raw):
+        continue
+
+    category_name = str(category_raw).strip()
+
     if not category_name:
         continue
 
