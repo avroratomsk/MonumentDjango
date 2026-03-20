@@ -1,5 +1,8 @@
 button {
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
 }
 
 .btn {
@@ -7,8 +10,6 @@ button {
   border-radius: 5px;
   border: 1px solid $primaryColor;
   cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
 
   &--primary {
     background-color: $primaryColor;

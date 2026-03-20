@@ -4634,6 +4634,9 @@ body._lock::after {
 
 button {
   cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .btn {
@@ -4641,9 +4644,6 @@ button {
   border-radius: 5px;
   border: 1px solid #02075D;
   cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
 }
 
 .btn--primary {
