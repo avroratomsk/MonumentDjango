@@ -1,11 +1,14 @@
 button {
   cursor: pointer;
 }
+
 .btn {
   padding: 10px 27px;
   border-radius: 5px;
   border: 1px solid $primaryColor;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 
   &--primary {
     background-color: $primaryColor;
@@ -389,7 +392,6 @@ table, th, td {
     font-weight: 500;
     margin-left: 10px;
   }
-
 
 
   // .filter__item
