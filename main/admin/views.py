@@ -127,7 +127,7 @@ def to_str(value):
     import pandas as pd
 
     if pd.isna(value) or str(value).strip() == "":
-        return "-"
+        return ""
 
     # если число → форматируем с пробелами
     if isinstance(value, (int, float)):
