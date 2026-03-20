@@ -5911,7 +5911,7 @@ body._lock::after {
 }
 
 .single__slider {
-  width: 464px;
+  width: 320px;
 }
 
 .single__image {
@@ -7502,6 +7502,12 @@ body main {
 
   .ps-sm-5 {
     padding-left: 3rem !important;
+  }
+}
+
+@media (min-width: 578px) {
+  .single__slider {
+    width: 464px;
   }
 }
 
@@ -11706,6 +11712,15 @@ body main {
 
   .reviews__row iframe {
     max-width: 100%;
+  }
+
+  .single__btns {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .single__btn {
+    width: 100%;
   }
 }
 

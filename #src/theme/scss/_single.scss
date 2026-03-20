@@ -15,13 +15,21 @@
   }
 
   &__slider {
-    width: 464px;
+    width: 320px;
+
+    @media (min-width: 578px) {
+      width: 464px;
+    }
   }
 
   &__wrapper {
   }
 
   &__slide {
+
+    //@media (max-width: 578px) {
+    //  width: 290px !important;
+    //}
   }
 
   &__image {
@@ -101,6 +109,7 @@
 
   &__price {
     margin-top: 20px;
+
     p {
       font-family: Spectral, sans-serif;
       font-weight: 300;
@@ -121,6 +130,9 @@
     gap: 24px;
     margin-top: 20px;
 
+    @media(max-width: 578px) {
+      flex-wrap: wrap;
+    }
   }
 
   &__btn {
@@ -130,6 +142,10 @@
     justify-content: center;
     gap: 10px;
     font-weight: 600;
+
+    @media(max-width: 578px) {
+      width: 100%;
+    }
   }
 
   &__text-notice {
