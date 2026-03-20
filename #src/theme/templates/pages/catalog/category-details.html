@@ -79,9 +79,8 @@
           {% if product.image %}
           <a href="{{ product.get_absolute_url }}" class="card__image">
 
-            <img src="{{ product.image.url }}" width="" height="" alt="{{ product.name }}"
-                 title="{{ product.name }}" style="height: 100%"
-                 itemprop="image">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}"
+                 title="{{ product.name }}"  itemprop="image">
           </a>
           {% endif %}
           <div class="card__content">
