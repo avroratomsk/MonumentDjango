@@ -483,3 +483,50 @@ table, th, td {
   }
 
 }
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+}
+
+.cookie-notice {
+  display: none;
+  width: 60%;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: #384b5a;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+  line-height: 150%;
+  z-index: 1000;
+
+  a {
+    color: #b25f68;
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 992px) {
+    bottom: 80px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    left: 0;
+
+  }
+}
+
+.accept-cookies {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #41a2d0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

@@ -95,3 +95,11 @@
   {% endfor %}
 </div>
 {% endif %}
+
+<div id="cookie-notice" class="cookie-notice">
+  Мы используем cookie. Это позволяет нам анализировать взаимодействие посетителей с сайтом и делать его лучше.
+  Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов
+  <a href="{% url 'cookie' %}" target="_blank">cookie</a> и
+  <a href="{% url 'privacy' %}" target="_blank">политикой конфиденциаьности.</a>
+  <button id="accept-cookies" class="accept-cookies">Я согласен</button>
+</div>

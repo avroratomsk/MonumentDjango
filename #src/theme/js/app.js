@@ -10,6 +10,7 @@ import "./modules/normalizeFormatPhoneLink.js";
 import "./modules/menu/mobileMenu.js";
 import "./modules/sendForm.js";
 import "./modules/mask.js";
+import "./modules/cookie.js";
 
 import { initCart } from './modules/cart/index.js';
 
