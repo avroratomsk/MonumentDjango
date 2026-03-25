@@ -18,7 +18,7 @@
             с <a href="{% url 'privacy' %}">политикой конфиденциальности и обработки персональных данных</a>
           </label>
         </div>
-        <button type="submit" class="form__submit">Отправить</button>
+        <button class="form__submit">Отправить</button>
       </form>
     </div>
   </div>
@@ -31,7 +31,7 @@
         <button data-close type="button" class="popup__close close"></button>
       </div>
       <h2 class="popup__title">Обратный звонок</h2>
-      <form action="{% url 'callback_form' %}" class="popup__form form" method="POST" id="callback-form">
+      <form action="{% url 'callback_form' %}" class="popup__form form callback-form" method="POST">
         {% csrf_token %}
         <input type="text" name="name" class="form__input" placeholder="Ваше имя" required>
         <input type="tel" name="phone" class="form__input" placeholder="номер телефона" required data-tel-input>
@@ -42,7 +42,7 @@
             <a href="{% url 'privacy' %}">политикой конфиденциальности и обработки персональных данных</a>
           </label>
         </div>
-        <button type="submit" class="form__button btn btn--primary">Отправить</button>
+        <button class="form__button btn btn--primary">Отправить</button>
       </form>
     </div>
   </div>

@@ -34,7 +34,7 @@
         <p class="callback__form-title">
           Оставьте заявку - мы обязательно с вами свяжемся
         </p>
-        <form action="{% url 'callback_form' %}" class="form" method="POST" id="callback-form">
+        <form action="{% url 'callback_form' %}" class="form callback-form" method="POST">
           {% csrf_token %}
           <input type="text" placeholder="Ваше имя" class="form__input" name="name">
           <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
@@ -49,7 +49,7 @@
             </div>
             {% endif %}
             <div class="form__checkbox" style="max-width: 229px;">
-              <input type="checkbox" id="agree" name="agree">
+              <input type="checkbox" id="agree" name="agree" required>
               <label for="agree">
                 Я даю свое согласие на обработку персональных данных и подтверждаю, что ознакомлен(а) с
                 <a href="">политикой конфиденциальности и обработки персональных данных</a>

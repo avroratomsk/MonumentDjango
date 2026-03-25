@@ -68,16 +68,12 @@ function sendForm(form, popupName = "default") {
   });
 }
 
-const callBackForm = document.getElementById("callback-form");
-
-if (callBackForm) {
-  sendForm(callBackForm, "callback");
-}
-
-const oknaTest = document.getElementById("okna-form-test");
-
-if (oknaTest) {
-  sendForm(oknaTest, "test");
+const callBackForms = document.querySelectorAll(".callback-form");
+console.log(callBackForms);
+if (callBackForms) {
+  callBackForms.forEach(callback => {
+    sendForm(callback, "callback");
+  })
 }
 
 const orderForm = document.getElementById("order-form");

@@ -87,12 +87,12 @@
         <p class="contact__right-title">
           Или оставьте заявку и мы перезвоним
         </p>
-        <form action="" class="contact__form form">
+        <form action="{% url 'callback_form' %}" class="contact__form form callback-form" >
           <input type="text" placeholder="Ваше имя" class="form__input" name="name">
           <input type="tel" placeholder="Номер телефона" class="form__input" name="phone">
           <div class="form__bottom">
             <div class="form__checkbox">
-              <input type="checkbox" id="agree" name="agree">
+              <input type="checkbox" id="agree" name="agree" required>
               <label for="agree">
                 Я даю свое согласие на обработку персональных данных и подверждаю, что ознакомлен(а) с политикой
                 конфиденциальности и обработки персональных данных
