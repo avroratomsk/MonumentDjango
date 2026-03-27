@@ -49,7 +49,7 @@ def category_detail(request, slug):
 
   categories = Category.objects.filter(parent=None, status='published').order_by('order_by')
 
-  paginator = Paginator(products, 12)
+  paginator = Paginator(products, 9)
   current_page = paginator.page(int(page))
 
   context = {
