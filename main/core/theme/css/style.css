@@ -4174,6 +4174,20 @@ html.with-fancybox body.hide-scrollbar {
       flex-wrap: wrap;
 }
 
+.author__author {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 154%;
+  color: #484848;
+}
+
+.author__author a {
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  color: inherit;
+}
+
 .author .copyright {
   font-weight: 400;
   font-size: 13px;

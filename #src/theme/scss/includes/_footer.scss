@@ -118,6 +118,19 @@
     flex-wrap: wrap;
   }
 
+  &__author {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 154%;
+    color: #484848;
+
+    a {
+      text-decoration: underline;
+      text-decoration-skip-ink: none;
+      color: inherit;
+    }
+  }
+
   .copyright {
     font-weight: 400;
     font-size: 13px;
