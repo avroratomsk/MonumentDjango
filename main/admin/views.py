@@ -564,7 +564,39 @@ def product_edit(request, pk):
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_add(request):
-  return generic_add(request, ProductForm, "admin_shop", "Добавление Товара",  template_name="common-template/product-edit-add-page.html")
+
+  form = ProductForm()
+  if request.method == "POST":
+    form = ProductForm(request.POST, request.FILES)
+    if form.is_valid():
+      form.save()
+      messages.success(request, 'Успешно сохранено !')
+
+      return redirect(request.META.get('HTTP_REFERER', '/'))
+    else:
+      error_list = []
+
+      for field_name, errors in form.errors.items():
+        if field_name == "__all__":
+          for error in errors:
+            error_list.append(error)
+          continue
+
+          # получаем label поля
+          field_label = form[field_name].label
+
+          for error in errors:
+            error_list.append(f"{field_label}: {error}")
+      messages.error(request, " | ".join(error_list))
+      return render(request, "common-template/product-edit-add-page.html", {"form": form, "title": title})
+
+  context = {
+      "form": form,
+      "title": "Добавление Товара"
+
+  }
+
+  return render(request, "common-template/product-edit-add-page.html", context)
 
 @user_passes_test(lambda u: u.is_superuser)
 def product_delete(request,pk):

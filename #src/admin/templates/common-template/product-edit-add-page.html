@@ -56,6 +56,13 @@
               </div>
               {% endif %}
 
+              {% if form.price %}
+              <div class="form__group">
+                <label for="{{ form.price.id_for_label }}" class="form__controls-label">{{ form.price.label }}: </label>
+                {{ form.price }} {{ form.price.errors }}
+              </div>
+              {% endif %}
+
               {% if form.power %}
               <div class="form__group">
                 <label for="{{ form.power.id_for_label }}" class="form__controls-label">{{ form.power.label }}: </label>
