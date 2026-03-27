@@ -588,7 +588,7 @@ def product_add(request):
           for error in errors:
             error_list.append(f"{field_label}: {error}")
       messages.error(request, " | ".join(error_list))
-      return render(request, "common-template/product-edit-add-page.html", {"form": form, "title": title})
+      return render(request, "common-template/product-edit-add-page.html", {"form": form, "title": "Добавление Товара"})
 
   context = {
       "form": form,
